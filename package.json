@@ -1,0 +1,25 @@
+{
+  "name": "docgr",
+  "version": "0.0.0",
+  "description": "one page webpage generater",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DataGarage/docgr"
+  },
+  "keywords": [
+    "docgr"
+  ],
+  "author": "chilijung <chilijung@gmail.com> (http://lijung.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DataGarage/docgr/issues"
+  },
+  "homepage": "https://github.com/DataGarage/docgr",
+  "dependencies": {
+    "handlebars": "^2.0.0-alpha.2"
+  }
+}

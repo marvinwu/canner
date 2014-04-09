@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta property="og:title" content="Open data 開放資料">
+    <meta property="og:site_name" content="Open data 開放資料">
+    <meta property="og:url" content="http://opendata.datagarage.io">
+    <meta property="og:description" content="About open data">
+    <meta property="og:image" content="./static/image/header-logo-xs.png">
+    <meta name="author" content="Data Garage team">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/index.css">
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="usage-page">
+        <div class="wrapper">
+          <header id="header">
+            <nav id="navigation" role="navigation">
+              <div class="wrapper"><a href="./" class="logo"><img src="./static/image/header-logo-xs.png"></a>
+                <ul>
+                  <li><a href="/">English</a></li>
+                  <li><a href="/zhtw_index.html">中文版</a></li>
+                  <li><a href="https://github.com/DataGarage/open-data-license" target="_blank">Github</a></li>
+                </ul>
+              </div>
+            </nav>
+          </header>
+        </div>
+        <footer>
+          <div class="copyright">2014 Data Garage</div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      var offset = $(".sidebar").offset();
+      var topPadding = 50;
+      $(window).scroll(function() {
+          if ($(window).scrollTop() > offset.top) {
+              $(".sidebar").css("margin-top", $(window).scrollTop() - offset.top + topPadding);
+          } else {
+              $(".sidebar").css("margin-top", 20);
+          };
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-49242122-1', 'datagarage.io');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
