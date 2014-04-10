@@ -27,7 +27,7 @@ Using `docgr` to generate your one page webpage you will have create a file call
 
 A sample `docgr.json`
 
-```
+```js
 {
     // necessary
     "layout": "./template/default.hbs",
