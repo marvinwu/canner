@@ -30,7 +30,7 @@
             <nav id="navigation" role="navigation">
               <div class="wrapper"><a href="./" class="logo"><img src="./image/header-logo-xs.png"></a>
                 <ul>
-                  <li><a href="https://github.com/DataGarage/open-data-license" target="_blank">Github</a></li>
+                  <li><a href="https://github.com/Docgr/docgr" target="_blank">Github</a></li>
                 </ul>
               </div>
             </nav>
@@ -74,30 +74,145 @@
             
               <div class="block">
                 <div class="head">
-                  <a href="#basic"></a>
+                  <a id="basic"></a>
                     Docgr
                 </div>
                 <h2>Docgr is a one page website auto generater.</h2>
                 <div class="md">
                   
                     <h2>
-                      <a href="#intro"></a>
+                      <a id="intro"></a>
                         Introduction
                     </h2>
                     <p>Docgr help you to generate a one page website in a very convenient way. You can also customized your theme and your layout easily, try and check it out!.</p>
                   
                     <h2>
-                      <a href="#usage"></a>
+                      <a id="usage"></a>
                         Usage
                     </h2>
-                    <p>Coming soon!!!</p>
+                    <h1>docgr</h1>
+
+<p>One page website generator</p>
+
+<h2>Install</h2>
+
+<p><code>
+npm install -g docgr
+</code></p>
+
+<p>command: </p>
+
+<p><code></code>`
+Usage: docgr [options] &lt;source to docgr.json, default ./docgr.json&gt;</p>
+
+<p>  Options:</p>
+
+<pre><code>-h, --help                 output usage information
+-V, --version              output the version number
+-o, --output &lt;directory&gt;   Path to output directory, defaults to current path
+-f, --filename &lt;filename&gt;  Output filename, default to index.html</code></pre>
+
+<p><code></code>`</p>
+
+<h2>Usage</h2>
+
+<p>Using <code>docgr</code> to generate your one page webpage you will have create a file called <code>docgr.json</code></p>
+
+<p>A sample <code>docgr.json</code></p>
+
+<p><code></code>`js
+{
+    // necessary, point to your layout (handlebars)
+    &quot;layout&quot;: &quot;./template/default.hbs&quot;,</p>
+
+<pre><code>// necessary
+&quot;basic&quot;: {
+    // the objects are optional, according to your layout (render by handlebars).
+    &quot;title&quot;: &quot;Docgr&quot;,
+    &quot;og_title&quot;: &quot;Docgr&quot;,
+    &quot;og_site_name&quot;: &quot;Docgr - a one page webpage generater&quot;,
+    &quot;og_url&quot;: &quot;docgr.datagarage.io&quot;,
+    &quot;og_description&quot;: &quot;This is a one page webpage generater&quot;,
+    &quot;og_image&quot;: &quot;./image/header-logo-xs.png&quot;,
+    &quot;charset&quot;: &quot;UTF-8&quot;,
+    &quot;author&quot;: &quot;chilijung&quot;,
+    &quot;viewport&quot;: &quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;,
+    &quot;shortcut_icon&quot;: &quot;https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico&quot;,
+
+    &quot;scripts&quot;: [
+        &quot;https://code.jquery.com/jquery-1.11.0.min.js&quot;
+    ],
+
+    &quot;stylesheets&quot;: [
+        &quot;http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;,
+        &quot;./index.css&quot;
+    ],
+
+    &quot;logo_img&quot;: &quot;./image/header-logo-xs.png&quot;,
+
+    &quot;github_link&quot;: &quot;https://github.com/DataGarage/open-data-license&quot;,
+
+    &quot;google_analytics&quot;: {
+        &quot;UA&quot;: &quot;UA-49242122-1&quot;, 
+        &quot;url&quot;: &quot;datagarage.io&quot;
+    },
+
+    // necessary, block should be a array and contain with title, anchor, md..., each array is a top level topic of the list, sub object contains the sub subject in the topic.
+    &quot;block&quot;: [
+
+        // topic 1
+        {
+            &quot;title&quot;: &quot;Docgr&quot;,
+            &quot;anchor&quot;: &quot;basic&quot;,
+
+            // necessary `docgr` will automatically convert md to html.
+            &quot;md&quot;: &quot;./md/basic.md&quot;,
+
+            &quot;sub&quot;: [
+
+                // sub-title 1
+                {
+                    &quot;title&quot;: &quot;Introduction&quot;,
+                    &quot;anchor&quot;: &quot;intro&quot;,
+                    // necessary. `docgr` will automatically convert md to html. 
+                    &quot;md&quot;: &quot;./md/intro.md&quot;
+                },
+                // sub-title 2
+                {
+                    &quot;title&quot;: &quot;Usage&quot;,
+                    &quot;anchor&quot;: &quot;usage&quot;,
+                    &quot;md&quot;: &quot;./md/usage.md&quot;
+                }
+            ]
+        },
+        // topic 2
+        {
+            &quot;title&quot;: &quot;License&quot;,
+            &quot;anchor&quot;: &quot;license&quot;,
+            &quot;md&quot;: &quot;./md/license.md&quot;
+        }
+    ]
+}</code></pre>
+
+<p>}
+<code></code>`</p>
+
+<p><code>docgr</code> will render your layout(set in your <code>docgr.json</code>) with object in basic(set in your <code>docgr.json</code>). </p>
+
+<p>The most convenient thing to <code>docgr</code> is <code>docgr</code> help you convert your md to html into the page. as you can see in <code>docgr.json</code> there is a name called <code>md</code> is set as a route point to a markdown file. </p>
+
+<p>you can have a look into <code>test</code> folder for further sample.</p>
+
+<h2>License</h2>
+
+<p>MIT <a href="http://github.com/chilijung">@chilijung</a></p>
                   
                 </div>
               </div>
             
               <div class="block">
                 <div class="head">
-                  <a href="#license"></a>
+                  <a id="license"></a>
                     License
                 </div>
                 <p>MIT <a href="http://github.com/chiliung">@chilijung</a></p>

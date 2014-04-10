@@ -23,7 +23,7 @@
 
 		"logo_img": "./image/header-logo-xs.png",
 
-		"github_link": "https://github.com/DataGarage/open-data-license",
+		"github_link": "https://github.com/Docgr/docgr",
 
 		"google_analytics": {
 			"UA": "UA-49242122-1", 
@@ -46,7 +46,7 @@
 					{
 						"title": "Usage",
 						"anchor": "usage",
-						"md": "./md/usage.md"
+						"md": "../README.md"
 					}
 				]
 			},

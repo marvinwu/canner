@@ -56,14 +56,14 @@
             {{#each block}}
               <div class="block">
                 <div class="head">
-                  <a href="#{{anchor}}"></a>
+                  <a id="{{anchor}}"></a>
                     {{title}}
                 </div>
                 {{{md}}}
                 <div class="md">
                   {{#each sub}}
                     <h2>
-                      <a href="#{{anchor}}"></a>
+                      <a id="{{anchor}}"></a>
                         {{title}}
                     </h2>
                     {{{md}}}

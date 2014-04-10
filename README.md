@@ -110,6 +110,14 @@ The most convenient thing to `docgr` is `docgr` help you convert your md to html
 
 you can have a look into `test` folder for further sample.
 
+## Develop
+
+deploy
+
+```
+git subtree push --prefix test origin gh-pages
+```
+
 ## License
 
 MIT [@chilijung](http://github.com/chilijung)
