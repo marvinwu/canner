@@ -1,1 +1,1 @@
-## Docgr is a one page website auto generater.
+## Docgr is a one page website generator.
