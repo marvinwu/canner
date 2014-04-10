@@ -1,22 +1,7 @@
-@font-face {
-  font-family: "Balthazar";
-  src: url(../../static/fonts/Balthazar-Regular.ttf);
-}
-@font-face {
-  font-family: "MyriadPro-Light";
-  src: url(../../static/fonts/MyriadPro-Light.otf);
-}
-@font-face {
-  font-family: "Gotham-XLight";
-  src: url(../../static/fonts/Gotham-XLight.otf);
-}
-@font-face {
-  font-family: "Lato-Medium";
-  src: url(../../static/fonts/Lato-Medium.ttf);
-}
+
 @font-face {
   font-family: "Lato-Light";
-  src: url(../../static/fonts/Lato-Light.ttf);
+  src: url(./fonts/Lato-Light.ttf);
 }
 .centered {
   float: none;
@@ -108,7 +93,6 @@ main .head {
   font-family: "Lato-Medium";
 }
 main .head:before {
-  background-image: url(/images/logo/logo.png);
   content: " ";
   width: 31.8px;
   height: 37.2px;
@@ -117,21 +101,21 @@ main .head:before {
   margin-left: -37px;
   margin-top: 13px;
 }
-main .language {
+main .block {
   margin-bottom: 70px;
 }
-main .language .title {
+main .block .title {
   font-family: "Lato-Medium";
   padding-left: 17px;
   margin-left: -30px;
   font-size: 40px;
   margin-bottom: 15px;
 }
-main .language .title:target {
+main .block .title:target {
   margin-top: 50px;
   border-left: 5px #f80041 solid;
 }
-main .language .intro {
+main .block .intro {
   font-size: 20px;
   line-height: 1.5em;
 }

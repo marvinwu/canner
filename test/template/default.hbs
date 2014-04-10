@@ -33,6 +33,47 @@
               </div>
             </nav>
           </header>
+          <div class="sidebar">
+            {{#each block}}
+              <ul>
+                <li class="title">
+                  <a href="#{{anchor}}">
+                    {{title}}
+                  </a>
+                </li>
+
+                {{#each sub}}
+                  <li>
+                    <a href="#{{anchor}}">
+                      {{title}}
+                    </a>
+                  </li>
+                {{/each}}
+              </ul>
+            {{/each}}
+          </div>
+          <main>
+            {{#each block}}
+              <div class="block">
+                <div class="head">
+                  <a href="#{{anchor}}">
+                    {{title}}
+                  </a>
+                </div>
+                {{{md}}}
+                <div class="md">
+                  {{#each sub}}
+                    <h2>
+                      <a href="#{{anchor}}">
+                        {{title}}
+                      </a>
+                    </h2>
+                    {{{md}}}
+                  {{/each}}
+                </div>
+              </div>
+            {{/each}}
+          </main>
         </div>
         <footer>
           <div class="copyright">2014 Data Garage</div>

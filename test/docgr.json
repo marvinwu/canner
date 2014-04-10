@@ -6,7 +6,7 @@
 		"og_site_name": "Docgr - a one page webpage generater",
 		"og_url": "docgr.datagarage.io",
 		"og_description": "This is a one page webpage generater",
-		"og_image": "./static/image/header-logo-xs.png",
+		"og_image": "./image/header-logo-xs.png",
 		"charset": "UTF-8",
 		"author": "chilijung",
 		"viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
@@ -28,35 +28,35 @@
 		"google_analytics": {
 			"UA": "UA-49242122-1", 
 			"url": "datagarage.io"
-		}
-	},
-
-	"block": [
-		{
-			"title": "Docgr",
-			"anchor": "basic",
-			"md": "./md/basic.md",
-
-			"sub": [
-				{
-					"title": "Introduction",
-					"anchor": "intro",
-					"md": "./md/intro.md"
-				},
-
-				{
-					"title": "Usage",
-					"anchor": "usage",
-					"md": "./md/usage.md"
-				}
-			]
 		},
 
-		{
-			"title": "License",
-			"anchor": "license",
-			"md": "./md/license.md"
-		}
+		"block": [
+			{
+				"title": "Docgr",
+				"anchor": "basic",
+				"md": "./md/basic.md",
 
-	]
+				"sub": [
+					{
+						"title": "Introduction",
+						"anchor": "intro",
+						"md": "./md/intro.md"
+					},
+
+					{
+						"title": "Usage",
+						"anchor": "usage",
+						"md": "./md/usage.md"
+					}
+				]
+			},
+
+			{
+				"title": "License",
+				"anchor": "license",
+				"md": "./md/license.md"
+			}
+		]
+	}
+	
 }
