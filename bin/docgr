@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-
-var Q = require('q');
 var _ = require('lodash');
 var prog = require('commander');
 
@@ -10,20 +8,9 @@ var build = require('../lib/build');
 
 // General options
 prog
-.version(pkg.version);
+	.version(pkg.version)
+	.usage('[options] <source to docgr.json, default ./docgr.json>')
+	.option('-o, --output <directory>', 'Path to output directory, defaults to current path')
+	.option('-f, --filename <filename>', 'Output filename, default to index.html .')
 
-var buildCommand = function(command, action) {
-    return command
-    .option('-o, --output <directory>', 'Path to output directory, defaults to ./_web')
-    .action(action);
-}
-
-buildCommand(prog
-.command('build [source_dir]')
-.description('Build a docgr from a directory'), build.folder);
-
-
-// Parse and fallback to help if no args
-if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
-    prog.help();
-}
+build.folder(prog.parse(process.argv).args[0], prog);
