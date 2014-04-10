@@ -29,7 +29,7 @@ A sample `docgr.json`
 
 ```js
 {
-    // necessary
+    // necessary, point to your layout (handlebars)
     "layout": "./template/default.hbs",
 
     // necessary
@@ -103,6 +103,12 @@ A sample `docgr.json`
     
 }
 ```
+
+`docgr` will render your layout(set in your `docgr.json`) with object in basic(set in your `docgr.json`). 
+
+The most convenient thing to `docgr` is `docgr` help you convert your md to html into the page. as you can see in `docgr.json` there is a name called `md` is set as a route point to a markdown file. 
+
+you can have a look into `test` folder for further sample.
 
 ## License
 
