@@ -13,12 +13,14 @@
 		"shortcut_icon": "https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico",
 
 		"scripts": [
-			"https://code.jquery.com/jquery-1.11.0.min.js"
+			"https://code.jquery.com/jquery-1.11.0.min.js",
+			"http://yandex.st/highlightjs/8.0/highlight.min.js"
 		],
 
 		"stylesheets": [
 			"http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css",
-			"./index.css"
+			"./index.css",
+			"http://yandex.st/highlightjs/8.0/styles/default.min.css"
 		],
 
 		"logo_img": "./image/header-logo-xs.png",
