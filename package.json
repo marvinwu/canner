@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/DataGarage/docgr",
   "dependencies": {
-    "handlebars": "^2.0.0-alpha.2"
+    "handlebars": "^2.0.0-alpha.2",
+    "commander": "^2.2.0",
+    "q": "^1.0.1",
+    "lodash": "^2.4.1",
+    "node-stage": "^0.1.2"
   }
 }

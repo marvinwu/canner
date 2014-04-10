@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
+  <title>
+    {{title}}
+  </title>
   <head>
-    <meta property="og:title" content="Open data 開放資料">
-    <meta property="og:site_name" content="Open data 開放資料">
-    <meta property="og:url" content="http://opendata.datagarage.io">
-    <meta property="og:description" content="About open data">
-    <meta property="og:image" content="./static/image/header-logo-xs.png">
-    <meta name="author" content="Data Garage team">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./public/css/index.css">
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <meta property="og:title" content="{{og_title}}">
+    <meta property="og:site_name" content="{{og_site_name}}">
+    <meta property="og:url" content="{{og_url}}">
+    <meta property="og:description" content="{{og_description}}">
+    <meta property="og:image" content="{{og_image}}">
+    <meta name="author" content="{{og_author}}">
+    <meta charset="{{charset}}">
+    <meta name="viewport" content="{{viewport}}">
+    <link rel="shortcut icon" href="{{shortcut_icon}}">
+    {{#each stylesheets}}
+    <link rel="stylesheet" href="{{this}}">
+    {{/each}}
+    {{#each scripts}}
+    <script src="{{this}}"></script>
+    {{/each}}
   </head>
   <body>
     <div class="row">
@@ -20,11 +26,9 @@
         <div class="wrapper">
           <header id="header">
             <nav id="navigation" role="navigation">
-              <div class="wrapper"><a href="./" class="logo"><img src="./static/image/header-logo-xs.png"></a>
+              <div class="wrapper"><a href="./" class="logo"><img src="{{logo_img}}"></a>
                 <ul>
-                  <li><a href="/">English</a></li>
-                  <li><a href="/zhtw_index.html">中文版</a></li>
-                  <li><a href="https://github.com/DataGarage/open-data-license" target="_blank">Github</a></li>
+                  <li><a href="{{github_link}}" target="_blank">Github</a></li>
                 </ul>
               </div>
             </nav>
@@ -52,7 +56,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       
-      ga('create', 'UA-49242122-1', 'datagarage.io');
+      ga('create', '{{google_analytics.UA}}', '{{google_analytics.url}}');
       ga('send', 'pageview');
     </script>
   </body>

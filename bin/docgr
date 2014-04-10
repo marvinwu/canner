@@ -1,3 +1,47 @@
 #!/usr/bin/env node
 
-var docgr = require('../');
+var Q = require('q');
+var _ = require('lodash');
+var prog = require('commander');
+
+var pkg = require('../package.json');
+
+var build = require('../lib/build');
+
+// General options
+prog
+.version(pkg.version);
+
+var buildCommand = function(command, action) {
+    return command
+    .option('-o, --output <directory>', 'Path to output directory, defaults to ./_web')
+    .action(action);
+}
+
+buildCommand(prog
+.command('build [source_dir]')
+.description('Build a docgr from a directory'), build.folder);
+
+// buildCommand(prog
+// .command('serve [source_dir]')
+// .description('Build then serve a docgr from a directory')
+// .option('-p, --port <port>', 'Port for server to listen on', 4000),
+// function(dir, options) {
+//     build.folder(dir, options)
+//     .then(function(_options) {
+//         console.log();
+//         console.log('Starting server ...');
+//         return utils.serveDir(_options.output, options.port)
+//         .fail(utils.logError);
+//     })
+//     .then(function() {
+//         console.log('Serving web on http://localhost:'+options.port);
+//         console.log();
+//         console.log('Press CTRL+C to quit ...');
+//     });
+// });
+
+// Parse and fallback to help if no args
+if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
+    prog.help();
+}

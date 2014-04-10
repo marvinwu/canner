@@ -1,14 +1,16 @@
 {
+	"layout": "./template/default.hbs",
 	"basic": {
 		"title": "Docgr",
 		"og_title": "Docgr",
+		"og_site_name": "Docgr - a one page webpage generater",
 		"og_url": "docgr.datagarage.io",
 		"og_description": "This is a one page webpage generater",
 		"og_image": "./static/image/header-logo-xs.png",
 		"charset": "UTF-8",
 		"author": "chilijung",
 		"viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
-		"shortcut icon": "https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico",
+		"shortcut_icon": "https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico",
 
 		"scripts": [
 			"https://code.jquery.com/jquery-1.11.0.min.js"
@@ -19,14 +21,14 @@
 			"./index.css"
 		],
 
-		"logo_img": "./static/image/header-logo-xs.png",
+		"logo_img": "./image/header-logo-xs.png",
 
-		"Github_link": "https://github.com/DataGarage/open-data-license",
+		"github_link": "https://github.com/DataGarage/open-data-license",
 
-		"google_analytics": [
-			"UA-49242122-1", 
-			"datagarage.io"
-		]
+		"google_analytics": {
+			"UA": "UA-49242122-1", 
+			"url": "datagarage.io"
+		}
 	},
 
 	"block": [
@@ -39,14 +41,14 @@
 				{
 					"title": "Introduction",
 					"anchor": "intro",
-					"md": "./md/intro.md",
+					"md": "./md/intro.md"
 				},
 
 				{
 					"title": "Usage",
 					"anchor": "usage",
-					"md": "./md/usage.md",
-				},
+					"md": "./md/usage.md"
+				}
 			]
 		},
 
