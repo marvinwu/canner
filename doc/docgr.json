@@ -71,6 +71,12 @@
 					},
 
 					{
+						"title": "Multiple Page",
+						"anchor": "multi",
+						"md": "./md/usage/multiple.md"
+					},
+
+					{
 						"title": "Sample",
 						"anchor": "sample",
 						"md": "./md/usage/sample.md"

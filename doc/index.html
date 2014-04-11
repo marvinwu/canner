@@ -84,6 +84,12 @@
                   </li>
                 
                   <li>
+                    <a href="#multi">
+                      Multiple Page
+                    </a>
+                  </li>
+                
+                  <li>
                     <a href="#sample">
                       Sample
                     </a>
@@ -150,7 +156,6 @@
     -h, --help                 output usage information
     -V, --version              output the version number
     -o, --output &lt;directory&gt;   Path to output directory, defaults to current path
-    -f, --filename &lt;filename&gt;  Output filename, default to index.html
 </code></pre>
                   
                     <h2>
@@ -158,10 +163,12 @@
                         How to use?
                     </h2>
                     <p>Using <code>docgr</code> to generate your one page webpage you will have create a file called <code>docgr.json</code></p>
-<p>The main two key in the object is <code>layout</code>, <code>basic</code>.</p>
-<h4 id="layout">Layout</h4>
+<p>The main two key in the object is <code>layout</code>, <code>filename</code>, <code>basic</code>.</p>
+<h3 id="layout">Layout</h3>
 <p>Layout is a <code>handlebars</code> file format. see more in handlebars official site. <a href="http://handlebarsjs.com/">http://handlebarsjs.com/</a> . </p>
-<h4 id="basic">Basic</h4>
+<h3 id="filename">Filename</h3>
+<p>Filename will be the output html file name. Default to <code>index.html</code>.</p>
+<h3 id="basic">Basic</h3>
 <p>Basic object is a object that you want to rendering into layout. </p>
 <p>For a basic example:</p>
 <p>if you have a layout like</p>
@@ -170,8 +177,46 @@
 <pre><code>name: chilijung
 </code></pre><p><code>docgr</code> will render it into </p>
 <pre><code>&lt;input type=&quot;text&quot; value=&quot;chilijung&quot;&gt;
-</code></pre><h4 id="something-more">Something more</h4>
+</code></pre><h3 id="something-more">Something more</h3>
 <p>Notice that in <code>basic</code> object there is a key name called <code>block</code>, in block <code>docgr</code> will find a key name called <code>md</code> (should be a route point to a markdown file). <code>docgr</code> will compile markdown to html and set value back to <code>md</code>.</p>
+
+                  
+                    <h2>
+                      <a id="multi"></a>
+                        Multiple Page
+                    </h2>
+                    <p>Docgr also support rendering multipule page in a single <code>docgr.json</code> file. The usage is also really simple.</p>
+<p>For rendering one page:</p>
+<pre><code>{
+    // layout
+    layout: &quot;./layout.hbs&quot;,
+    filename: &quot;page1.html&quot;,
+    basic: {
+        ...
+    }
+}
+</code></pre><p>For multiple pages, just set a array inside <code>docgr.json</code></p>
+<pre><code>
+[
+    {
+        // layout
+        layout: &quot;./layout.hbs&quot;,
+        filename: &quot;page1.html&quot;,
+        basic: {
+            ...
+        }
+    },
+
+    {
+        // layout
+        layout: &quot;./layout.hbs&quot;,
+        filename: &quot;page2.html&quot;,
+        basic: {
+            ...
+        }
+    }
+]
+</code></pre><p>multiple pages is really helpful, while you are making a multiple language webpage.</p>
 
                   
                     <h2>

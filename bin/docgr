@@ -11,6 +11,5 @@ prog
 	.version(pkg.version)
 	.usage('[options] <source to docgr.json, default ./docgr.json>')
 	.option('-o, --output <directory>', 'Path to output directory, defaults to current path')
-	.option('-f, --filename <filename>', 'Output filename, default to index.html .')
 
 build.folder(prog.parse(process.argv).args[0], prog);

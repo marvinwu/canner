@@ -1,10 +1,15 @@
 Using `docgr` to generate your one page webpage you will have create a file called `docgr.json`
 
-The main two key in the object is `layout`, `basic`.
+The main two key in the object is `layout`, `filename`, `basic`.
 
 ### Layout
 
 Layout is a `handlebars` file format. see more in handlebars official site. http://handlebarsjs.com/ . 
+
+
+### Filename
+
+Filename will be the output html file name. Default to `index.html`.
 
 
 ### Basic
