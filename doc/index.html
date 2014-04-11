@@ -55,9 +55,37 @@
                     </a>
                   </li>
                 
+              </ul>
+            
+              <ul>
+                <li class="title">
+                  <a href="#usage">
+                    Usage
+                  </a>
+                </li>
+
+                
                   <li>
-                    <a href="#usage">
-                      Usage
+                    <a href="#install">
+                      Install Docgr
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="#command">
+                      Command usage
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="#use">
+                      How to use?
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="#sample">
+                      Sample
                     </a>
                   </li>
                 
@@ -92,16 +120,30 @@
                     <p>Docgr help you to generate a one page website in a very convenient way. You can also customized your theme and your layout easily, try and check it out!.</p>
 
                   
+                </div>
+              </div>
+            
+              <div class="block">
+                <div class="head">
+                  <a id="usage"></a>
+                    Usage
+                </div>
+                <p><strong>Warning still buggy, not stable yet</strong></p>
+
+                <div class="md">
+                  
                     <h2>
-                      <a id="usage"></a>
-                        Usage
+                      <a id="install"></a>
+                        Install Docgr
                     </h2>
-                    <h1 id="docgr">docgr</h1>
-<p>One page website generator</p>
-<h2 id="install">Install</h2>
-<pre><code>npm install -g docgr
-</code></pre><p>command: </p>
-<pre><code>Usage: docgr [options] &lt;source to docgr.json, default ./docgr.json&gt;
+                    <pre><code>npm install -g docgr
+</code></pre>
+                  
+                    <h2>
+                      <a id="command"></a>
+                        Command usage
+                    </h2>
+                    <pre><code>Usage: docgr [options] &lt;source to docgr.json, default ./docgr.json&gt;
 
   Options:
 
@@ -109,9 +151,34 @@
     -V, --version              output the version number
     -o, --output &lt;directory&gt;   Path to output directory, defaults to current path
     -f, --filename &lt;filename&gt;  Output filename, default to index.html
-</code></pre><h2 id="usage">Usage</h2>
-<p>Using <code>docgr</code> to generate your one page webpage you will have create a file called <code>docgr.json</code></p>
-<p>A sample <code>docgr.json</code></p>
+</code></pre>
+                  
+                    <h2>
+                      <a id="use"></a>
+                        How to use?
+                    </h2>
+                    <p>Using <code>docgr</code> to generate your one page webpage you will have create a file called <code>docgr.json</code></p>
+<p>The main two key in the object is <code>layout</code>, <code>basic</code>.</p>
+<h4 id="layout">Layout</h4>
+<p>Layout is a <code>handlebars</code> file format. see more in handlebars official site. <a href="http://handlebarsjs.com/">http://handlebarsjs.com/</a> . </p>
+<h4 id="basic">Basic</h4>
+<p>Basic object is a object that you want to rendering into layout. </p>
+<p>For a basic example:</p>
+<p>if you have a layout like</p>
+<pre><code>&lt;input type=&quot;text&quot; value=&quot;{{name}}&quot;&gt;
+</code></pre><p>in basic you put</p>
+<pre><code>name: chilijung
+</code></pre><p><code>docgr</code> will render it into </p>
+<pre><code>&lt;input type=&quot;text&quot; value=&quot;chilijung&quot;&gt;
+</code></pre><h4 id="something-more">Something more</h4>
+<p>Notice that in <code>basic</code> object there is a key name called <code>block</code>, in block <code>docgr</code> will find a key name called <code>md</code> (should be a route point to a markdown file). <code>docgr</code> will compile markdown to html and set value back to <code>md</code>.</p>
+
+                  
+                    <h2>
+                      <a id="sample"></a>
+                        Sample
+                    </h2>
+                    <p>A sample <code>docgr.json</code></p>
 <pre><code class="lang-js">{
     // necessary, point to your layout (handlebars)
     &quot;layout&quot;: &quot;./template/default.hbs&quot;,
@@ -187,14 +254,7 @@
 
 }
 </code></pre>
-<p><code>docgr</code> will render your layout(set in your <code>docgr.json</code>) with object in basic(set in your <code>docgr.json</code>). </p>
-<p>The most convenient thing to <code>docgr</code> is <code>docgr</code> help you convert your md to html into the page. as you can see in <code>docgr.json</code> there is a name called <code>md</code> is set as a route point to a markdown file. </p>
-<p>you can have a look into <code>test</code> folder for further sample.</p>
-<h2 id="develop">Develop</h2>
-<p>deploy</p>
-<pre><code>git subtree push --prefix test origin gh-pages
-</code></pre><h2 id="license">License</h2>
-<p>MIT <a href="http://github.com/chilijung">@chilijung</a></p>
+<p>you can have a look into <code>doc</code> folder for further sample.</p>
 
                   
                 </div>

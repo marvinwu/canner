@@ -36,27 +36,53 @@
 			{
 				"title": "Docgr",
 				"anchor": "basic",
-				"md": "./md/basic.md",
+				"md": "./md/basic/basic.md",
 
 				"sub": [
 					{
 						"title": "Introduction",
 						"anchor": "intro",
-						"md": "./md/intro.md"
+						"md": "./md/basic/intro.md"
+					}
+				]
+			},
+
+			{
+				"title": "Usage",
+				"anchor": "usage",
+				"md": "./md/usage/intro.md",
+				"sub": [
+					{
+						"title": "Install Docgr",
+						"anchor": "install",
+						"md": "./md/usage/install.md"
 					},
 
 					{
-						"title": "Usage",
-						"anchor": "usage",
-						"md": "../README.md"
+						"title": "Command usage",
+						"anchor": "command",
+						"md": "./md/usage/command.md"
+					},
+
+					{
+						"title": "How to use?",
+						"anchor": "use",
+						"md": "./md/usage/usage.md"
+					},
+
+					{
+						"title": "Sample",
+						"anchor": "sample",
+						"md": "./md/usage/sample.md"
 					}
+
 				]
 			},
 
 			{
 				"title": "License",
 				"anchor": "license",
-				"md": "./md/license.md"
+				"md": "./md/license/license.md"
 			}
 		]
 	}
