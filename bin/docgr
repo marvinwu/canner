@@ -10,6 +10,8 @@ var build = require('../lib/build');
 prog
 	.version(pkg.version)
 	.usage('[options] <source to docgr.json, default ./docgr.json>')
-	.option('-o, --output <directory>', 'Path to output directory, defaults to current path')
+	.option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
+	.option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
+	.option('-p, --port <port number>', 'Port which your local server start.')
 
 build.folder(prog.parse(process.argv).args[0], prog);
