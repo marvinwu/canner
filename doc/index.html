@@ -166,10 +166,13 @@
                     <p>Using <code>docgr</code> to generate your one page webpage you will have create a file called <code>docgr.json</code></p>
 <p>The main two key in the object is <code>layout</code>, <code>filename</code>, <code>basic</code>.</p>
 <h3 id="layout">Layout</h3>
+<hr>
 <p>Layout is a <code>handlebars</code> file format. see more in handlebars official site. <a href="http://handlebarsjs.com/">http://handlebarsjs.com/</a> . </p>
 <h3 id="filename">Filename</h3>
+<hr>
 <p>Filename will be the output html file name. Default to <code>index.html</code>.</p>
 <h3 id="basic">Basic</h3>
+<hr>
 <p>Basic object is a object that you want to rendering into layout. </p>
 <p>For a basic example:</p>
 <p>if you have a layout like</p>
@@ -179,9 +182,8 @@
 </code></pre><p><code>docgr</code> will render it into </p>
 <pre><code>&lt;input type="text" value="chilijung"&gt;
 </code></pre><h3 id="something-more">Something more</h3>
-<ul>
-<li>markdown support!</li>
-</ul>
+<hr>
+<h4 id="-markdown-support-"><strong>markdown support!</strong></h4>
 <p>You can use <code>&lt;markdown&gt;&lt;/markdown&gt;</code> tag in your handlebars file. Inside the tag you can write your markdown language the generator will replace the tag into html format.</p>
 <p>For example:</p>
 <pre><code>&lt;markdown&gt;
