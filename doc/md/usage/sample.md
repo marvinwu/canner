@@ -4,8 +4,9 @@ A sample `docgr.json`
 {
     // necessary, point to your layout (handlebars)
     "layout": "./template/default.hbs",
+    "filename": "index.html",
 
-    // necessary
+    // necessary, values render into handlbars
     "basic": {
         // the objects are optional, according to your layout (render by handlebars).
         "title": "Docgr",
@@ -36,8 +37,6 @@ A sample `docgr.json`
             "UA": "UA-49242122-1", 
             "url": "datagarage.io"
         },
-
-        // necessary, block should be a array and contain with title, anchor, md..., each array is a top level topic of the list, sub object contains the sub subject in the topic.
         "block": [
 
             // topic 1

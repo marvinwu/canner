@@ -39,4 +39,30 @@ name: chilijung
 
 ### Something more
 
-Notice that in `basic` object there is a key name called `block`, in block `docgr` will find a key name called `md` (should be a route point to a markdown file). `docgr` will compile markdown to html and set value back to `md`.
+- markdown support!
+
+You can use `<markdown></markdown>` tag in your handlebars file. Inside the tag you can write your markdown language the generator will replace the tag into html format.
+
+For example:
+
+```
+<markdown>
+# Docgr
+## subtitle
+</markdown>
+```
+
+will convert to 
+
+```
+<h1> Docgr</h1>
+<h2> subtitle</h2>
+```
+
+You can also use `src` attribute to include a `markdown` file
+
+like:
+
+```
+<markdown src="test.md"></markdown>
+```
