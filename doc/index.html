@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <title>
     Docgr
@@ -115,8 +114,7 @@
                   <a id="basic"></a>
                     Docgr
                 </div>
-                <h2 id="docgr-is-a-one-page-website-generator-">Docgr is a one page website generator.</h2>
-
+                ./md/basic/basic.md
                 <div class="md">
                   
                     <h2>
@@ -134,8 +132,7 @@
                   <a id="usage"></a>
                     Usage
                 </div>
-                <p><strong>Warning still buggy, not stable yet</strong></p>
-
+                ./md/usage/intro.md
                 <div class="md">
                   
                     <h2>
@@ -172,11 +169,11 @@
 <p>Basic object is a object that you want to rendering into layout. </p>
 <p>For a basic example:</p>
 <p>if you have a layout like</p>
-<pre><code>&lt;input type=&quot;text&quot; value=&quot;{{name}}&quot;&gt;
+<pre><code>&lt;input type="text" value="{{name}}"&gt;
 </code></pre><p>in basic you put</p>
 <pre><code>name: chilijung
 </code></pre><p><code>docgr</code> will render it into </p>
-<pre><code>&lt;input type=&quot;text&quot; value=&quot;chilijung&quot;&gt;
+<pre><code>&lt;input type="text" value="chilijung"&gt;
 </code></pre><h3 id="something-more">Something more</h3>
 <p>Notice that in <code>basic</code> object there is a key name called <code>block</code>, in block <code>docgr</code> will find a key name called <code>md</code> (should be a route point to a markdown file). <code>docgr</code> will compile markdown to html and set value back to <code>md</code>.</p>
 
@@ -189,8 +186,8 @@
 <p>For rendering one page:</p>
 <pre><code>{
     // layout
-    layout: &quot;./layout.hbs&quot;,
-    filename: &quot;page1.html&quot;,
+    layout: "./layout.hbs",
+    filename: "page1.html",
     basic: {
         ...
     }
@@ -200,8 +197,8 @@
 [
     {
         // layout
-        layout: &quot;./layout.hbs&quot;,
-        filename: &quot;page1.html&quot;,
+        layout: "./layout.hbs",
+        filename: "page1.html",
         basic: {
             ...
         }
@@ -209,8 +206,8 @@
 
     {
         // layout
-        layout: &quot;./layout.hbs&quot;,
-        filename: &quot;page2.html&quot;,
+        layout: "./layout.hbs",
+        filename: "page2.html",
         basic: {
             ...
         }
@@ -226,73 +223,73 @@
                     <p>A sample <code>docgr.json</code></p>
 <pre><code class="lang-js">{
     // necessary, point to your layout (handlebars)
-    &quot;layout&quot;: &quot;./template/default.hbs&quot;,
+    "layout": "./template/default.hbs",
 
     // necessary
-    &quot;basic&quot;: {
+    "basic": {
         // the objects are optional, according to your layout (render by handlebars).
-        &quot;title&quot;: &quot;Docgr&quot;,
-        &quot;og_title&quot;: &quot;Docgr&quot;,
-        &quot;og_site_name&quot;: &quot;Docgr - a one page webpage generater&quot;,
-        &quot;og_url&quot;: &quot;docgr.datagarage.io&quot;,
-        &quot;og_description&quot;: &quot;This is a one page webpage generater&quot;,
-        &quot;og_image&quot;: &quot;./image/header-logo-xs.png&quot;,
-        &quot;charset&quot;: &quot;UTF-8&quot;,
-        &quot;author&quot;: &quot;chilijung&quot;,
-        &quot;viewport&quot;: &quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;,
-        &quot;shortcut_icon&quot;: &quot;https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico&quot;,
+        "title": "Docgr",
+        "og_title": "Docgr",
+        "og_site_name": "Docgr - a one page webpage generater",
+        "og_url": "docgr.datagarage.io",
+        "og_description": "This is a one page webpage generater",
+        "og_image": "./image/header-logo-xs.png",
+        "charset": "UTF-8",
+        "author": "chilijung",
+        "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+        "shortcut_icon": "https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico",
 
-        &quot;scripts&quot;: [
-            &quot;https://code.jquery.com/jquery-1.11.0.min.js&quot;
+        "scripts": [
+            "https://code.jquery.com/jquery-1.11.0.min.js"
         ],
 
-        &quot;stylesheets&quot;: [
-            &quot;http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;,
-            &quot;./index.css&quot;
+        "stylesheets": [
+            "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css",
+            "./index.css"
         ],
 
-        &quot;logo_img&quot;: &quot;./image/header-logo-xs.png&quot;,
+        "logo_img": "./image/header-logo-xs.png",
 
-        &quot;github_link&quot;: &quot;https://github.com/DataGarage/open-data-license&quot;,
+        "github_link": "https://github.com/DataGarage/open-data-license",
 
-        &quot;google_analytics&quot;: {
-            &quot;UA&quot;: &quot;UA-49242122-1&quot;, 
-            &quot;url&quot;: &quot;datagarage.io&quot;
+        "google_analytics": {
+            "UA": "UA-49242122-1", 
+            "url": "datagarage.io"
         },
 
         // necessary, block should be a array and contain with title, anchor, md..., each array is a top level topic of the list, sub object contains the sub subject in the topic.
-        &quot;block&quot;: [
+        "block": [
 
             // topic 1
             {
-                &quot;title&quot;: &quot;Docgr&quot;,
-                &quot;anchor&quot;: &quot;basic&quot;,
+                "title": "Docgr",
+                "anchor": "basic",
 
                 // necessary `docgr` will automatically convert md to html.
-                &quot;md&quot;: &quot;./md/basic.md&quot;,
+                "md": "./md/basic.md",
 
-                &quot;sub&quot;: [
+                "sub": [
 
                     // sub-title 1
                     {
-                        &quot;title&quot;: &quot;Introduction&quot;,
-                        &quot;anchor&quot;: &quot;intro&quot;,
+                        "title": "Introduction",
+                        "anchor": "intro",
                         // necessary. `docgr` will automatically convert md to html. 
-                        &quot;md&quot;: &quot;./md/intro.md&quot;
+                        "md": "./md/intro.md"
                     },
                     // sub-title 2
                     {
-                        &quot;title&quot;: &quot;Usage&quot;,
-                        &quot;anchor&quot;: &quot;usage&quot;,
-                        &quot;md&quot;: &quot;./md/usage.md&quot;
+                        "title": "Usage",
+                        "anchor": "usage",
+                        "md": "./md/usage.md"
                     }
                 ]
             },
             // topic 2
             {
-                &quot;title&quot;: &quot;License&quot;,
-                &quot;anchor&quot;: &quot;license&quot;,
-                &quot;md&quot;: &quot;./md/license.md&quot;
+                "title": "License",
+                "anchor": "license",
+                "md": "./md/license.md"
             }
         ]
     }
@@ -310,8 +307,7 @@
                   <a id="license"></a>
                     License
                 </div>
-                <p>MIT <a href="http://github.com/chiliung">@chilijung</a></p>
-
+                ./md/license/license.md
                 <div class="md">
                   
                 </div>
