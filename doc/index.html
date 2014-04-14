@@ -114,7 +114,8 @@
                   <a id="basic"></a>
                     Docgr
                 </div>
-                ./md/basic/basic.md
+                <h2 id="docgr-is-a-one-page-website-generator-">Docgr is a one page website generator.</h2>
+
                 <div class="md">
                   
                     <h2>
@@ -132,7 +133,8 @@
                   <a id="usage"></a>
                     Usage
                 </div>
-                ./md/usage/intro.md
+                <p><strong>Warning still buggy, not stable yet</strong></p>
+
                 <div class="md">
                   
                     <h2>
@@ -150,9 +152,11 @@
 
   Options:
 
-    -h, --help                 output usage information
-    -V, --version              output the version number
-    -o, --output &lt;directory&gt;   Path to output directory, defaults to current path
+    -h, --help                output usage information
+    -V, --version             output the version number
+    -o, --output &lt;directory&gt;  Path to output directory, defaults to current directory
+    -s, --serve &lt;directory&gt;   Path you want to start a local server. Default port 4000 for specific port use option -p
+    -p, --port &lt;port number&gt;  Port which your local server start.
 </code></pre>
                   
                     <h2>
@@ -175,8 +179,22 @@
 </code></pre><p><code>docgr</code> will render it into </p>
 <pre><code>&lt;input type="text" value="chilijung"&gt;
 </code></pre><h3 id="something-more">Something more</h3>
-<p>Notice that in <code>basic</code> object there is a key name called <code>block</code>, in block <code>docgr</code> will find a key name called <code>md</code> (should be a route point to a markdown file). <code>docgr</code> will compile markdown to html and set value back to <code>md</code>.</p>
-
+<ul>
+<li>markdown support!</li>
+</ul>
+<p>You can use <code>&lt;markdown&gt;&lt;/markdown&gt;</code> tag in your handlebars file. Inside the tag you can write your markdown language the generator will replace the tag into html format.</p>
+<p>For example:</p>
+<pre><code>&lt;markdown&gt;
+# Docgr
+## subtitle
+&lt;/markdown&gt;
+</code></pre><p>will convert to </p>
+<pre><code>&lt;h1&gt; Docgr&lt;/h1&gt;
+&lt;h2&gt; subtitle&lt;/h2&gt;
+</code></pre><p>You can also use <code>src</code> attribute to include a <code>markdown</code> file</p>
+<p>like:</p>
+<pre><code>&lt;markdown src="test.md"&gt;&lt;/markdown&gt;
+</code></pre>
                   
                     <h2>
                       <a id="multi"></a>
@@ -224,8 +242,9 @@
 <pre><code class="lang-js">{
     // necessary, point to your layout (handlebars)
     "layout": "./template/default.hbs",
+    "filename": "index.html",
 
-    // necessary
+    // necessary, values render into handlbars
     "basic": {
         // the objects are optional, according to your layout (render by handlebars).
         "title": "Docgr",
@@ -256,8 +275,6 @@
             "UA": "UA-49242122-1", 
             "url": "datagarage.io"
         },
-
-        // necessary, block should be a array and contain with title, anchor, md..., each array is a top level topic of the list, sub object contains the sub subject in the topic.
         "block": [
 
             // topic 1
@@ -307,7 +324,8 @@
                   <a id="license"></a>
                     License
                 </div>
-                ./md/license/license.md
+                <p>MIT <a href="http://github.com/chiliung">@chilijung</a></p>
+
                 <div class="md">
                   
                 </div>
