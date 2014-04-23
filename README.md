@@ -1,7 +1,5 @@
 # docgr
 
-**Warning : still buggy**
-
 One page website generator
 
 see document in : http://docgr.github.io/docgr
