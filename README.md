@@ -29,6 +29,7 @@ git subtree push --prefix doc origin gh-pages
 - http://type.datagarage.io
 - http://123.g0v.today
 - http://docgr.github.io/docgr
+- http://docgr.github.io/pagefoldr
 
 
 
