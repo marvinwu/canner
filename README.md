@@ -23,7 +23,7 @@ this will rebuilt the documents. To deploy to gh-pages, we are using subtree, en
 git subtree push --prefix doc origin gh-pages
 ```
 
-## Projects build by docgr
+## Projects built by docgr
 
 - http://opendata.datagarage.io
 - http://type.datagarage.io
