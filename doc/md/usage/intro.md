@@ -1,1 +1,0 @@
-**Warning still buggy, not stable yet**
