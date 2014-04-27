@@ -2,7 +2,7 @@
 
 One page website generator
 
-see document in : http://docgr.github.io/docgr
+see document in : http://docgr.datagarage.io
 
 ## Document
 
@@ -30,6 +30,7 @@ git subtree push --prefix doc origin gh-pages
 - http://123.g0v.today
 - http://docgr.github.io/docgr
 - http://docgr.github.io/pagefoldr
+- http://rpkg.datagarage.io
 
 
 
