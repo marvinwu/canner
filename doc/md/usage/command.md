@@ -1,6 +1,11 @@
 ```
 Usage: docgr [options] <source to docgr.json, default ./docgr.json>
 
+  Commands:
+
+    init [source_dir]   Create initial files and folders
+    build [source_dir]  Build a docgr from a directory
+
   Options:
 
     -h, --help                output usage information
