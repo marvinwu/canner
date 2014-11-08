@@ -14,9 +14,18 @@ sudo npm install -g docgr
 
 enter `doc` folder and enter
 
+#### Building docgr
+
 ```
 docgr build ./docgr.json
 ```
+
+#### Watching docgr
+
+```
+docgr watch ./docgr.json
+```
+
 this will rebuilt the documents. To deploy to gh-pages, we are using subtree, enter command below to deploy.
 
 ```
