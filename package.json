@@ -23,15 +23,16 @@
   },
   "homepage": "https://github.com/DataGarage/docgr",
   "dependencies": {
-    "handlebars": "^2.0.0-alpha.2",
-    "commander": "^2.2.0",
-    "q": "^1.0.1",
-    "lodash": "^2.4.1",
-    "node-stage": "^0.1.2",
     "async": "~0.2.10",
+    "commander": "^2.2.0",
     "file-save": "^0.1.1",
-    "marked": "^0.3.2",
+    "fs-extra": "^0.12.0",
+    "handlebars": "^2.0.0-alpha.2",
     "localdir": "^0.1.0",
-    "mdtag": "^0.1.2"
+    "lodash": "^2.4.1",
+    "marked": "^0.3.2",
+    "mdtag": "^0.1.2",
+    "node-stage": "^0.1.2",
+    "q": "^1.0.1"
   }
 }

@@ -1,0 +1,7 @@
+{
+	"layout": "./index.hbs",
+	"basic": {
+		"title": "DOCGR!!",
+		"body": "hello world"
+	}	
+}

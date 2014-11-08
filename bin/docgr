@@ -5,6 +5,9 @@ var prog = require('commander');
 var pkg = require('../package.json');
 
 var build = require('../lib/build');
+var init = require('../lib/init');
+
+var arg = process.argv;
 
 // General options
 prog
@@ -14,4 +17,23 @@ prog
 	.option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
 	.option('-p, --port <port number>', 'Port which your local server start.')
 
-build.folder(prog.parse(process.argv).args[0], prog);
+prog
+	.command('init [source_dir]')
+	.description('Create initial files and folders')
+	.action(function(dir) {
+    dir = dir || process.cwd();
+    return init(dir);
+	});
+
+prog
+	.command('build [source_dir]')
+	.description('Build a docgr from a directory')
+	.action(function(dir) {
+		return build.folder(dir, prog)
+	});
+
+// if empty
+if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
+    prog.help();
+}
+
