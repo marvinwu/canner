@@ -12,18 +12,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico">
-    
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    
     <link rel="stylesheet" href="./index.css">
-    
     <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
-    
-    
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    
     <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-    
   </head>
   <body>
     <div class="row">
@@ -39,7 +32,6 @@
             </nav>
           </header>
           <div class="sidebar">
-            
               <ul>
                 <li class="title">
                   <a href="#basic">
@@ -47,15 +39,12 @@
                   </a>
                 </li>
 
-                
                   <li>
                     <a href="#intro">
                       Introduction
                     </a>
                   </li>
-                
               </ul>
-            
               <ul>
                 <li class="title">
                   <a href="#usage">
@@ -63,39 +52,32 @@
                   </a>
                 </li>
 
-                
                   <li>
                     <a href="#install">
                       Install Docgr
                     </a>
                   </li>
-                
                   <li>
                     <a href="#command">
                       Command usage
                     </a>
                   </li>
-                
                   <li>
                     <a href="#use">
                       How to use?
                     </a>
                   </li>
-                
                   <li>
                     <a href="#multi">
                       Multiple Page
                     </a>
                   </li>
-                
                   <li>
                     <a href="#sample">
                       Sample
                     </a>
                   </li>
-                
               </ul>
-            
               <ul>
                 <li class="title">
                   <a href="#license">
@@ -103,12 +85,9 @@
                   </a>
                 </li>
 
-                
               </ul>
-            
           </div>
           <main>
-            
               <div class="block">
                 <div class="head">
                   <a id="basic"></a>
@@ -117,17 +96,14 @@
                 <h2 id="docgr-is-a-one-page-website-generator-">Docgr is a one page website generator.</h2>
 
                 <div class="md">
-                  
                     <h2>
                       <a id="intro"></a>
                         Introduction
                     </h2>
                     <p>Docgr help you to generate a one page website in a very convenient way. You can also customized your theme and your layout easily, try and check it out!.</p>
 
-                  
                 </div>
               </div>
-            
               <div class="block">
                 <div class="head">
                   <a id="usage"></a>
@@ -135,29 +111,38 @@
                 </div>
                 
                 <div class="md">
-                  
                     <h2>
                       <a id="install"></a>
                         Install Docgr
                     </h2>
                     <pre><code>npm install -g docgr
 </code></pre>
-                  
                     <h2>
                       <a id="command"></a>
                         Command usage
                     </h2>
-                    <pre><code>Usage: docgr [options] &lt;source to docgr.json, default ./docgr.json&gt;
+                    <h3 id="general">General</h3>
+<pre><code>Usage: docgr [options] [command]
+
+  Commands:
+
+    init [source_dir]             Create initial files and folders
+    build [options] [docgr.json]  Build a docgr from a docgr.json
+
+  Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
+</code></pre><h3 id="-build-command">"build" command</h3>
+<pre><code>Usage: build [options] &lt;source to docgr.json, default ./docgr.json&gt;
 
   Options:
 
     -h, --help                output usage information
-    -V, --version             output the version number
     -o, --output &lt;directory&gt;  Path to output directory, defaults to current directory
     -s, --serve &lt;directory&gt;   Path you want to start a local server. Default port 4000 for specific port use option -p
     -p, --port &lt;port number&gt;  Port which your local server start.
 </code></pre>
-                  
                     <h2>
                       <a id="use"></a>
                         How to use?
@@ -196,7 +181,6 @@
 <p>like:</p>
 <pre><code>&lt;markdown src="test.md"&gt;&lt;/markdown&gt;
 </code></pre>
-                  
                     <h2>
                       <a id="multi"></a>
                         Multiple Page
@@ -234,7 +218,6 @@
 ]
 </code></pre><p>multiple pages is really helpful, while you are making a multiple language webpage.</p>
 
-                  
                     <h2>
                       <a id="sample"></a>
                         Sample
@@ -316,10 +299,8 @@
 </code></pre>
 <p>you can have a look into <code>doc</code> folder for further sample.</p>
 
-                  
                 </div>
               </div>
-            
               <div class="block">
                 <div class="head">
                   <a id="license"></a>
@@ -328,10 +309,8 @@
                 <p>MIT <a href="http://github.com/chilijung">@chilijung</a></p>
 
                 <div class="md">
-                  
                 </div>
               </div>
-            
           </main>
         </div>
         <footer>
