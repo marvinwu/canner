@@ -32,7 +32,19 @@ prog
 	.option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
 	.option('-p, --port <port number>', 'Port which your local server start.')
 	.action(function(dir) {
-		return build.folder(dir, prog)
+		return build.folder(dir, prog, false)
+	});
+
+// watching docs from docgr
+prog
+	.command('watch [docgr.json]')
+	.description('Watching any changes in a docgr and recompiled')
+	.usage('[options] <source to docgr.json, default ./docgr.json>')
+	.option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
+	.option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
+	.option('-p, --port <port number>', 'Port which your local server start.')
+	.action(function(dir) {
+		return build.folder(dir, prog, true)
 	});
 
 // if empty
