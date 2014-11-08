@@ -13,11 +13,7 @@ var arg = process.argv;
 // General options
 prog
 	.version(pkg.version)
-	.usage('[options] <source to docgr.json, default ./docgr.json>')
-	.option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
-	.option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
-	.option('-p, --port <port number>', 'Port which your local server start.')
-
+	
 // initialize the project
 prog
 	.command('init [source_dir]')
@@ -29,8 +25,12 @@ prog
 
 // building docs from docgr
 prog
-	.command('build [point to docgr.json]')
+	.command('build [docgr.json]')
 	.description('Build a docgr from a docgr.json')
+	.usage('[options] <source to docgr.json, default ./docgr.json>')
+	.option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
+	.option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
+	.option('-p, --port <port number>', 'Port which your local server start.')
 	.action(function(dir) {
 		return build.folder(dir, prog)
 	});
