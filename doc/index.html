@@ -142,7 +142,10 @@
     -o, --output &lt;directory&gt;  Path to output directory, defaults to current directory
     -s, --serve &lt;directory&gt;   Path you want to start a local server. Default port 4000 for specific port use option -p
     -p, --port &lt;port number&gt;  Port which your local server start.
+</code></pre><p>for example:</p>
+<pre><code>$ docgr build doc/docgr.json -o output -s 3333
 </code></pre><h3 id="-watch-command">"watch" command</h3>
+<p>To monitoring all the files change, create, modify. If there any changes it will rebuild the whole project.</p>
 <pre><code>Usage: watch [options] &lt;source to docgr.json, default ./docgr.json&gt;
 
   Options:
@@ -151,6 +154,20 @@
     -o, --output &lt;directory&gt;  Path to output directory, defaults to current directory
     -s, --serve &lt;directory&gt;   Path you want to start a local server. Default port 4000 for specific port use option -p
     -p, --port &lt;port number&gt;  Port which your local server start.
+</code></pre><p>for example:</p>
+<pre><code>$ docgr watch doc/docgr.json -o output -s 3333
+</code></pre><h3 id="-inline-command">"inline" command</h3>
+<p>Building the html into a single html file. Detail usage: <a href="https://github.com/Docgr/inline">https://github.com/Docgr/inline</a></p>
+<pre><code>  Usage: inline [options] &lt;source to your html, default ./index.html&gt;
+
+  Options:
+
+    -h, --help                 output usage information
+    -m, --minifyall            Minify css, html, js, images.
+    -o, --output &lt;directory&gt;   Path to output directory, defaults to current directory
+    -n, --filename &lt;filename&gt;  Output html file name, default to output.html
+</code></pre><p>for example:</p>
+<pre><code>$ docgr inline doc/index.html -m
 </code></pre>
                     <h2>
                       <a id="use"></a>
