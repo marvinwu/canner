@@ -34,6 +34,9 @@ $ docgr watch doc/docgr.json -o output -s 3333
 $ docgr inline doc/index.html -m
 ```
 
+## Gh-pages
+
+
 this will rebuilt the documents. To deploy to gh-pages, we are using subtree, enter command below to deploy.
 
 ```
