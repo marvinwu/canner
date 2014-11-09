@@ -27,6 +27,12 @@ Usage: build [options] <source to docgr.json, default ./docgr.json>
     -p, --port <port number>  Port which your local server start.
 ```
 
+for example:
+
+```
+$ docgr build doc/docgr.json -o output -s 3333
+```
+
 ### "watch" command
 
 To monitoring all the files change, create, modify. If there any changes it will rebuild the whole project.
@@ -42,6 +48,12 @@ Usage: watch [options] <source to docgr.json, default ./docgr.json>
     -p, --port <port number>  Port which your local server start.
 ```
 
+for example:
+
+```
+$ docgr watch doc/docgr.json -o output -s 3333
+```
+
 ### "inline" command
 
 Building the html into a single html file. Detail usage: https://github.com/Docgr/inline
@@ -55,4 +67,10 @@ Building the html into a single html file. Detail usage: https://github.com/Docg
     -m, --minifyall            Minify css, html, js, images.
     -o, --output <directory>   Path to output directory, defaults to current directory
     -n, --filename <filename>  Output html file name, default to output.html
+```
+
+for example:
+
+```
+$ docgr inline doc/index.html -m
 ```

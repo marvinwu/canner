@@ -17,13 +17,21 @@ enter `doc` folder and enter
 #### Building docgr
 
 ```
-docgr build ./docgr.json
+$ docgr build doc/docgr.json -o output -s 3333
 ```
+
 
 #### Watching docgr
 
 ```
-docgr watch ./docgr.json
+$ docgr watch doc/docgr.json -o output -s 3333
+```
+
+
+#### Building inline html in docgr
+
+```
+$ docgr inline doc/index.html -m
 ```
 
 this will rebuilt the documents. To deploy to gh-pages, we are using subtree, enter command below to deploy.
