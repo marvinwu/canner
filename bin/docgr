@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 var _ = require('lodash');
 var prog = require('commander');
+var fileSave = require('file-save');
+var inline_html = require('inline-html');
+var path = require('path');
+var Q = require('q');
 
 var pkg = require('../package.json');
 
@@ -45,6 +49,37 @@ prog
 	.option('-p, --port <port number>', 'Port which your local server start.')
 	.action(function(dir) {
 		return build.folder(dir, prog, true)
+	});
+
+// make html include files all warp inline
+prog
+	.command('inline [htmlfile]')
+	.description('Make html include files all warp inline')
+	.usage('[options] <source to your html, default ./index.html>')
+	.option('-m, --minifyall', 'Minify css, html, js, images.')
+	.option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
+	.option('-n, --filename <filename>', 'Output html file name, default to output.html')
+	.action(function(htmlfile) {
+
+		var opt = {
+		  "minifyCSS": true,
+		  "minifyJS": true,
+		  "removeComments":true,
+		  "collapseWhitespace": true
+		};
+
+		var filename = prog.args[1].filename ? prog.args[1].filename : 'output.html';
+		var output = prog.args[1].output ? prog.args[1].output : './';
+		var minify = prog.args[1].minifyall ? prog.args[1].minifyall : null;
+
+		if(!minify) {
+			opt = null;
+		}
+
+		inline_html(path.resolve(process.cwd(), htmlfile), opt, function(result) {
+			fileSave(path.resolve(path.join(process.cwd(), output, filename)))
+				.write(result);
+		});
 	});
 
 // if empty

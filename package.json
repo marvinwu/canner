@@ -1,6 +1,6 @@
 {
   "name": "docgr",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "one page webpage generater",
   "main": "index.js",
   "bin": {
@@ -25,9 +25,10 @@
   "dependencies": {
     "async": "~0.2.10",
     "commander": "^2.2.0",
-    "file-save": "^0.1.1",
+    "file-save": "^0.2.0",
     "fs-extra": "^0.12.0",
     "handlebars": "^2.0.0-alpha.2",
+    "inline-html": "^1.1.0",
     "localdir": "^0.1.0",
     "lodash": "^2.4.1",
     "marked": "^0.3.2",

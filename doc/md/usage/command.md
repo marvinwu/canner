@@ -29,6 +29,8 @@ Usage: build [options] <source to docgr.json, default ./docgr.json>
 
 ### "watch" command
 
+To monitoring all the files change, create, modify. If there any changes it will rebuild the whole project.
+
 ```
 Usage: watch [options] <source to docgr.json, default ./docgr.json>
 
@@ -38,4 +40,19 @@ Usage: watch [options] <source to docgr.json, default ./docgr.json>
     -o, --output <directory>  Path to output directory, defaults to current directory
     -s, --serve <directory>   Path you want to start a local server. Default port 4000 for specific port use option -p
     -p, --port <port number>  Port which your local server start.
+```
+
+### "inline" command
+
+Building the html into a single html file. Detail usage: https://github.com/Docgr/inline
+
+```
+  Usage: inline [options] <source to your html, default ./index.html>
+
+  Options:
+
+    -h, --help                 output usage information
+    -m, --minifyall            Minify css, html, js, images.
+    -o, --output <directory>   Path to output directory, defaults to current directory
+    -n, --filename <filename>  Output html file name, default to output.html
 ```
