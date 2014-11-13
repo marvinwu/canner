@@ -1,6 +1,6 @@
 # docgr
 
-One page website generator
+A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulty between data and webpages.
 
 see document in : http://docgr.datagarage.io
 
@@ -9,7 +9,7 @@ see document in : http://docgr.datagarage.io
 If you want to update the document (document is also generate by Docgr!)
 
 ```
-sudo npm install -g docgr
+sudo npm install -g canner
 ```
 
 enter `doc` folder and enter
@@ -17,18 +17,18 @@ enter `doc` folder and enter
 #### Building docgr
 
 ```
-$ docgr build doc/docgr.json -o output -s 3333
+$ docgr build doc/canner.json -o output -s 3333
 ```
 
 
 #### Watching docgr
 
 ```
-$ docgr watch doc/docgr.json -o output -s 3333
+$ docgr watch doc/canner.json -o output -s 3333
 ```
 
 
-#### Building inline html in docgr
+#### Building all js, css and images into html in canner
 
 ```
 $ docgr inline doc/index.html -m
@@ -43,7 +43,7 @@ this will rebuilt the documents. To deploy to gh-pages, we are using subtree, en
 git subtree push --prefix doc origin gh-pages
 ```
 
-## Projects built by docgr
+## Projects built by canner
 
 - http://opendata.datagarage.io
 - http://type.datagarage.io

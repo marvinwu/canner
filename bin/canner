@@ -27,11 +27,11 @@ prog
     return init(dir);
 	});
 
-// building docs from docgr
+// building docs from canner
 prog
-	.command('build [docgr.json]')
-	.description('Build a docgr from a docgr.json')
-	.usage('[options] <source to docgr.json, default ./docgr.json>')
+	.command('build [canner.json]')
+	.description('Build a canner from a canner.json')
+	.usage('[options] <source to canner.json, default ./canner.json>')
 	.option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
 	.option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
 	.option('-p, --port <port number>', 'Port which your local server start.')
@@ -39,11 +39,11 @@ prog
 		return build.folder(dir, prog, false)
 	});
 
-// watching docs from docgr
+// watching docs from canner
 prog
-	.command('watch [docgr.json]')
-	.description('Watching any changes in a docgr and recompiled')
-	.usage('[options] <source to docgr.json, default ./docgr.json>')
+	.command('watch [canner.json]')
+	.description('Watching any changes in a canner and recompiled')
+	.usage('[options] <source to canner.json, default ./canner.json>')
 	.option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
 	.option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
 	.option('-p, --port <port number>', 'Port which your local server start.')

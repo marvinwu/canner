@@ -1,7 +1,7 @@
 {
 	"layout": "./index.hbs",
 	"basic": {
-		"title": "DOCGR!!",
+		"title": "Canner!!",
 		"body": "hello world"
 	}	
 }

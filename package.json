@@ -1,17 +1,18 @@
 {
-  "name": "docgr",
+  "name": "canner",
   "version": "0.5.1",
-  "description": "one page webpage generater",
+  "description": "A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulty between data and webpages.
+",
   "main": "index.js",
   "bin": {
-    "docgr": "./bin/docgr"
+    "docgr": "./bin/canner"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DataGarage/docgr"
+    "url": "https://github.com/canner/canner"
   },
   "keywords": [
     "docgr"
@@ -19,9 +20,9 @@
   "author": "chilijung <chilijung@gmail.com> (http://lijung.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DataGarage/docgr/issues"
+    "url": "https://github.com/canner/canner/issues"
   },
-  "homepage": "https://github.com/DataGarage/docgr",
+  "homepage": "https://github.com/canner/canner",
   "dependencies": {
     "async": "~0.2.10",
     "commander": "^2.2.0",
