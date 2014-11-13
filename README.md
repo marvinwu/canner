@@ -1,12 +1,12 @@
-# docgr
+# canner
 
 A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulty between data and webpages.
 
-see document in : http://docgr.datagarage.io
+see document in : http://canner.datagarage.io
 
 ## Document
 
-If you want to update the document (document is also generate by Docgr!)
+If you want to update the document (document is also generate by canner!)
 
 ```
 sudo npm install -g canner
@@ -14,24 +14,24 @@ sudo npm install -g canner
 
 enter `doc` folder and enter
 
-#### Building docgr
+#### Building canner
 
 ```
-$ docgr build doc/canner.json -o output -s 3333
+$ canner build doc/canner.json -o output -s 3333
 ```
 
 
-#### Watching docgr
+#### Watching canner
 
 ```
-$ docgr watch doc/canner.json -o output -s 3333
+$ canner watch doc/canner.json -o output -s 3333
 ```
 
 
 #### Building all js, css and images into html in canner
 
 ```
-$ docgr inline doc/index.html -m
+$ canner inline doc/index.html -m
 ```
 
 ## Gh-pages
@@ -48,8 +48,8 @@ git subtree push --prefix doc origin gh-pages
 - http://opendata.datagarage.io
 - http://type.datagarage.io
 - http://123.g0v.today
-- http://docgr.github.io/docgr
-- http://docgr.github.io/pagefoldr
+- http://canner.github.io/canner
+- http://canner.github.io/pagefoldr
 - http://rpkg.datagarage.io
 
 
