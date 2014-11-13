@@ -1,8 +1,7 @@
 {
   "name": "canner",
   "version": "0.5.1",
-  "description": "A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulty between data and webpages.
-",
+  "description": "A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulty between data and webpages.",
   "main": "index.js",
   "bin": {
     "canner": "./bin/canner"
@@ -15,7 +14,8 @@
     "url": "https://github.com/canner/canner"
   },
   "keywords": [
-    "docgr"
+    "canner", 
+    "generator"
   ],
   "author": "chilijung <chilijung@gmail.com> (http://lijung.com/)",
   "license": "MIT",
