@@ -2,7 +2,7 @@
 var _ = require('lodash');
 var prog = require('commander');
 var fileSave = require('file-save');
-var inline_html = require('inline-html');
+var allin_html = require('allin');
 var path = require('path');
 var Q = require('q');
 
@@ -20,8 +20,10 @@ prog
 	
 // initialize the project
 prog
-	.command('init [source_dir]')
+	.command('open [source_dir]')
 	.description('Create initial files and folders')
+	.usage('[options] <directory>')
+	.option('-g, --generator <generator>', 'Inital generate the generator that you are finding.')
 	.action(function(dir) {
     dir = dir || process.cwd();
     return init(dir);
@@ -51,10 +53,10 @@ prog
 		return build.folder(dir, prog, true)
 	});
 
-// make html include files all warp inline
+// make html include files all warp allin
 prog
-	.command('inline [htmlfile]')
-	.description('Make html include files all warp inline')
+	.command('allin [htmlfile]')
+	.description('Make html include files all warp allin')
 	.usage('[options] <source to your html, default ./index.html>')
 	.option('-m, --minifyall', 'Minify css, html, js, images.')
 	.option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
@@ -76,9 +78,9 @@ prog
 			opt = null;
 		}
 
-		inline_html(path.resolve(process.cwd(), htmlfile), opt, function(result) {
+		allin_html(path.resolve(process.cwd(), htmlfile), opt, function(all) {
 			fileSave(path.resolve(path.join(process.cwd(), output, filename)))
-				.write(result);
+				.write(all);
 		});
 	});
 
