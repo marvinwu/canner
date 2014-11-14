@@ -1,6 +1,6 @@
 {
   "name": "canner",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulty between data and webpages.",
   "main": "index.js",
   "bin": {
