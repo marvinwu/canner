@@ -10,6 +10,7 @@ var pkg = require('../package.json');
 
 var build = require('../lib/build');
 var init = require('../lib/init');
+var get = require('../lib/get');
 
 
 var arg = process.argv;
@@ -17,16 +18,29 @@ var arg = process.argv;
 // General options
 prog
 	.version(pkg.version)
-	
+
+// get a generator
+prog
+	.command('get [generator]')
+	.description('Get a can (generator)!')
+	.action(function(generator) {
+		if(generator)
+			return get(generator)
+		console.log('$ canner get [generator], generator have to have an value, ex: sample, ...')
+		process.exit(1);
+	});
 // initialize the project
 prog
-	.command('open [source_dir]')
-	.description('Create initial files and folders')
+	.command('create [source_dir]')
+	.description('Create initial files and folders, under a directory.')
 	.usage('[options] <directory>')
 	.option('-g, --generator <generator>', 'Inital generate the generator that you are finding.')
 	.action(function(dir) {
+
+		var generator = prog.args[1].generator ? prog.args[1].generator : null;
     dir = dir || process.cwd();
-    return init(dir);
+
+    return init(dir, generator);
 	});
 
 // building docs from canner
