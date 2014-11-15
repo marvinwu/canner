@@ -45,12 +45,14 @@ $ canner watch doc/canner.json -o output -s 3333
 Find the can you want and install in global via npm.
 
 ```
-$ npm install -g sample can
+$ npm install -g sample-can
 ```
 
 And it is done!
 
 How to make a can: https://github.com/Canner/canner/blob/master/generator.md
+
+Can list: https://github.com/Canner/canner/blob/master/generator.md#can-list
 
 ### Create template via can
 
