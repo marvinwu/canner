@@ -15,7 +15,6 @@ sudo npm install -g canner
 
   Commands:
 
-    get [generator]                Get a can (generator)!
     create [options] [source_dir]  Create initial files and folders, under a directory.
     build [options] [canner.json]  Build a canner from a canner.json
     watch [options] [canner.json]  Watching any changes in a canner and recompiled
@@ -43,13 +42,17 @@ $ canner watch doc/canner.json -o output -s 3333
 
 #### Get a can
 
-To get a can, which is a generator in canner. To get a can from npm is easy just enter something like.
+Find the can you want and install in global via npm.
 
 ```
-$ canner get sample
+$ npm install -g sample can
 ```
 
 And it is done!
+
+##### Can List
+
+- https://github.com/Canner/fullPage-can
 
 ### Create template via can
 
@@ -66,6 +69,36 @@ This will create a folder called `testfolder`, which will include all templates 
 ```
 $ canner allin doc/index.html -m
 ```
+
+## Try a sample
+
+Install `sample-can`
+
+```
+$ npm install -g sample-can
+```
+
+Create `sample-can` template in `canner`
+
+```
+$ canner create -g sample-can sample-folder
+```
+
+Enter `sample-folder`
+
+```
+$ cd sample-folder
+```
+
+Building `canner.json`
+
+```
+$ canner build canner.json
+```
+
+You are all done! see `./index.html` for the results.
+
+
 
 ## Gh-pages
 

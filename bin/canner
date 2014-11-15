@@ -20,15 +20,17 @@ prog
 	.version(pkg.version)
 
 // get a generator
-prog
-	.command('get [generator]')
-	.description('Get a can (generator)!')
-	.action(function(generator) {
-		if(generator)
-			return get(generator)
-		console.log('$ canner get [generator], generator have to have an value, ex: sample, ...')
-		process.exit(1);
-	});
+// prog
+// 	.command('get [generator]')
+// 	.description('Get a can (generator)!')
+// 	.action(function(generator) {
+// 		if(generator)
+// 			return get(generator)
+// 		console.log('$ canner get [generator], generator have to have an value, ex: sample, ...')
+// 		process.exit(1);
+// 	});
+
+
 // initialize the project
 prog
 	.command('create [source_dir]')
