@@ -13,3 +13,7 @@ Here is a sample of a can:
 https://github.com/Canner/sample-can
 
 A can should be registered in npm, the module name should be something like `*-can`, for example `sample-can`, `fullpage-can`, etc... .  And can must have a file called `canner.json`.
+
+## Open issue for can support
+
+Please go to https://github.com/Canner/canner/issues/new , and open an issue with a `can support`.
