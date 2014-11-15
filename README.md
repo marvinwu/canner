@@ -50,9 +50,7 @@ $ npm install -g sample can
 
 And it is done!
 
-##### Can List
-
-- https://github.com/Canner/fullPage-can
+How to make a can: https://github.com/Canner/canner/blob/master/generator.md
 
 ### Create template via can
 
