@@ -1,1 +1,1 @@
-MIT [@chilijung](http://github.com/chilijung)
+MIT

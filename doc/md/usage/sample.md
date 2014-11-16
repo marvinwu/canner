@@ -1,4 +1,4 @@
-A sample `docgr.json`
+A sample `canner.json`
 
 ```js
 {
@@ -9,10 +9,10 @@ A sample `docgr.json`
     // necessary, values render into handlbars
     "basic": {
         // the objects are optional, according to your layout (render by handlebars).
-        "title": "Docgr",
-        "og_title": "Docgr",
-        "og_site_name": "Docgr - a one page webpage generater",
-        "og_url": "docgr.datagarage.io",
+        "title": "canner",
+        "og_title": "canner",
+        "og_site_name": "canner - a one page webpage generater",
+        "og_url": "canner.datagarage.io",
         "og_description": "This is a one page webpage generater",
         "og_image": "./image/header-logo-xs.png",
         "charset": "UTF-8",
@@ -41,10 +41,10 @@ A sample `docgr.json`
 
             // topic 1
             {
-                "title": "Docgr",
+                "title": "canner",
                 "anchor": "basic",
 
-                // necessary `docgr` will automatically convert md to html.
+                // necessary `canner` will automatically convert md to html.
                 "md": "./md/basic.md",
 
                 "sub": [
@@ -53,7 +53,7 @@ A sample `docgr.json`
                     {
                         "title": "Introduction",
                         "anchor": "intro",
-                        // necessary. `docgr` will automatically convert md to html. 
+                        // necessary. `canner` will automatically convert md to html. 
                         "md": "./md/intro.md"
                     },
                     // sub-title 2

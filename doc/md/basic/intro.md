@@ -1,1 +1,1 @@
-Docgr help you to generate a one page website in a very convenient way. You can also customized your theme and your layout easily, try and check it out!.
+Canner help you to generate a one page website in a very convenient way. You can also customized your theme and your layout easily, try and check it out!.

@@ -1,3 +1,3 @@
 ```
-npm install -g docgr
+npm install -g canner
 ```

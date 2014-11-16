@@ -1,4 +1,4 @@
-Using `docgr` to generate your one page webpage you will have create a file called `docgr.json`
+Using `canner` to generate your one page webpage you will have create a file called `canner.json`
 
 The main two key in the object is `layout`, `filename`, `basic`.
 
@@ -37,7 +37,7 @@ in basic you put
 name: chilijung
 ```
 
-`docgr` will render it into 
+`canner` will render it into 
 
 ```
 <input type="text" value="chilijung">
@@ -54,7 +54,7 @@ For example:
 
 ```
 <markdown>
-# Docgr
+# canner
 ## subtitle
 </markdown>
 ```
@@ -62,7 +62,7 @@ For example:
 will convert to 
 
 ```
-<h1> Docgr</h1>
+<h1> canner</h1>
 <h2> subtitle</h2>
 ```
 

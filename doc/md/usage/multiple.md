@@ -1,4 +1,4 @@
-Docgr also support rendering multipule page in a single `docgr.json` file. The usage is also really simple.
+canner also support rendering multipule page in a single `canner.json` file. The usage is also really simple.
 
 For rendering one page:
 
@@ -13,7 +13,7 @@ For rendering one page:
 }
 ```
 
-For multiple pages, just set a array inside `docgr.json`
+For multiple pages, just set a array inside `canner.json`
 
 ```
 

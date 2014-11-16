@@ -1,1 +1,1 @@
-## Docgr is a one page website generator.
+## Canner is a one page website generator.

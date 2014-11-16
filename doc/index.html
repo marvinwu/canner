@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/u/28663689/dg/favicon%20%281%29.ico">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -93,14 +93,14 @@
                   <a id="basic"></a>
                     Docgr
                 </div>
-                <h2 id="docgr-is-a-one-page-website-generator-">Docgr is a one page website generator.</h2>
+                <h2 id="canner-is-a-one-page-website-generator-">Canner is a one page website generator.</h2>
 
                 <div class="md">
                     <h2>
                       <a id="intro"></a>
                         Introduction
                     </h2>
-                    <p>Docgr help you to generate a one page website in a very convenient way. You can also customized your theme and your layout easily, try and check it out!.</p>
+                    <p>Canner help you to generate a one page website in a very convenient way. You can also customized your theme and your layout easily, try and check it out!.</p>
 
                 </div>
               </div>
@@ -115,65 +115,20 @@
                       <a id="install"></a>
                         Install Docgr
                     </h2>
-                    <pre><code>npm install -g docgr
+                    <pre><code>npm install -g canner
 </code></pre>
                     <h2>
                       <a id="command"></a>
                         Command usage
                     </h2>
-                    <h3 id="general">General</h3>
-<pre><code>Usage: docgr [options] [command]
+                    <h3 id="document">Document</h3>
+<p><a href="https://github.com/Canner/canner">https://github.com/Canner/canner</a></p>
 
-  Commands:
-
-    init [source_dir]             Create initial files and folders
-    build [options] [docgr.json]  Build a docgr from a docgr.json
-
-  Options:
-
-    -h, --help     output usage information
-    -V, --version  output the version number
-</code></pre><h3 id="-build-command">"build" command</h3>
-<pre><code>Usage: build [options] &lt;source to docgr.json, default ./docgr.json&gt;
-
-  Options:
-
-    -h, --help                output usage information
-    -o, --output &lt;directory&gt;  Path to output directory, defaults to current directory
-    -s, --serve &lt;directory&gt;   Path you want to start a local server. Default port 4000 for specific port use option -p
-    -p, --port &lt;port number&gt;  Port which your local server start.
-</code></pre><p>for example:</p>
-<pre><code>$ docgr build doc/docgr.json -o output -s 3333
-</code></pre><h3 id="-watch-command">"watch" command</h3>
-<p>To monitoring all the files change, create, modify. If there any changes it will rebuild the whole project.</p>
-<pre><code>Usage: watch [options] &lt;source to docgr.json, default ./docgr.json&gt;
-
-  Options:
-
-    -h, --help                output usage information
-    -o, --output &lt;directory&gt;  Path to output directory, defaults to current directory
-    -s, --serve &lt;directory&gt;   Path you want to start a local server. Default port 4000 for specific port use option -p
-    -p, --port &lt;port number&gt;  Port which your local server start.
-</code></pre><p>for example:</p>
-<pre><code>$ docgr watch doc/docgr.json -o output -s 3333
-</code></pre><h3 id="-inline-command">"inline" command</h3>
-<p>Building the html into a single html file. Detail usage: <a href="https://github.com/Docgr/inline">https://github.com/Docgr/inline</a></p>
-<pre><code>  Usage: inline [options] &lt;source to your html, default ./index.html&gt;
-
-  Options:
-
-    -h, --help                 output usage information
-    -m, --minifyall            Minify css, html, js, images.
-    -o, --output &lt;directory&gt;   Path to output directory, defaults to current directory
-    -n, --filename &lt;filename&gt;  Output html file name, default to output.html
-</code></pre><p>for example:</p>
-<pre><code>$ docgr inline doc/index.html -m
-</code></pre>
                     <h2>
                       <a id="use"></a>
                         How to use?
                     </h2>
-                    <p>Using <code>docgr</code> to generate your one page webpage you will have create a file called <code>docgr.json</code></p>
+                    <p>Using <code>canner</code> to generate your one page webpage you will have create a file called <code>canner.json</code></p>
 <p>The main two key in the object is <code>layout</code>, <code>filename</code>, <code>basic</code>.</p>
 <h3 id="layout">Layout</h3>
 <hr>
@@ -189,7 +144,7 @@
 <pre><code>&lt;input type="text" value="{{name}}"&gt;
 </code></pre><p>in basic you put</p>
 <pre><code>name: chilijung
-</code></pre><p><code>docgr</code> will render it into </p>
+</code></pre><p><code>canner</code> will render it into </p>
 <pre><code>&lt;input type="text" value="chilijung"&gt;
 </code></pre><h3 id="something-more">Something more</h3>
 <hr>
@@ -197,11 +152,11 @@
 <p>You can use <code>&lt;markdown&gt;&lt;/markdown&gt;</code> tag in your handlebars file. Inside the tag you can write your markdown language the generator will replace the tag into html format.</p>
 <p>For example:</p>
 <pre><code>&lt;markdown&gt;
-# Docgr
+# canner
 ## subtitle
 &lt;/markdown&gt;
 </code></pre><p>will convert to </p>
-<pre><code>&lt;h1&gt; Docgr&lt;/h1&gt;
+<pre><code>&lt;h1&gt; canner&lt;/h1&gt;
 &lt;h2&gt; subtitle&lt;/h2&gt;
 </code></pre><p>You can also use <code>src</code> attribute to include a <code>markdown</code> file</p>
 <p>like:</p>
@@ -211,7 +166,7 @@
                       <a id="multi"></a>
                         Multiple Page
                     </h2>
-                    <p>Docgr also support rendering multipule page in a single <code>docgr.json</code> file. The usage is also really simple.</p>
+                    <p>canner also support rendering multipule page in a single <code>canner.json</code> file. The usage is also really simple.</p>
 <p>For rendering one page:</p>
 <pre><code>{
     // layout
@@ -221,7 +176,7 @@
         ...
     }
 }
-</code></pre><p>For multiple pages, just set a array inside <code>docgr.json</code></p>
+</code></pre><p>For multiple pages, just set a array inside <code>canner.json</code></p>
 <pre><code>
 [
     {
@@ -248,7 +203,7 @@
                       <a id="sample"></a>
                         Sample
                     </h2>
-                    <p>A sample <code>docgr.json</code></p>
+                    <p>A sample <code>canner.json</code></p>
 <pre><code class="lang-js">{
     // necessary, point to your layout (handlebars)
     "layout": "./template/default.hbs",
@@ -257,10 +212,10 @@
     // necessary, values render into handlbars
     "basic": {
         // the objects are optional, according to your layout (render by handlebars).
-        "title": "Docgr",
-        "og_title": "Docgr",
-        "og_site_name": "Docgr - a one page webpage generater",
-        "og_url": "docgr.datagarage.io",
+        "title": "canner",
+        "og_title": "canner",
+        "og_site_name": "canner - a one page webpage generater",
+        "og_url": "canner.datagarage.io",
         "og_description": "This is a one page webpage generater",
         "og_image": "./image/header-logo-xs.png",
         "charset": "UTF-8",
@@ -289,10 +244,10 @@
 
             // topic 1
             {
-                "title": "Docgr",
+                "title": "canner",
                 "anchor": "basic",
 
-                // necessary `docgr` will automatically convert md to html.
+                // necessary `canner` will automatically convert md to html.
                 "md": "./md/basic.md",
 
                 "sub": [
@@ -301,7 +256,7 @@
                     {
                         "title": "Introduction",
                         "anchor": "intro",
-                        // necessary. `docgr` will automatically convert md to html. 
+                        // necessary. `canner` will automatically convert md to html. 
                         "md": "./md/intro.md"
                     },
                     // sub-title 2
@@ -332,7 +287,7 @@
                   <a id="license"></a>
                     License
                 </div>
-                <p>MIT <a href="http://github.com/chilijung">@chilijung</a></p>
+                <p>MIT</p>
 
                 <div class="md">
                 </div>
@@ -340,7 +295,7 @@
           </main>
         </div>
         <footer>
-          <div class="copyright">2014 Data Garage, this document is generate by Docgr!</div>
+          <div class="copyright">2014 Data Garage, this document is generate by canner!</div>
         </footer>
       </div>
     </div>
