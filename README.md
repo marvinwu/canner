@@ -66,9 +66,12 @@ This will create a folder called `testfolder`, which will include all templates 
 
 #### Building all js, css and images into html in canner
 
+
 ```
 $ canner allin doc/index.html -m
 ```
+
+see more docs: https://github.com/Canner/allin
 
 ## Try a sample
 
