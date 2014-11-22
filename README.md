@@ -59,7 +59,7 @@ Can list: https://github.com/Canner/canner/blob/master/generator.md#can-list
 To immidiately create a template via canner is super easy. If I want to generate a template from `sample-can`, I can just enter command below.
 
 ```
-$ canner create  -g sample-can testfolder
+$ canner create  -g sample testfolder
 ```
 
 This will create a folder called `testfolder`, which will include all templates from `sample-can`
@@ -84,7 +84,7 @@ $ npm install -g sample-can
 Create `sample-can` template in `canner`
 
 ```
-$ canner create -g sample-can sample-folder
+$ canner create -g sample sample-folder
 ```
 
 Enter `sample-folder`
