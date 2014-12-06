@@ -93,7 +93,101 @@ In this setting, `canner` will output two files, one is `output.html`, `output2.
 
 #### Support markdown
 
-We also support markdown rendering in a html. just add `data-markdown` attribute to your dom. See more in here: https://github.com/Canner/md-attr#usage
+We also support markdown rendering in a html. just add `data-markdown` attribute to your dom. 
+
+Loading from source: 
+
+```html
+<section data-markdown="./test.md">
+</section>
+```
+
+Compile the section in md:
+
+```html
+<section data-markdown>
+  wow
+    - wow1
+    - wow2
+</section>
+```
+
+See more in here: https://github.com/Canner/md-attr#usage
+
+#### Support hbs helpers
+
+Add a field called `helpers` in your configure file. Such as
+
+`canner.json`
+
+```js
+{
+  "layout": "index.hbs",
+  "filename": "index.html",
+  "helpers": "helper.js",
+  "data": {
+    "title": "test",
+    "items": [
+      {"name": "Handlebars", "emotion": "love"},
+      {"name": "Mustache", "emotion": "enjoy"},
+      {"name": "Ember", "emotion": "want to learn"}
+    ]
+  }
+}
+```
+
+`index.hbs`
+
+```html
+<html>
+  <head>
+
+  </head>
+  <body>
+    {{title}}
+    <ul>
+      {{#each items}}
+      <li>{{agree_button}}</li>
+      {{/each}}
+    </ul>
+  </body>
+</html>
+```
+
+`helper.js`
+
+```js
+var hbs = require('handlebars');
+
+hbs.registerHelper('agree_button', function() {
+  var emotion = hbs.escapeExpression(this.emotion),
+      name = hbs.escapeExpression(this.name);
+
+  return new hbs.SafeString(
+    "<button>I agree. I " + emotion + " " + name + "</button>"
+  );
+});
+
+module.exports = hbs;
+```
+
+**Result**:
+
+```html
+<html>
+  <head>
+
+  </head>
+  <body>
+    test
+    <ul>
+      <li><button>I agree. I love Handlebars</button></li>
+      <li><button>I agree. I enjoy Mustache</button></li>
+      <li><button>I agree. I want to learn Ember</button></li>
+    </ul>
+  </body>
+</html>
+```
 
 
 #### Setting in YAML, js
@@ -148,7 +242,7 @@ see more docs: https://github.com/Canner/allin
 sudo npm install -g canner
 ```
 
-## Building projects by canner
+## Command
 
 
 ```
@@ -223,6 +317,22 @@ $ canner create  -g sample testfolder
 **NOTE** : `-g` stands for `--generater`
 
 This will create a folder called `testfolder`, which will include all templates from `sample-can`
+
+
+### .canignore
+
+If you want some files that should be ignore, while initialize canner projects just add `.canignore` file.
+
+`.canignore`:
+
+```
+  test
+  test.html
+```
+
+`Canner` will ignore file `test`, and `test.html`.
+
+**NOTE**: canner will default ignore package.json, and dot files.
 
 
 ## Try a sample
