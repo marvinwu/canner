@@ -93,15 +93,15 @@
                   <a id="basic"></a>
                     Canner
                 </div>
-                <h2 id="canner-is-a-one-page-website-generator-">Canner is a one page website generator.</h2>
-
+                <markdown src="./md/basic/basic.md">
+                </markdown>
                 <div class="md">
                     <h2>
                       <a id="intro"></a>
                         Introduction
                     </h2>
-                    <p>Canner help you to generate a one page website in a very convenient way. You can also customized your theme and your layout easily, try and check it out!.</p>
-
+                    <markdown src="./md/basic/intro.md">
+                    </markdown>
                 </div>
               </div>
               <div class="block">
@@ -109,166 +109,39 @@
                   <a id="usage"></a>
                     Usage
                 </div>
-                
+                <markdown src="./md/usage/intro.md">
+                </markdown>
                 <div class="md">
                     <h2>
                       <a id="install"></a>
                         Install canner
                     </h2>
-                    <pre><code>npm install -g canner
-</code></pre>
+                    <markdown src="./md/usage/install.md">
+                    </markdown>
                     <h2>
                       <a id="command"></a>
                         Command usage
                     </h2>
-                    <h3 id="document">Document</h3>
-<p><a href="https://github.com/Canner/canner">https://github.com/Canner/canner</a></p>
-
+                    <markdown src="./md/usage/command.md">
+                    </markdown>
                     <h2>
                       <a id="use"></a>
                         How to use?
                     </h2>
-                    <p>Using <code>canner</code> to generate your one page webpage you will have create a file called <code>canner.json</code></p>
-<p>The main two key in the object is <code>layout</code>, <code>filename</code>, <code>basic</code>.</p>
-<h3 id="layout">Layout</h3>
-<hr>
-<p>Layout is a <code>handlebars</code> file format. see more in handlebars official site. <a href="http://handlebarsjs.com/">http://handlebarsjs.com/</a> . </p>
-<h3 id="filename">Filename</h3>
-<hr>
-<p>Filename will be the output html file name. Default to <code>index.html</code>.</p>
-<h3 id="basic">Basic</h3>
-<hr>
-<p>Basic object is a object that you want to rendering into layout. </p>
-<p>For a basic example:</p>
-<p>if you have a layout like</p>
-<pre><code>&lt;input type="text" value="{{name}}"&gt;
-</code></pre><p>in basic you put</p>
-<pre><code>name: chilijung
-</code></pre><p><code>canner</code> will render it into </p>
-<pre><code>&lt;input type="text" value="chilijung"&gt;
-</code></pre><h3 id="something-more">Something more</h3>
-<hr>
-<h4 id="-markdown-support-"><strong>markdown support!</strong></h4>
-<p>You can use <code>&lt;markdown&gt;&lt;/markdown&gt;</code> tag in your handlebars file. Inside the tag you can write your markdown language the generator will replace the tag into html format.</p>
-<p>For example:</p>
-<pre><code>&lt;markdown&gt;
-# canner
-## subtitle
-&lt;/markdown&gt;
-</code></pre><p>will convert to </p>
-<pre><code>&lt;h1&gt; canner&lt;/h1&gt;
-&lt;h2&gt; subtitle&lt;/h2&gt;
-</code></pre><p>You can also use <code>src</code> attribute to include a <code>markdown</code> file</p>
-<p>like:</p>
-<pre><code>&lt;markdown src="test.md"&gt;&lt;/markdown&gt;
-</code></pre>
+                    <markdown src="./md/usage/usage.md">
+                    </markdown>
                     <h2>
                       <a id="multi"></a>
                         Multiple Page
                     </h2>
-                    <p>canner also support rendering multipule page in a single <code>canner.json</code> file. The usage is also really simple.</p>
-<p>For rendering one page:</p>
-<pre><code>{
-    // layout
-    layout: "./layout.hbs",
-    filename: "page1.html",
-    basic: {
-        ...
-    }
-}
-</code></pre><p>For multiple pages, just set a array inside <code>canner.json</code></p>
-<pre><code>
-[
-    {
-        // layout
-        layout: "./layout.hbs",
-        filename: "page1.html",
-        basic: {
-            ...
-        }
-    },
-
-    {
-        // layout
-        layout: "./layout.hbs",
-        filename: "page2.html",
-        basic: {
-            ...
-        }
-    }
-]
-</code></pre><p>multiple pages is really helpful, while you are making a multiple language webpage.</p>
-
+                    <markdown src="./md/usage/multiple.md">
+                    </markdown>
                     <h2>
                       <a id="sample"></a>
                         Sample
                     </h2>
-                    <p>A sample <code>canner.json</code></p>
-<pre><code class="lang-js">{
-    // necessary, point to your layout (handlebars)
-    "layout": "./template/default.hbs",
-    "filename": "index.html",
-
-    // necessary, values render into handlbars
-    "basic": {
-
-        "scripts": [
-            "https://code.jquery.com/jquery-1.11.0.min.js"
-        ],
-
-        "stylesheets": [
-            "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css",
-            "./index.css"
-        ],
-
-        "logo_img": "./image/header-logo-xs.png",
-
-        "github_link": "https://github.com/DataGarage/open-data-license",
-
-        "google_analytics": {
-            "UA": "UA-49242122-1", 
-            "url": "datagarage.io"
-        },
-        "block": [
-
-            // topic 1
-            {
-                "title": "canner",
-                "anchor": "basic",
-
-                // necessary `canner` will automatically convert md to html.
-                "md": "./md/basic.md",
-
-                "sub": [
-
-                    // sub-title 1
-                    {
-                        "title": "Introduction",
-                        "anchor": "intro",
-                        // necessary. `canner` will automatically convert md to html. 
-                        "md": "./md/intro.md"
-                    },
-                    // sub-title 2
-                    {
-                        "title": "Usage",
-                        "anchor": "usage",
-                        "md": "./md/usage.md"
-                    }
-                ]
-            },
-            // topic 2
-            {
-                "title": "License",
-                "anchor": "license",
-                "md": "./md/license.md"
-            }
-        ]
-    }
-
-}
-</code></pre>
-<p>you can have a look into <code>doc</code> folder for further sample.</p>
-
+                    <markdown src="./md/usage/sample.md">
+                    </markdown>
                 </div>
               </div>
               <div class="block">
@@ -276,8 +149,8 @@
                   <a id="license"></a>
                     License
                 </div>
-                <p>MIT</p>
-
+                <markdown src="./md/license/license.md">
+                </markdown>
                 <div class="md">
                 </div>
               </div>

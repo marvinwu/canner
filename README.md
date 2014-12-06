@@ -125,4 +125,4 @@ git subtree push --prefix doc origin gh-pages
 
 ## License
 
-MIT [@chilijung](http://github.com/chilijung)
+MIT
