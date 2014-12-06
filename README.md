@@ -1,6 +1,6 @@
 # canner
 
-A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulty between data and webpages.
+A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulties between data and webpages.
 
 ## Install
 
