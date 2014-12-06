@@ -2,7 +2,7 @@
 
 A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulties between data and webpages.
 
-We isolate all the text from file so people can maintain there website more easily and we also work hard on lower the barriers for different fields of people to collaborate with ease.
+We isolate all the text from files so people can maintain their websites more easily, we also work hard on lower the barriers for different fields of people to collaborate with ease.
 
 Canner seperate data from html, like handlebars. But we provide template themes and output your website easily.
 
