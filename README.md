@@ -2,13 +2,154 @@
 
 A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulties between data and webpages.
 
-## Install
+We isolate all the text from file so people can maintain there website more easily and we also work hard on lower the barriers for different fields of people to collaborate with ease.
+
+Canner seperate data from html, like handlebars. But we provide template themes and output your website easily.
+
+## How do canner works
+
+Every canner project will have a configuration file called `canner.json` this file will setup the whole project.
+
+First of all, there are three main settings `layout`, `filename`, `data`, here is a sample below. In `layout` we set to `index.hbs`, `index.hbs` is a [Handlebar](http://handlebarsjs.com/) template, which we will render all values in `data` to the template. `filename` is a setting, which is your output filename.
+
+`canner.json`:
+
+```js
+{
+  "layout": "./index.hbs",
+  "filename": "output.html",
+  "data": {
+    "title": "Canner!!",
+    "body": "hello world"
+  }
+}
+```
+
+`index.hbs`:
+
+```html
+<html>
+  <head>
+    <title>
+      {{title}}
+    </title>
+  </head>
+
+  <body>
+    {{body}}
+  </body>
+  
+</html>
+```
+
+**Result:**
+
+`output.html`
+
+```html
+<html>
+  <head>
+    <title>
+      Canner!!
+    </title>
+  </head>
+
+  <body>
+    hello world
+  </body>
+  
+</html>
+```
+
+And let's it! Work like a charm!
+
+### What's more
+
+#### Multipule page
+
+Canner also support rendering multipule webpages in a single setting file. For instance (exmaple below)
+
+`canner.json`:
+
+```json
+[{
+  "layout": "./index.hbs",
+  "filename": "output.html",
+  "data": {
+    "title": "Canner!!",
+    "body": "This is file 1"
+  }
+},{
+  "layout": "./index.hbs",
+  "filename": "output2.html",
+  "data": {
+    "title": "Canner!!",
+    "body": "This is file 2"
+  }
+}]
+```
+
+In this setting, `canner` will output two files, one is `output.html`, `output2.html`. And will render with the data they carry in the object.
+
+#### Support markdown
+
+We also support markdown rendering in a html. just add `data-markdown` attribute to your dom. See more in here: https://github.com/Canner/md-attr#usage
+
+
+#### Setting in YAML, js
+
+Settings in canner can be json, yaml, and also js.
+
+In `yaml`:
+
+```yaml
+layout: "index.hbs"
+filename: "index.html"
+data:
+  title: "test"
+  items:
+    -
+      name: "Canner yaml"
+      emotion: "want to learn"
+```
+
+In `js`:
+
+```js
+
+module.exports= {
+  intro: require("./intro.json"),
+  qanda: require("./qanda.json")
+}
+```
+
+#### Install themes
+
+Canner support some useful themes that you can immidiately build your project.
+
+Please go to section [What is a can](#what-is-a-can)
+
+
+#### Building all js, css and images into html in canner
+
+The following command will make scripts(js), styles(css), images all wrap up in a single html file, which is useful when you are ready for deploying. After wrapping up, you can just deploy one html file!
+
+```
+$ canner allin doc/index.html -m
+```
+
+**NOTE**: `-m` stands for `--minify`
+
+see more docs: https://github.com/Canner/allin
+
+## How to install
 
 ```
 sudo npm install -g canner
 ```
 
-## Command
+## Building projects by canner
+
 
 ```
   Usage: canner [options] [command]
@@ -26,21 +167,42 @@ sudo npm install -g canner
     -V, --version  output the version number
 ```
 
+### Building canner
 
-#### Building canner
+To build `canner` to a folder use the following command. 
 
 ```
 $ canner build doc/canner.json -o output -s 3333
 ```
 
+The command above means canner will build the configuration in `doc/canner.json` to directory `output` and serve a local server at port 3333, so you can look at your site http://localhost:3333
 
-#### Watching canner
+More options:
+
+```
+  Usage: build [options] <source to canner.json, default ./canner.json>
+
+  Options:
+
+    -h, --help                output usage information
+    -o, --output <directory>  Path to output directory, defaults to current directory
+    -s, --serve <directory>   Path you want to start a local server. Default port 4000 for specific port use option -p
+    -p, --port <port number>  Port which your local server start.
+```
+
+### Watching canner
+
+`Watch` command do the same action as `build` but keep monitor the whole `doc` folder, if any file in the folder create, change, delete the whole project will recompile.
 
 ```
 $ canner watch doc/canner.json -o output -s 3333
 ```
 
-#### Get a can
+## What is a can
+
+`Can` are use in generating templates in `canner`, which allow you immidiately generate some popular templates.
+
+### Getting a can
 
 Find the can you want and install in global via npm.
 
@@ -50,32 +212,22 @@ $ npm install -g sample-can
 
 And it is done!
 
-How to make a can: https://github.com/Canner/canner/blob/master/generator.md
-
-Can list: https://github.com/Canner/canner/blob/master/generator.md#can-list
-
 ### Create template via can
 
-To immidiately create a template via canner is super easy. If I want to generate a template from `sample-can`, I can just enter command below.
+To immidiately create a template via canner is super easy. If you want to generate a template from `sample-can`, you can just enter command below.
 
 ```
 $ canner create  -g sample testfolder
 ```
 
+**NOTE** : `-g` stands for `--generater`
+
 This will create a folder called `testfolder`, which will include all templates from `sample-can`
 
-#### Building all js, css and images into html in canner
-
-
-```
-$ canner allin doc/index.html -m
-```
-
-see more docs: https://github.com/Canner/allin
 
 ## Try a sample
 
-Install `sample-can`
+Install `sample-can` https://github.com/Canner/sample-can
 
 ```
 $ npm install -g sample-can
@@ -102,6 +254,21 @@ $ canner build canner.json
 You are all done! see `./index.html` for the results.
 
 
+## Can List
+
+- https://github.com/Canner/fullPage-can
+
+## Build Your own can
+
+Here is a sample of a can:
+
+https://github.com/Canner/sample-can
+
+A can should be registered in npm, the module name should be something like `*-can`, for example `sample-can`, `fullpage-can`, etc... .  And can must have a file called `canner.json`.
+
+### Open issue for can support
+
+Please go to https://github.com/Canner/canner/issues/new , and open an issue with a `can support`.
 
 ## Gh-pages
 
@@ -120,7 +287,6 @@ git subtree push --prefix doc origin gh-pages
 - http://canner.github.io/canner
 - http://canner.github.io/pagefoldr
 - http://rpkg.datagarage.io
-
 
 
 ## License

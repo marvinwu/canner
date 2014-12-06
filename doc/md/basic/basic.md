@@ -1,1 +1,0 @@
-## Canner is a one page website generator.

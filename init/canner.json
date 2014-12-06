@@ -1,7 +1,7 @@
 {
 	"layout": "./index.hbs",
-	"basic": {
+	"data": {
 		"title": "Canner!!",
 		"body": "hello world"
-	}	
+	}
 }
