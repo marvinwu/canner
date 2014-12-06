@@ -1,6 +1,6 @@
 {
 	"layout": "./template/default.hbs",
-	"basic": {
+	"data": {
 		"title": "Canner",
 		"og_title": "canner",
 		"og_site_name": "canner - A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulty between data and webpages.",
