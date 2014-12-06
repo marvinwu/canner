@@ -1,35 +1,35 @@
-- [canner](#)
-  - [How do canner works](#)
-    - [What's more](#)
-      - [Multipule page](#)
-      - [Support markdown](#)
-      - [Support hbs helpers](#)
-      - [Setting in YAML, js](#)
-      - [Install themes](#)
-      - [Building all js, css and images into html in canner](#)
-  - [How to install](#)
-  - [Command](#)
-    - [Building canner](#)
-    - [Watching canner](#)
-  - [What is a can](#)
-    - [Getting a can](#)
-    - [Create template via can](#)
-    - [.canignore](#)
-  - [Try a sample](#)
-  - [Can List](#)
-  - [Build Your own can](#)
-    - [Open issue for can support](#)
-  - [Gh-pages](#)
-  - [Projects built by canner](#)
-  - [License](#)
-
 # canner
-
 A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulties between data and webpages.
 
 We isolate all the text from files so people can maintain their websites more easily, we also work hard on lower the barriers for different fields of people to collaborate with ease.
 
 Canner seperate data from html, like handlebars. But we provide template themes and output your website easily.
+
+##Table of Contents.
+
+- [How do canner works](#)
+  - [What's more](#)
+    - [Multipule page](#)
+    - [Support markdown](#)
+    - [Support hbs helpers](#)
+    - [Setting in YAML, js](#)
+    - [Install themes](#)
+    - [Building all js, css and images into html in canner](#)
+- [How to install](#)
+- [Command](#)
+  - [Building canner](#)
+  - [Watching canner](#)
+- [What is a can](#)
+  - [Getting a can](#)
+  - [Create template via can](#)
+  - [.canignore](#)
+- [Try a sample](#)
+- [Can List](#)
+- [Build Your own can](#)
+  - [Open issue for can support](#)
+- [Gh-pages](#)
+- [Projects built by canner](#)
+- [License](#)
 
 ## How do canner works
 
