@@ -38,7 +38,9 @@ exports.build= function (dir, options) {
 *	@param {string} dir - source to canner.json, default ./canner.json
 *	@param {object} options - options
 */
-
+exports.build= function (dir, options) {
+	return build.folder(dir, options, true)
+}
 
 /*
 *	Allin
@@ -46,3 +48,28 @@ exports.build= function (dir, options) {
 *	@param {string} htmlfile - source to your html, default ./index.html
 *	@param {object} options - options
 */
+
+exports.allin= function (htmlfile, options) {
+	var options = {
+      "minifyCSS": true,
+      "minifyJS": true,
+      "removeComments":true,
+      "collapseWhitespace": true
+    };
+
+    var filename = options.filename || 'output.html';
+    var output = options.output || './';
+    var minify = options.minifyall || null;
+
+    if(!minify) {
+      options = null;
+    }
+
+    allin_html(
+    	path.resolve(process.cwd(), htmlfile), 
+    	options, 
+    	function(all) {
+      		fileSave(path.resolve(path.join(process.cwd(), output, filename)))
+        	.write(all);
+    	});
+}
