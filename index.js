@@ -28,7 +28,9 @@ exports.create= function (dir, generator) {
 *	@param {string} dir - source to canner.json, default ./canner.json
 *	@param {object} options - options
 */
-
+exports.build= function (dir, options) {
+	return build.folder(dir, options, false)
+}
 
 /*
 *	Watch
