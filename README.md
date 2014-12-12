@@ -414,6 +414,63 @@ this will rebuilt the documents. To deploy to gh-pages, we are using subtree, en
 git subtree push --prefix doc origin gh-pages
 ```
 
+## API
+### require
+``` javascript
+var canner= require('canner');
+```
+
+### Create
+Create initial files and folders, under a directory.
+
+``` javascript
+canner.create(dir, generator);
+```
+##### parameters
+* {string} dir - directory install canner
+* {string} generator - Inital generate the generator that you are finding
+
+
+### Build
+Build a canner from a canner.json
+
+``` javascript
+canner.build(dir, options);
+```
+##### parameters
+* {string} dir - source to canner.json, default ./canner.json
+* {object} options
+  * output- output dir
+
+
+### watch
+Watching any changes in a canner and recompiled
+
+``` javascript
+canner.watch(dir, options);
+```
+##### parameters
+* {string} dir - source to canner.json, default ./canner.json
+* {object} options
+  * output- output dir
+  * port-  Port which your local server start.
+  * serve- Path you want to start a local server. Default port 4000
+
+
+### allin
+Make html include files all warp allin
+
+``` javascript
+canner.allin(htmlfile, options);
+```
+##### parameters
+* {string} htmlfile - source to your html, default ./index.html
+* {object} options
+  * filename {String} Output html file name, default to output.html
+  * output {String} Path to output directory, defaults to current directory
+  * minifyall {Boolean}- minify css, html, js, images or not
+
+
 ## Projects built by canner
 
 - http://opendata.datagarage.io
