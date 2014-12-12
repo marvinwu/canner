@@ -28,6 +28,11 @@ Canner seperate data from html, like handlebars. But we provide template themes 
 - [Build Your own can](#build-your-own-can)
   - [Open issue for can support](#open-issue-for-can-support)
 - [Gh-pages](#gh-pages)
+- [API](#api)
+  - [create](#create)
+  - [build](#build)
+  - [watch](#watch)
+  - [allin](#allin)
 - [Projects built by canner](#projects-built-by-canner)
 - [License](#license)
 
