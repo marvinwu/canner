@@ -57,7 +57,10 @@ prog
   .option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
   .option('-p, --port <port number>', 'Port which your local server start.')
   .action(function(dir) {
-    return build.folder(dir, prog.args[1], false)
+    build.folder(dir, prog.args[1], false)
+         .catch(function (err) {
+           stage.error(err);
+         })
   });
 
 // watching docs from canner
@@ -69,7 +72,10 @@ prog
   .option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
   .option('-p, --port <port number>', 'Port which your local server start.')
   .action(function(dir) {
-    return build.folder(dir, prog.args[1], true)
+    build.folder(dir, prog.args[1], true)
+         .catch(function (err) {
+           stage.error(err);
+         })
   });
 
 // make html include files all warp allin
