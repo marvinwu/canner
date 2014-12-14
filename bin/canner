@@ -4,6 +4,7 @@ var prog = require('commander');
 var fileSave = require('file-save');
 var allin_html = require('allin');
 var path = require('path');
+var stage= require('node-stage');
 var Q = require('q');
 
 var pkg = require('../package.json');
@@ -42,7 +43,9 @@ prog
     var generator = prog.args[1].generator ? prog.args[1].generator : null;
     dir = dir || process.cwd();
 
-    return init(dir, generator);
+    init(dir, generator).catch(function (err) {
+      stage.error(err);
+    })
   });
 
 // building docs from canner
