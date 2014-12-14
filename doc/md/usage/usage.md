@@ -4,21 +4,18 @@ The main two key in the object is `layout`, `filename`, `basic`.
 
 ### Layout
 
----
 
 Layout is a `handlebars` file format. see more in handlebars official site. http://handlebarsjs.com/ . 
 
 
 ### Filename
 
----
 
 Filename will be the output html file name. Default to `index.html`.
 
 
 ### Basic
 
----
 
 Basic object is a object that you want to rendering into layout. 
 
@@ -45,7 +42,6 @@ name: chilijung
 
 ### Something more
 
-----
 #### **markdown support!**
 
 You can use `<markdown></markdown>` tag in your handlebars file. Inside the tag you can write your markdown language the generator will replace the tag into html format.
