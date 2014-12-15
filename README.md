@@ -428,8 +428,16 @@ var canner= require('canner');
 ### Create
 Create initial files and folders, under a directory.
 
+return a promise 
+
 ``` javascript
-canner.create(dir, generator);
+canner.create(dir, generator)
+      .then(function(){
+          // do your stuff
+      })
+      .catch(function(err){
+          // deal with error
+      });
 ```
 ##### parameters
 * {string} dir - directory install canner
@@ -439,8 +447,16 @@ canner.create(dir, generator);
 ### Build
 Build a canner from a canner.json
 
+return a promise 
+
 ``` javascript
-canner.build(dir, options);
+canner.build(dir, options)
+      .then(function(){
+          // do your stuff
+      })
+      .catch(function(err){
+          // deal with error
+      });;
 ```
 ##### parameters
 * {string} dir - source to canner.json, default ./canner.json
@@ -450,6 +466,8 @@ canner.build(dir, options);
 
 ### watch
 Watching any changes in a canner and recompiled
+
+return a promise 
 
 ``` javascript
 canner.watch(dir, options);
