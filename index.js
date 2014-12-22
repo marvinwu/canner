@@ -8,6 +8,7 @@ var Q = require('q');
 var build = require('./lib/build');
 var init = require('./lib/init');
 var get = require('./lib/get');
+var read= require('./lib/read');
 
 /*
 *	Create
@@ -72,4 +73,15 @@ exports.allin= function (htmlfile, options) {
       		fileSave(path.resolve(path.join(process.cwd(), output, filename)))
         	.write(all);
     	});
+}
+
+/*
+* read
+* read a file path
+* @param {string} can - can name, e.g., sample-can
+* @param {string} filePath - file path you want to read
+*/
+
+exports.read= function (can, filePath) {
+  return read(can, filePath);
 }
