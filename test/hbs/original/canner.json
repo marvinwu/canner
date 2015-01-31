@@ -1,6 +1,6 @@
 {
-	"layout": "index.hbs",
-	"filename": "index.html",
+	"layout": "./index.hbs",
+	"filename": "./index.html",
 	"data": {
 		"title": "test",
 		"items": "item test"

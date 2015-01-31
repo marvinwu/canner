@@ -30,7 +30,6 @@ exports.create= function (dir, generator) {
 *	@param {object} options - options
 */
 exports.build= function (dir, options) {
-	console.log('fuck you')
 	return build.folder(dir, options, false)
 }
 
