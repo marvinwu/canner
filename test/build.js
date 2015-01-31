@@ -136,9 +136,40 @@ describe('build in swig canner.json', function() {
 		canner.build(__dirname + '/swig/yaml/canner.yaml', {output: __dirname + '/swig/yaml', engine: 'swig'})
 			.then(function() {
 				var output = fs.readFileSync(__dirname + '/swig/yaml/index.html', {encoding: 'utf8'});
-				// var result = fs.readFileSync(__dirname + '/result/jade_yaml.html', {encoding: 'utf8'});
+				var result = fs.readFileSync(__dirname + '/result/swig_yaml.html', {encoding: 'utf8'});
 
-				// assert.equal(output, result);
+				assert.equal(output, result);
+				done();
+			})
+			.catch(function(err) {
+				console.error(err);
+			})
+	})
+})
+
+describe('build in mustache canner.json', function() {
+	it("should build canner.json to html", function(done) {
+		canner.build(__dirname + '/mustache/original/canner.json', {output: __dirname + '/mustache/original', engine: 'mustache'})
+			.then(function() {
+				var output = fs.readFileSync(__dirname + '/mustache/original/index.html', {encoding: 'utf8'});
+				var result = fs.readFileSync(__dirname + '/result/mus.html', {encoding: 'utf8'});
+
+				assert.equal(output, result);
+				done();
+			})
+			.catch(function(err) {
+				console.error(err)
+			})
+	})
+
+
+	it("should build canner.yaml to html", function(done) {
+		canner.build(__dirname + '/mustache/yaml/canner.yaml', {output: __dirname + '/mustache/yaml', engine: 'mustache'})
+			.then(function() {
+				var output = fs.readFileSync(__dirname + '/mustache/yaml/index.html', {encoding: 'utf8'});
+				var result = fs.readFileSync(__dirname + '/result/mus.html', {encoding: 'utf8'});
+
+				assert.equal(output, result);
 				done();
 			})
 			.catch(function(err) {

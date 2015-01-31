@@ -105,6 +105,7 @@ We support some popular template engines, like
 - [nunjucks](http://mozilla.github.io/nunjucks/) 
 - [jade](http://jade-lang.com/)
 - [swig](https://github.com/paularmstrong/swig)
+- [mustache](https://github.com/janl/mustache.js)
 
 ## How to install
 
