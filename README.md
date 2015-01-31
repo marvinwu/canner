@@ -1,20 +1,14 @@
 # canner
-A static webpage generator based on handlebars.js, which aimed to deal with the maintenance difficulties between data and webpages.
+A static webpage generator based on template engines, which aimed to deal with the maintenance difficulties between data and webpages.
 
 We isolate all the text from files so people can maintain their websites more easily, we also work hard on lower the barriers for different fields of people to collaborate with ease.
 
-Canner seperate data from html, like handlebars. But we provide template themes and output your website easily.
+Canner seperate data from html, like handlebars, nunjucks. But we provide template themes and output your website easily.
 
 ## Table of Contents.
 
 - [How do canner works](#how-do-canner-works)
-  - [What's more](#whats-more)
-    - [Multipule page](#multipule-page)
-    - [Support markdown](#support-markdown)
-    - [Support hbs helpers](#support-hbs-helpers)
-    - [Setting in YAML, js](#setting-in-yaml-js)
-    - [Install themes](#install-themes)
-    - [Building all js, css and images into html in canner](#building-all-js-css-and-images-into-html-in-canner)
+- [Template engine supports](#template-engine)
 - [How to install](#how-to-install)
 - [Command](#command)
   - [Building canner](#building-canner)
@@ -33,6 +27,13 @@ Canner seperate data from html, like handlebars. But we provide template themes 
   - [build](#build)
   - [watch](#watch)
   - [allin](#allin)
+- [What's more](#whats-more)
+  - [Multipule page](#multipule-page)
+  - [Support markdown](#support-markdown)
+  - [Support hbs helpers](#support-hbs-helpers)
+  - [Setting in YAML, js](#setting-in-yaml-js)
+  - [Install themes](#install-themes)
+  - [Building all js, css and images into html in canner](#building-all-js-css-and-images-into-html-in-canner)
 - [Projects built by canner](#projects-built-by-canner)
 - [License](#license)
 
@@ -93,178 +94,13 @@ First of all, there are three main settings `layout`, `filename`, `data`, here i
 
 And let's it! Work like a charm!
 
-### What's more
+## Template engines
 
-#### Multipule page
+We support some popular template engines, like
 
-Canner also support rendering multipule webpages in a single setting file. For instance (exmaple below)
+- [handlebars](http://handlebarsjs.com/)
+- [nunjucks](http://mozilla.github.io/nunjucks/) 
 
-`canner.json`:
-
-```json
-[{
-  "layout": "./index.hbs",
-  "filename": "output.html",
-  "data": {
-    "title": "Canner!!",
-    "body": "This is file 1"
-  }
-},{
-  "layout": "./index.hbs",
-  "filename": "output2.html",
-  "data": {
-    "title": "Canner!!",
-    "body": "This is file 2"
-  }
-}]
-```
-
-In this setting, `canner` will output two files, one is `output.html`, `output2.html`. And will render with the data they carry in the object.
-
-#### Support markdown
-
-We also support markdown rendering in a html. just add `data-markdown` attribute to your dom. 
-
-Loading from source: 
-
-```html
-<section data-markdown="./test.md">
-</section>
-```
-
-Compile the section in md:
-
-```html
-<section data-markdown>
-  wow
-    - wow1
-    - wow2
-</section>
-```
-
-See more in here: https://github.com/Canner/md-attr#usage
-
-#### Support hbs helpers
-
-Add a field called `helpers` in your configure file. Such as
-
-`canner.json`
-
-```js
-{
-  "layout": "index.hbs",
-  "filename": "index.html",
-  "helpers": "helper.js",
-  "data": {
-    "title": "test",
-    "items": [
-      {"name": "Handlebars", "emotion": "love"},
-      {"name": "Mustache", "emotion": "enjoy"},
-      {"name": "Ember", "emotion": "want to learn"}
-    ]
-  }
-}
-```
-
-`index.hbs`
-
-```html
-<html>
-  <head>
-
-  </head>
-  <body>
-    {{title}}
-    <ul>
-      {{#each items}}
-      <li>{{agree_button}}</li>
-      {{/each}}
-    </ul>
-  </body>
-</html>
-```
-
-`helper.js`
-
-```js
-var hbs = require('handlebars');
-
-hbs.registerHelper('agree_button', function() {
-  var emotion = hbs.escapeExpression(this.emotion),
-      name = hbs.escapeExpression(this.name);
-
-  return new hbs.SafeString(
-    "<button>I agree. I " + emotion + " " + name + "</button>"
-  );
-});
-
-module.exports = hbs;
-```
-
-**Result**:
-
-```html
-<html>
-  <head>
-
-  </head>
-  <body>
-    test
-    <ul>
-      <li><button>I agree. I love Handlebars</button></li>
-      <li><button>I agree. I enjoy Mustache</button></li>
-      <li><button>I agree. I want to learn Ember</button></li>
-    </ul>
-  </body>
-</html>
-```
-
-
-#### Setting in YAML, js
-
-Settings in canner can be json, yaml, and also js.
-
-In `yaml`:
-
-```yaml
-layout: "index.hbs"
-filename: "index.html"
-data:
-  title: "test"
-  items:
-    -
-      name: "Canner yaml"
-      emotion: "want to learn"
-```
-
-In `js`:
-
-```js
-
-module.exports= {
-  intro: require("./intro.json"),
-  qanda: require("./qanda.json")
-}
-```
-
-#### Install themes
-
-Canner support some useful themes that you can immidiately build your project.
-
-Please go to section [What is a can](#what-is-a-can)
-
-
-#### Building all js, css and images into html in canner
-
-The following command will make scripts(js), styles(css), images all wrap up in a single html file, which is useful when you are ready for deploying. After wrapping up, you can just deploy one html file!
-
-```
-$ canner allin doc/index.html -m
-```
-
-**NOTE**: `-m` stands for `--minify`
-
-see more docs: https://github.com/Canner/allin
 
 ## How to install
 
@@ -493,6 +329,181 @@ canner.allin(htmlfile, options);
   * output {String} Path to output directory, defaults to current directory
   * minifyall {Boolean}- minify css, html, js, images or not
 
+
+### What's more
+
+
+
+#### Multipule page
+
+Canner also support rendering multipule webpages in a single setting file. For instance (exmaple below)
+
+`canner.json`:
+
+```json
+[{
+  "layout": "./index.hbs",
+  "filename": "output.html",
+  "data": {
+    "title": "Canner!!",
+    "body": "This is file 1"
+  }
+},{
+  "layout": "./index.hbs",
+  "filename": "output2.html",
+  "data": {
+    "title": "Canner!!",
+    "body": "This is file 2"
+  }
+}]
+```
+
+In this setting, `canner` will output two files, one is `output.html`, `output2.html`. And will render with the data they carry in the object.
+
+#### Support markdown
+
+We also support markdown rendering in a html. just add `data-markdown` attribute to your dom. 
+
+Loading from source: 
+
+```html
+<section data-markdown="./test.md">
+</section>
+```
+
+Compile the section in md:
+
+```html
+<section data-markdown>
+  wow
+    - wow1
+    - wow2
+</section>
+```
+
+See more in here: https://github.com/Canner/md-attr#usage
+
+#### Support hbs helpers
+
+Add a field called `helpers` in your configure file. Such as
+
+`canner.json`
+
+```js
+{
+  "layout": "index.hbs",
+  "filename": "index.html",
+  "helpers": "helper.js",
+  "data": {
+    "title": "test",
+    "items": [
+      {"name": "Handlebars", "emotion": "love"},
+      {"name": "Mustache", "emotion": "enjoy"},
+      {"name": "Ember", "emotion": "want to learn"}
+    ]
+  }
+}
+```
+
+`index.hbs`
+
+```html
+<html>
+  <head>
+
+  </head>
+  <body>
+    {{title}}
+    <ul>
+      {{#each items}}
+      <li>{{agree_button}}</li>
+      {{/each}}
+    </ul>
+  </body>
+</html>
+```
+
+`helper.js`
+
+```js
+var hbs = require('handlebars');
+
+hbs.registerHelper('agree_button', function() {
+  var emotion = hbs.escapeExpression(this.emotion),
+      name = hbs.escapeExpression(this.name);
+
+  return new hbs.SafeString(
+    "<button>I agree. I " + emotion + " " + name + "</button>"
+  );
+});
+
+module.exports = hbs;
+```
+
+**Result**:
+
+```html
+<html>
+  <head>
+
+  </head>
+  <body>
+    test
+    <ul>
+      <li><button>I agree. I love Handlebars</button></li>
+      <li><button>I agree. I enjoy Mustache</button></li>
+      <li><button>I agree. I want to learn Ember</button></li>
+    </ul>
+  </body>
+</html>
+```
+
+
+#### Setting in YAML, js
+
+Settings in canner can be json, yaml, and also js.
+
+In `yaml`:
+
+```yaml
+layout: "index.hbs"
+filename: "index.html"
+data:
+  title: "test"
+  items:
+    -
+      name: "Canner yaml"
+      emotion: "want to learn"
+```
+
+In `js`:
+
+```js
+
+module.exports= {
+  intro: require("./intro.json"),
+  qanda: require("./qanda.json")
+}
+```
+
+#### Install themes
+
+Canner support some useful themes that you can immidiately build your project.
+
+Please go to section [What is a can](#what-is-a-can)
+
+
+#### Building all js, css and images into html in canner
+
+The following command will make scripts(js), styles(css), images all wrap up in a single html file, which is useful when you are ready for deploying. After wrapping up, you can just deploy one html file!
+
+```
+$ canner allin doc/index.html -m
+```
+
+**NOTE**: `-m` stands for `--minify`
+
+see more docs: https://github.com/Canner/allin
 
 ## Projects built by canner
 
