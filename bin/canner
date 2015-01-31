@@ -55,6 +55,7 @@ prog
   .usage('[options] <source to canner.json, default ./canner.json>')
   .option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
   .option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
+  .option('-e, --engine <template engine>', 'Choose a template engine. Default engine "handlebars"')
   .option('-p, --port <port number>', 'Port which your local server start.')
   .action(function(dir) {
     build.folder(dir, prog.args[1], false)
@@ -70,6 +71,7 @@ prog
   .usage('[options] <source to canner.json, default ./canner.json>')
   .option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
   .option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
+  .option('-e, --engine <template engine>', 'Choose a template engine. Default engine "handlebars"')
   .option('-p, --port <port number>', 'Port which your local server start.')
   .action(function(dir) {
     build.folder(dir, prog.args[1], true)
@@ -111,6 +113,6 @@ prog
 
 // if empty
 if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
-    prog.help();
+  prog.help();
 }
 

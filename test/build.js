@@ -5,7 +5,7 @@ var exec = require('child_process').exec;
 
 var canner = require('../index');
 
-rm_html = exec('rm ./test/hbs/**/index.html', function(err) {
+rm_html = exec('rm ./test/**/**/index.html', function(err) {
 	if(err)
 		console.error(err)
 })
@@ -44,6 +44,37 @@ describe('build in handlebars canner.json', function() {
 			.then(function() {
 				var output = fs.readFileSync(__dirname + '/hbs/yaml/index.html', {encoding: 'utf8'});
 				var result = fs.readFileSync(__dirname + '/result/hbs_yaml.html', {encoding: 'utf8'});
+
+				assert.equal(output, result);
+				done();
+			})
+			.catch(function(err) {
+				console.error(err);
+			})
+	})
+})
+
+describe('build in nunjucks canner.json', function() {
+	it("should build canner.json to html", function(done) {
+		canner.build(__dirname + '/nunjucks/original/canner.json', {output: __dirname + '/nunjucks/original', engine: 'nunjucks'})
+			.then(function() {
+				var output = fs.readFileSync(__dirname + '/nunjucks/original/index.html', {encoding: 'utf8'});
+				var result = fs.readFileSync(__dirname + '/result/nun_original.html', {encoding: 'utf8'});
+
+				assert.equal(output, result);
+				done();
+			})
+			.catch(function(err) {
+				console.error(err)
+			})
+	})
+
+
+	it("should build canner.yaml to html", function(done) {
+		canner.build(__dirname + '/nunjucks/yaml/canner.yaml', {output: __dirname + '/nunjucks/yaml', engine: 'nunjucks'})
+			.then(function() {
+				var output = fs.readFileSync(__dirname + '/nunjucks/yaml/index.html', {encoding: 'utf8'});
+				var result = fs.readFileSync(__dirname + '/result/nun_yaml.html', {encoding: 'utf8'});
 
 				assert.equal(output, result);
 				done();
