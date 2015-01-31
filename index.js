@@ -30,6 +30,7 @@ exports.create= function (dir, generator) {
 *	@param {object} options - options
 */
 exports.build= function (dir, options) {
+	console.log('fuck you')
 	return build.folder(dir, options, false)
 }
 
@@ -67,8 +68,8 @@ exports.allin= function (htmlfile, options) {
     }
 
     allin_html(
-    	path.resolve(process.cwd(), htmlfile), 
-    	options, 
+    	path.resolve(process.cwd(), htmlfile),
+    	options,
     	function(all) {
       		fileSave(path.resolve(path.join(process.cwd(), output, filename)))
         	.write(all);

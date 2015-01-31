@@ -7,7 +7,7 @@
     "canner": "./bin/canner"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -40,5 +40,8 @@
     "watch": "^0.13.0",
     "yamljs": "^0.2.1",
     "q-io": "^1.11.6"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
   }
 }
