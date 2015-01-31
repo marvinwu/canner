@@ -8,7 +8,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
 ## Table of Contents.
 
 - [How do canner works](#how-do-canner-works)
-- [Template engine supports](#template-engine)
+- [Template engine supports](#template-engines)
 - [How to install](#how-to-install)
 - [Command](#command)
   - [Building canner](#building-canner)
@@ -144,10 +144,11 @@ More options:
 
   Options:
 
-    -h, --help                output usage information
-    -o, --output <directory>  Path to output directory, defaults to current directory
-    -s, --serve <directory>   Path you want to start a local server. Default port 4000 for specific port use option -p
-    -p, --port <port number>  Port which your local server start.
+    -h, --help                      output usage information
+    -o, --output <directory>        Path to output directory, defaults to current directory
+    -s, --serve <directory>         Path you want to start a local server. Default port 4000 for specific port use option -p
+    -e, --engine <template engine>  Choose a template engine. Default engine "handlebars"
+    -p, --port <port number>        Port which your local server start.
 ```
 
 ### Watching canner
@@ -298,6 +299,7 @@ canner.build(dir, options)
 * {string} dir - source to canner.json, default ./canner.json
 * {object} options
   * output- output dir
+  * engine- Your template engine
 
 
 ### watch
@@ -314,7 +316,7 @@ canner.watch(dir, options);
   * output- output dir
   * port-  Port which your local server start.
   * serve- Path you want to start a local server. Default port 4000
-
+	* engine- Your template engine
 
 ### allin
 Make html include files all warp allin
