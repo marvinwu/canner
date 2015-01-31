@@ -178,3 +178,34 @@ describe('build in mustache canner.json', function() {
 	})
 })
 
+describe('build in dust canner.json', function() {
+	it("should build canner.json to html", function(done) {
+		canner.build(__dirname + '/dust/original/canner.json', {output: __dirname + '/dust/original', engine: 'dust'})
+			.then(function() {
+				var output = fs.readFileSync(__dirname + '/dust/original/index.html', {encoding: 'utf8'});
+				var result = fs.readFileSync(__dirname + '/result/dust.html', {encoding: 'utf8'});
+
+				assert.equal(output, result);
+				done();
+			})
+			.catch(function(err) {
+				console.error(err)
+			})
+	})
+
+
+	it("should build canner.yaml to html", function(done) {
+		canner.build(__dirname + '/dust/yaml/canner.yaml', {output: __dirname + '/dust/yaml', engine: 'dust'})
+			.then(function() {
+				var output = fs.readFileSync(__dirname + '/dust/yaml/index.html', {encoding: 'utf8'});
+				var result = fs.readFileSync(__dirname + '/result/dust.html', {encoding: 'utf8'});
+
+				assert.equal(output, result);
+				done();
+			})
+			.catch(function(err) {
+				console.error(err);
+			})
+	})
+})
+

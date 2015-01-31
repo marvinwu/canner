@@ -106,6 +106,9 @@ We support some popular template engines, like
 - [jade](http://jade-lang.com/)
 - [swig](https://github.com/paularmstrong/swig)
 - [mustache](https://github.com/janl/mustache.js)
+- [dustjs](https://github.com/linkedin/dustjs)
+
+You can use any of these template engines while you are [Building canner](#building-canner)!
 
 ## How to install
 
