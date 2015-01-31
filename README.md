@@ -103,6 +103,7 @@ We support some popular template engines, like
 
 - [handlebars](http://handlebarsjs.com/)
 - [nunjucks](http://mozilla.github.io/nunjucks/) 
+- [jade](http://jade-lang.com/)
 
 
 ## How to install
@@ -250,15 +251,6 @@ A can should be registered in npm, the module name should be something like `*-c
 
 Please go to https://github.com/Canner/canner/issues/new , and open an issue with a `can support`.
 
-## Gh-pages
-
-
-this will rebuilt the documents. To deploy to gh-pages, we are using subtree, enter command below to deploy.
-
-```
-git subtree push --prefix doc origin gh-pages
-```
-
 ## API
 ### require
 ``` javascript
@@ -319,7 +311,7 @@ canner.watch(dir, options);
   * output- output dir
   * port-  Port which your local server start.
   * serve- Path you want to start a local server. Default port 4000
-	* engine- Your template engine
+  * engine- Your template engine
 
 ### allin
 Make html include files all warp allin
