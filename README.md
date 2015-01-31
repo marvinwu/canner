@@ -104,7 +104,7 @@ We support some popular template engines, like
 - [handlebars](http://handlebarsjs.com/)
 - [nunjucks](http://mozilla.github.io/nunjucks/) 
 - [jade](http://jade-lang.com/)
-
+- [swig](https://github.com/paularmstrong/swig)
 
 ## How to install
 

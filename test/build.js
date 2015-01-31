@@ -116,3 +116,34 @@ describe('build in jade canner.json', function() {
 	})
 })
 
+describe('build in swig canner.json', function() {
+	it("should build canner.json to html", function(done) {
+		canner.build(__dirname + '/swig/original/canner.json', {output: __dirname + '/swig/original', engine: 'swig'})
+			.then(function() {
+				var output = fs.readFileSync(__dirname + '/swig/original/index.html', {encoding: 'utf8'});
+				var result = fs.readFileSync(__dirname + '/result/swig_original.html', {encoding: 'utf8'});
+
+				assert.equal(output, result);
+				done();
+			})
+			.catch(function(err) {
+				console.error(err)
+			})
+	})
+
+
+	it("should build canner.yaml to html", function(done) {
+		canner.build(__dirname + '/swig/yaml/canner.yaml', {output: __dirname + '/swig/yaml', engine: 'swig'})
+			.then(function() {
+				var output = fs.readFileSync(__dirname + '/swig/yaml/index.html', {encoding: 'utf8'});
+				// var result = fs.readFileSync(__dirname + '/result/jade_yaml.html', {encoding: 'utf8'});
+
+				// assert.equal(output, result);
+				done();
+			})
+			.catch(function(err) {
+				console.error(err);
+			})
+	})
+})
+
