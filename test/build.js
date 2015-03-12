@@ -209,3 +209,22 @@ describe('build in dust canner.json', function() {
 	})
 })
 
+describe('build using object', function () {
+	it('should return html', function (done) {
+		canner.build(__dirname+'/hbs/original/canner.json', 
+			{
+				output: __dirname + '/hbs/original', 
+				data: {
+					"title": "wwwy3y3",
+					"items": "item wwwy3y3"
+				}
+			})
+		.done(function (html) {
+			console.log(html);
+			done();
+		}, function (err) {
+			console.log(err);
+		})
+	})
+})
+
