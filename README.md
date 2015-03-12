@@ -299,6 +299,7 @@ canner.build(dir, options)
 * {object} options
   * output- output dir
   * engine- Your template engine
+  * data- if you want to put your own object intead of data in canner.json, and return html back, instead of write to file
 
 
 ### watch
