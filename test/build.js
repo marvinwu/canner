@@ -220,7 +220,9 @@ describe('build using object', function () {
 				}
 			})
 		.done(function (html) {
-			console.log(html);
+			var result = fs.readFileSync(__dirname + '/result/hbs_data_input.html', {encoding: 'utf8'});
+
+			assert.equal(html[0], result);
 			done();
 		}, function (err) {
 			console.log(err);
