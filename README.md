@@ -520,3 +520,10 @@ see more docs: https://github.com/Canner/allin
 ## License
 
 MIT
+
+## todo
+- [ ] canner login
+- [ ] canner apps:create
+- [ ] canner apps:link
+- [ ] canner data:pull
+- [ ] canner data:push
