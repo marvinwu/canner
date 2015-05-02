@@ -527,3 +527,5 @@ MIT
 - [ ] canner apps:link
 - [ ] canner data:pull
 - [ ] canner data:push
+- [ ] token
+- [ ] key
