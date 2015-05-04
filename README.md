@@ -538,3 +538,4 @@ show token
 add ssh-key
 - [ ] canner git:clone, git:remote
 clone git, add remote
+i have to use gitosis in server side
