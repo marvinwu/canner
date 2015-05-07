@@ -47,7 +47,9 @@
     "watch": "^0.13.0",
     "yamljs": "^0.2.1",
     "prompt": "^0.2.14",
-    "request-promise": "^0.4.2"
+    "request-promise": "^0.4.2",
+    "netrc2": "^0.1.0",
+    "chalk": "^1.0.0"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
