@@ -47,7 +47,6 @@
     "watch": "^0.13.0",
     "yamljs": "^0.2.1",
     "prompt": "^0.2.14",
-    "request": "^2.55.0",
     "request-promise": "^0.4.2"
   },
   "devDependencies": {
