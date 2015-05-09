@@ -49,7 +49,8 @@
     "prompt": "^0.2.14",
     "request-promise": "^0.4.2",
     "netrc2": "^0.1.0",
-    "chalk": "^1.0.0"
+    "chalk": "^1.0.0",
+    "nodegit": "^0.4.0"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
