@@ -50,7 +50,8 @@
     "request-promise": "^0.4.2",
     "netrc2": "^0.1.0",
     "chalk": "^1.0.0",
-    "nodegit": "^0.4.0"
+    "nodegit": "^0.4.0",
+    "jsome": "^1.3.2"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
