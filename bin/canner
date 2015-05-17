@@ -16,7 +16,7 @@ var get = require('../lib/get');
 var apps= require('../lib/apps');
 var auth= require('../lib/auth');
 var data= require('../lib/data');
-
+var jsome= require('jsome');
 
 
 var arg = process.argv;
@@ -176,7 +176,17 @@ prog
   });
 
 // apps data pull
-
+prog
+  .command('data:pull [app_url]')
+  .description('pull data from app on canner.io')
+  .usage('[options] <app_url>')
+  .action(function(appUrl) {
+    data.pull(appUrl).then(function (body) {
+      jsome(body);
+    }, function (err) {
+      console.log(err);
+    })
+  });
 
 // if empty
 if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
