@@ -15,6 +15,7 @@ var init = require('../lib/init');
 var get = require('../lib/get');
 var apps= require('../lib/apps');
 var auth= require('../lib/auth');
+var data= require('../lib/data');
 
 
 
@@ -160,6 +161,21 @@ prog
       console.log(err);
     })
   });
+
+// apps data push
+prog
+  .command('data:push [app_url] [data_url]')
+  .description('push data to app on canner.io')
+  .usage('[options] <app_url>')
+  .action(function(appUrl, dataUrl) {
+    data.push(appUrl, dataUrl).then(function () {
+      console.log(chalk.green('success!'))
+    }, function (err) {
+      console.log(err);
+    })
+  });
+
+// apps data pull
 
 
 // if empty
