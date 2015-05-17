@@ -14,6 +14,7 @@ var build = require('../lib/build');
 var init = require('../lib/init');
 var get = require('../lib/get');
 var apps= require('../lib/apps');
+var auth= require('../lib/auth');
 
 
 
@@ -114,6 +115,18 @@ prog
     });
   });
 
+// login
+prog
+  .command('login')
+  .description('login to use canner.io api')
+  .usage('login')
+  .action(function() {
+    auth.login().then(function (body) {
+      console.log(chalk.green('welcome '+body.username+'!'));
+    }, function (err) {
+      console.log(err);
+    })
+  });
 
 // apps create
 prog
