@@ -6,12 +6,15 @@ var allin_html = require('allin');
 var path = require('path');
 var stage= require('node-stage');
 var Q = require('q');
+var chalk= require('chalk');
 
 var pkg = require('../package.json');
 
 var build = require('../lib/build');
 var init = require('../lib/init');
 var get = require('../lib/get');
+var apps= require('../lib/apps');
+
 
 
 var arg = process.argv;
@@ -111,8 +114,25 @@ prog
     });
   });
 
+
+// apps
+prog
+  .command('apps:create [app_url]')
+  .description('create an app on canner.io')
+  .usage('[options] <app_url>')
+  .action(function(appUrl) {
+    apps.create(appUrl).then(function (app) {
+      // print success
+      // show git url
+      console.log(chalk.yellow('create app successfully!'));
+      console.log(chalk.green('Name: ')+app.url);
+      console.log(chalk.green('Git url: ')+app.gitUrl);
+    }, function (err) {
+      console.log(err);
+    })
+  });
+
 // if empty
 if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
   prog.help();
 }
-
