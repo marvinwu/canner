@@ -115,7 +115,7 @@ prog
   });
 
 
-// apps
+// apps create
 prog
   .command('apps:create [app_url]')
   .description('create an app on canner.io')
@@ -131,6 +131,23 @@ prog
       console.log(err);
     })
   });
+
+// apps deploy
+prog
+  .command('apps:deploy [app_url]')
+  .description('deploy an app on canner.io')
+  .usage('[options] <app_url>')
+  .action(function(appUrl) {
+    if(!appUrl)
+      return console.log(chalk.yellow('need an app url'));
+
+    apps.deploy(appUrl).then(function () {
+      console.log(chalk.green('success!'))
+    }, function (err) {
+      console.log(err);
+    })
+  });
+
 
 // if empty
 if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
