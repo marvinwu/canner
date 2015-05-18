@@ -6,7 +6,9 @@ var allin_html = require('allin');
 var path = require('path');
 var stage= require('node-stage');
 var Q = require('q');
+var FS = require("q-io/fs");
 var chalk= require('chalk');
+var util= require('util');
 
 var pkg = require('../package.json');
 
@@ -177,9 +179,20 @@ prog
   .description('pull data from app on canner.io')
   .usage('[options] <app_url>')
   .option('-p, --print', 'print data')
+  .option('-f, --filepath <filepath>', 'stream data to filepath')
   .action(function(appUrl, options) {
     data.pull(appUrl).then(function (body) {
-      jsome(body);
+      if(options.print)
+        return jsome(body);
+      
+      // with filepath
+      if(options.filepath){
+        var filepath= path.resolve(process.cwd(), options.filepath);
+        return FS.write(filepath, body)
+                 .then(function () {
+                    console.log(chalk.green(util.format('file save to %s', filepath)))
+                 }, printErr);
+      }
     }, printErr)
   });
 
