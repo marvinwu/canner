@@ -168,7 +168,16 @@ prog
   .description('push data to app on canner.io')
   .usage('[options] <app_url>')
   .action(function(appUrl, dataUrl) {
-    data.push(appUrl, dataUrl).then(function () {
+    // get data
+    if(dataUrl){
+      var data= require(path.resolve(process.cwd(), dataUrl));
+    }else{
+      // default read cannerjson data
+      var data= require(path.resolve(process.cwd(), './canner.json')).data;
+    }
+
+    // push 
+    data.push(appUrl, data).then(function () {
       console.log(chalk.green('success!'))
     }, printErr)
   });
