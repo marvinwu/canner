@@ -188,7 +188,7 @@ prog
       // with filepath
       if(options.filepath){
         var filepath= path.resolve(process.cwd(), options.filepath);
-        return FS.write(filepath, body)
+        return FS.write(filepath, JSON.stringify(body, null, 4))
                  .then(function () {
                     console.log(chalk.green(util.format('data saved to %s', filepath)))
                  }, printErr);
