@@ -193,6 +193,22 @@ prog
                     console.log(chalk.green(util.format('data saved to %s', filepath)))
                  }, printErr);
       }
+
+      // no option, write to canner.json
+      var filepath= path.resolve(process.cwd(), './canner.json');
+      return FS.exists(filepath)
+               .then(function (exist) {
+                  if(!exist)
+                    throw new Error('canner.json not exist');
+
+                  // canner.json exist
+                  var json= require(filepath);
+                  json.data= body;
+                  return FS.write(filepath, JSON.stringify(json, null, 4));
+               })
+               .then(function () {
+                    console.log(chalk.green(util.format('data saved to %s', filepath)))
+                }, printErr)
     }, printErr)
   });
 
