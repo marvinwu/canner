@@ -18,6 +18,10 @@ var auth= require('../lib/auth');
 var data= require('../lib/data');
 var jsome= require('jsome');
 
+var printErr= function (err) {
+  console.log(chalk.red(err));
+}
+
 
 var arg = process.argv;
 
@@ -124,9 +128,7 @@ prog
   .action(function() {
     auth.login().then(function (body) {
       console.log(chalk.green('welcome '+body.username+'!'));
-    }, function (err) {
-      console.log(err);
-    })
+    }, printErr)
   });
 
 // apps create
@@ -141,9 +143,7 @@ prog
       console.log(chalk.yellow('create app successfully!'));
       console.log(chalk.green('Name: ')+app.url);
       console.log(chalk.green('Git url: ')+app.gitUrl);
-    }, function (err) {
-      console.log(err);
-    })
+    }, printErr)
   });
 
 // apps deploy
@@ -157,9 +157,7 @@ prog
 
     apps.deploy(appUrl).then(function () {
       console.log(chalk.green('success!'))
-    }, function (err) {
-      console.log(err);
-    })
+    }, printErr)
   });
 
 // apps data push
@@ -170,9 +168,7 @@ prog
   .action(function(appUrl, dataUrl) {
     data.push(appUrl, dataUrl).then(function () {
       console.log(chalk.green('success!'))
-    }, function (err) {
-      console.log(err);
-    })
+    }, printErr)
   });
 
 // apps data pull
@@ -180,12 +176,11 @@ prog
   .command('data:pull [app_url]')
   .description('pull data from app on canner.io')
   .usage('[options] <app_url>')
-  .action(function(appUrl) {
+  .option('-p, --print', 'print data')
+  .action(function(appUrl, options) {
     data.pull(appUrl).then(function (body) {
       jsome(body);
-    }, function (err) {
-      console.log(err);
-    })
+    }, printErr)
   });
 
 // if empty
