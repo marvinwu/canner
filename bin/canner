@@ -154,32 +154,36 @@ prog
   .description('deploy an app on canner.io')
   .usage('[options] <app_url>')
   .action(function(appUrl) {
-    if(!appUrl)
-      return console.log(chalk.yellow('need an app url'));
-
-    apps.deploy(appUrl).then(function () {
-      console.log(chalk.green('success!'))
-    }, printErr)
+    apps.getUrl(appUrl)
+        .then(apps.deploy, printErr)
+        .then(function () {
+          console.log(chalk.green('success!'))
+        }, printErr)
   });
 
 // apps data push
 prog
-  .command('data:push [app_url] [data_url]')
+  .command('data:push [app_url]')
   .description('push data to app on canner.io')
   .usage('[options] <app_url>')
-  .action(function(appUrl, dataUrl) {
+  .option('-d, --data_path <data_path>', 'file source of your data ')
+  .action(function(appUrl, options) {
     // get data
-    if(dataUrl){
-      var datas= require(path.resolve(process.cwd(), dataUrl));
+    if(options.data_path){
+      var datas= require(path.resolve(process.cwd(), options.data_path));
     }else{
       // default read cannerjson data
       var datas= require(path.resolve(process.cwd(), './canner.json')).data;
     }
 
-    // push 
-    data.push(appUrl, datas).then(function () {
-      console.log(chalk.green('success!'))
-    }, printErr)
+    // push
+    apps.getUrl(appUrl)
+        .then(function (url) {
+          return data.push(url, datas);
+        }, printErr)
+        .then(function () {
+          console.log(chalk.green('success!'))
+        }, printErr)
   });
 
 // apps data pull
@@ -190,35 +194,37 @@ prog
   .option('-p, --print', 'print data')
   .option('-f, --filepath <filepath>', 'stream data to filepath')
   .action(function(appUrl, options) {
-    data.pull(appUrl).then(function (body) {
-      if(options.print)
-        return jsome(body);
-      
-      // with filepath
-      if(options.filepath){
-        var filepath= path.resolve(process.cwd(), options.filepath);
-        return FS.write(filepath, JSON.stringify(body, null, 4))
-                 .then(function () {
-                    console.log(chalk.green(util.format('data saved to %s', filepath)))
-                 }, printErr);
-      }
+    apps.getUrl(appUrl)
+        .then(data.pull, printErr)
+        .then(function (body) {
+          if(options.print)
+            return jsome(body);
+          
+          // with filepath
+          if(options.filepath){
+            var filepath= path.resolve(process.cwd(), options.filepath);
+            return FS.write(filepath, JSON.stringify(body, null, 4))
+                     .then(function () {
+                        console.log(chalk.green(util.format('data saved to %s', filepath)))
+                     }, printErr);
+          }
 
-      // no option, write to canner.json
-      var filepath= path.resolve(process.cwd(), './canner.json');
-      return FS.exists(filepath)
-               .then(function (exist) {
-                  if(!exist)
-                    throw new Error('canner.json not exist');
+          // no option, write to canner.json
+          var filepath= path.resolve(process.cwd(), './canner.json');
+          return FS.exists(filepath)
+                   .then(function (exist) {
+                      if(!exist)
+                        throw new Error('canner.json not exist');
 
-                  // canner.json exist
-                  var json= require(filepath);
-                  json.data= body;
-                  return FS.write(filepath, JSON.stringify(json, null, 4));
-               })
-               .then(function () {
-                    console.log(chalk.green(util.format('data saved to %s', filepath)))
-                }, printErr)
-    }, printErr)
+                      // canner.json exist
+                      var json= require(filepath);
+                      json.data= body;
+                      return FS.write(filepath, JSON.stringify(json, null, 4));
+                   })
+                   .then(function () {
+                        console.log(chalk.green(util.format('data saved to %s', filepath)))
+                    }, printErr)
+        }, printErr)
   });
 
 // if empty
