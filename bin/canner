@@ -170,14 +170,14 @@ prog
   .action(function(appUrl, dataUrl) {
     // get data
     if(dataUrl){
-      var data= require(path.resolve(process.cwd(), dataUrl));
+      var datas= require(path.resolve(process.cwd(), dataUrl));
     }else{
       // default read cannerjson data
-      var data= require(path.resolve(process.cwd(), './canner.json')).data;
+      var datas= require(path.resolve(process.cwd(), './canner.json')).data;
     }
 
     // push 
-    data.push(appUrl, data).then(function () {
+    data.push(appUrl, datas).then(function () {
       console.log(chalk.green('success!'))
     }, printErr)
   });
