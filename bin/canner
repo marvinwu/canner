@@ -177,10 +177,15 @@ prog
     }
 
     // push
+    // get url
     apps.getUrl(appUrl)
+
+        // push data to server
         .then(function (url) {
           return data.push(url, datas);
         }, printErr)
+
+        // done
         .then(function () {
           console.log(chalk.green('success!'))
         }, printErr)
