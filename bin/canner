@@ -235,11 +235,12 @@ prog
 
 // git remote:add
 prog
-  .command('remote:add [app_url]')
+  .command('git:remote [act] [app_url]')
   .description('add remote url to local dir')
   .usage('[options] <app_url>')
-  .action(function (appUrl) {
-    git.addRemote(appUrl).then(function (url) {
+  .action(function (act, appUrl, options) {
+    var item= this.name().split(':')[1];
+    git[item][act](appUrl).then(function (url) {
       console.log(chalk.green('Git url: ')+url);
     }, printErr)
   })
