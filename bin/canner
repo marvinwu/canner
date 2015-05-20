@@ -18,6 +18,7 @@ var get = require('../lib/get');
 var apps= require('../lib/apps');
 var auth= require('../lib/auth');
 var data= require('../lib/data');
+var git= require('../lib/git');
 var jsome= require('jsome');
 
 var printErr= function (err) {
@@ -232,6 +233,16 @@ prog
         }, printErr)
   });
 
+// git remote:add
+prog
+  .command('remote:add [app_url]')
+  .description('add remote url to local dir')
+  .usage('[options] <app_url>')
+  .action(function (appUrl) {
+    git.addRemote(appUrl).then(function (url) {
+      console.log(chalk.green('Git url: ')+url);
+    }, printErr)
+  })
 // if empty
 if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
   prog.help();
