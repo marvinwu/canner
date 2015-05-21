@@ -134,6 +134,18 @@ prog
     }, printErr)
   });
 
+// logout
+prog
+  .command('logout')
+  .description('logout from canner.io api')
+  .usage('logout')
+  .action(function() {
+    auth.logout().then(function (body) {
+      console.log(chalk.green('successfully logout!'))
+    }, printErr)
+  });
+
+
 // apps create
 prog
   .command('apps:create [app_url]')
