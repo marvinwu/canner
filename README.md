@@ -140,7 +140,7 @@ sudo npm install -g canner
 To build `canner` to a folder use the following command. 
 
 ```
-$ canner build doc/canner.json -o output -s 3333
+$ canner build doc/canner.json -o output -s ./ -p 3333
 ```
 
 The command above means canner will build the configuration in `doc/canner.json` to directory `output` and serve a local server at port 3333, so you can look at your site http://localhost:3333
