@@ -522,20 +522,4 @@ see more docs: https://github.com/Canner/allin
 MIT
 
 ## todo
-- [ ] canner login, logout
-prompt user,pass and save token in netrc, another login will overwrite, logout will delete token
-- [ ] canner apps:create
-first authorize by netrc, no file -> ask
-post to /apps
-add git url
-- [ ] canner data:pull <filepath>
-pull data in canner.json
-- [ ] canner data:push
-push canner.json data
-- [ ] canner auth:token
-show token
-- [ ] canner key:add, remove
-add ssh-key
-- [ ] canner git:clone, git:remote
-clone git, add remote
-i have to use gitosis in server side
+- [ ] ssl support
