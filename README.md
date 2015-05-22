@@ -351,7 +351,7 @@ auth.logout().then(function (body) {
     })
 ```
 
-### apps.create(appUrl)
+### apps.create
 create app in canner website
 
 ``` javascript
@@ -364,7 +364,7 @@ apps.create(appUrl).then(function (app) {
     })
 ```
 
-### apps.deploy(appUrl)
+### apps.deploy
 deploy app on canner server
 
 ``` javascript
@@ -373,7 +373,7 @@ apps.deploy(appUrl).then(function(){
 })
 ```
 
-### apps.list()
+### apps.list
 list my apps on canner server
 
 ``` javascript
@@ -383,7 +383,7 @@ apps.list()
     })
 ```
 
-### data.push(appUrl, datas)
+### data.push
 push datas to canner app
 
 ``` javascript
@@ -393,6 +393,15 @@ data.push(appUrl, datas).then(function(){
 })
 ```
 
+### data.pull
+pull data from app on canner website
+
+``` javascript
+data.pull(appUrl).then(function(datas){
+  // print datas
+  console.log(datas);
+})
+```
 
 ### What's more
 
