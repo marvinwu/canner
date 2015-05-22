@@ -364,6 +364,16 @@ apps.create(appUrl).then(function (app) {
     })
 ```
 
+### apps.deploy(appUrl)
+deploy app on canner server
+
+``` javascript
+apps.deploy(appUrl).then(function(){
+  // success
+})
+```
+
+
 
 ### What's more
 
