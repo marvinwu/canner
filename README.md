@@ -351,6 +351,20 @@ auth.logout().then(function (body) {
     })
 ```
 
+### apps.create(appUrl)
+create app in canner website
+
+``` javascript
+apps.create(appUrl).then(function (app) {
+      // print success
+      // show git url
+      console.log('create app successfully!');
+      console.log('Name: '+app.url);
+      console.log('Git url: '+app.gitUrl);
+    })
+```
+
+
 ### What's more
 
 
