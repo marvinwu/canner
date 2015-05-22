@@ -37,6 +37,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [apps.list](#apps.list)
   - [data.push](#data.push)
   - [data.pull](#data.pull)
+  - [git.remote.add](#git.remote.add)
 - [What's more](#whats-more)
   - [Multipule page](#multipule-page)
   - [Support markdown](#support-markdown)
@@ -405,6 +406,15 @@ pull data from app on canner website
 data.pull(appUrl).then(function(datas){
   // print datas
   console.log(datas);
+})
+```
+
+### git.remote.add
+add canner git remote url to local dir
+
+``` javascript
+git.remote.add(appUrl).then(function(){
+  // success
 })
 ```
 
