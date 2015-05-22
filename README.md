@@ -30,6 +30,8 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [build](#build)
   - [watch](#watch)
   - [allin](#allin)
+  - [login](#login)
+  - [logout](#logout)
 - [What's more](#whats-more)
   - [Multipule page](#multipule-page)
   - [Support markdown](#support-markdown)
@@ -331,6 +333,14 @@ canner.allin(htmlfile, options);
   * output {String} Path to output directory, defaults to current directory
   * minifyall {Boolean}- minify css, html, js, images or not
 
+### login
+login to canner server, save username and token in .netrc
+
+``` javascript
+auth.login().then(function (body) {
+      console.log(chalk.green('welcome '+body.username+'!'));
+    })
+```
 
 ### What's more
 
