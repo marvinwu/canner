@@ -383,6 +383,16 @@ apps.list()
     })
 ```
 
+### data.push(appUrl, datas)
+push datas to canner app
+
+``` javascript
+var datas= { title: 'title', name: 'joe' };
+data.push(appUrl, datas).then(function(){
+  // success
+})
+```
+
 
 ### What's more
 
