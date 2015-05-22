@@ -373,6 +373,15 @@ apps.deploy(appUrl).then(function(){
 })
 ```
 
+### apps.list()
+list my apps on canner server
+
+``` javascript
+apps.list()
+    .then(function (body) {
+      console.log(body)
+    })
+```
 
 
 ### What's more
