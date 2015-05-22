@@ -338,7 +338,16 @@ login to canner server, save username and token in .netrc
 
 ``` javascript
 auth.login().then(function (body) {
-      console.log(chalk.green('welcome '+body.username+'!'));
+      console.log('welcome '+body.username+'!');
+    })
+```
+
+### logout
+logout from canner server, delete host from netrc
+
+``` javascript
+auth.logout().then(function (body) {
+      console.log('successfully logout!');
     })
 ```
 
