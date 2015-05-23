@@ -264,6 +264,9 @@ A can should be registered in npm, the module name should be something like `*-c
 Please go to https://github.com/Canner/canner/issues/new , and open an issue with a `can support`.
 
 ## API
+### Env
+if you want to send request to localhost, run `export CANNER_ENV='dev'`
+
 ### require
 ``` javascript
 var canner= require('canner');
