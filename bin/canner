@@ -185,6 +185,17 @@ prog
         }, printErr)
   });
 
+prog
+  .command('apps:info [app_url]')
+  .description('list my apps')
+  .action(function(appUrl) {
+    apps.getUrl(appUrl)
+        .then(apps.info)
+        .then(function (body) {
+          console.log(body)
+        }, printErr)
+  });
+
 // apps data push
 prog
   .command('data:push [app_url]')
