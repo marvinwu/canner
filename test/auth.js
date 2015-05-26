@@ -1,5 +1,6 @@
 var auth= require('../lib/auth');
 
+/*
 describe('auth api', function () {
 	it('should login', function (done) {
 		auth.login().then(function () {
@@ -10,3 +11,4 @@ describe('auth api', function () {
 	})
 })
 
+*/
