@@ -233,8 +233,6 @@ describe('build using object', function () {
 	})
 
 	it('should return html', function (done) {
-		//var obj= JSON.parse(fs.readFileSync(__dirname+'/hbs/original/canner.json', 'utf8'));
-		//console.log(obj)
 		canner.build(__dirname+'/hbs/original/canner.json', 
 			{
 				output: __dirname + '/hbs/original', 
