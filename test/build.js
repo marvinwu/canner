@@ -1,6 +1,7 @@
 var fs = require('fs');
 var assert = require('assert');
 var Q = require('q');
+var path= require('path');
 var exec = require('child_process').exec;
 
 var canner = require('../index');
@@ -210,28 +211,29 @@ describe('build in dust canner.json', function() {
 })
 
 describe('build using object', function () {
-	it('should return html', function (done) {
+	it('should save to file', function (done) {
+		var output= __dirname + '/hbs/original';
 		canner.build(__dirname+'/hbs/original/canner.json', 
 			{
-				output: __dirname + '/hbs/original', 
+				output: output, 
 				data: {
 					"title": "wwwy3y3",
-					"items": "item wwwy3y3"
+					"items": "item wwwy3y3",
 				}
 			})
-		.done(function (html) {
+		.done(function () {
 			var result = fs.readFileSync(__dirname + '/result/hbs_data_input.html', {encoding: 'utf8'});
-
-			assert.equal(html[0], result);
+			var html= fs.readFileSync(path.resolve(output, './index.html'), 'utf8');
+			assert.equal(html, result);
 			done();
 		}, function (err) {
 			console.log(err);
 		})
 	})
-
+/*
 	it('should use object instead of filename', function (done) {
 		var obj= JSON.parse(fs.readFileSync(__dirname+'/hbs/original/canner.json', 'utf8'));
-		console.log(obj)
+		//console.log(obj)
 		canner.build(obj, 
 			{
 				output: __dirname + '/hbs/original', 
@@ -248,6 +250,6 @@ describe('build using object', function () {
 		}, function (err) {
 			console.log(err);
 		})
-	})
+	})*/
 })
 
