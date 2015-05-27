@@ -252,5 +252,27 @@ describe('build using object', function () {
 			console.log(err);
 		})
 	})
+
+	it('should use object to return content', function (done) {
+		var obj= JSON.parse(fs.readFileSync(__dirname+'/hbs/original/canner.json', 'utf8'));
+		canner.build(obj, 
+			{
+				cwd: __dirname + '/hbs/original',
+				output: __dirname + '/hbs/original', 
+				data: {
+					"title": "wwwy3y3",
+					"items": "item wwwy3y3"
+				}, 
+				returnContent: true
+			})
+		.done(function (html) {
+			var result = fs.readFileSync(__dirname + '/result/hbs_data_input.html', {encoding: 'utf8'});
+
+			assert.equal(html, result);
+			done();
+		}, function (err) {
+			console.log(err);
+		})
+	})
 })
 
