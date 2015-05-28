@@ -300,7 +300,9 @@ prog
         
         // success
         .then(function () {
-            console.log(chalk.green('CONFIG: '+arr[0]+' set to: ')+ arr[1]);
+          var title= chalk.blue('CONFIG: ');
+          var val= arr[0]+'='+arr[1]
+            console.log(title+val);
         }, printErr)
   })
 
