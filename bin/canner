@@ -279,6 +279,31 @@ prog
     }, printErr)
   })
 
+
+// configs:set xyz=1
+prog
+  .command('configs:set [params] [app_url]')
+  .description('set configs to app on canner.io')
+  .usage('[options] <params>')
+  .action(function (params, appUrl) {
+    var arr= params.split('=');
+    var obj= {};
+    obj[arr[0]]= arr[1];
+
+    // get url
+    apps.getUrl(appUrl)
+
+        // configs set
+        .then(function (url) {
+            return apps.Configs.set(url, obj);
+        }, printErr)
+        
+        // success
+        .then(function () {
+            console.log(chalk.green('CONFIG: '+arr[0]+' set to: ')+ arr[1]);
+        }, printErr)
+  })
+
 // if empty
 if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
   prog.help();
