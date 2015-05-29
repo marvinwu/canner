@@ -269,16 +269,27 @@ prog
 
 // git remote:add
 prog
-  .command('git:remote [act] [app_url]')
+  .command('git:remote:add [app_url]')
   .description('add remote url to local dir')
   .usage('[options] <app_url>')
-  .action(function (act, appUrl, options) {
-    var item= this.name().split(':')[1];
-    git[item][act](appUrl).then(function (url) {
+  .action(function (appUrl, options) {
+    //var item= this.name().split(':')[1];
+    git.remote.add(appUrl).then(function (url) {
       console.log(chalk.green('Git url: ')+url);
     }, printErr)
   })
 
+// git remote clone
+prog
+  .command('git:remote:clone [app_url] [filepath]')
+  .description('add remote url to local dir')
+  .usage('[options] <app_url>')
+  .action(function (appUrl, filepath, options) {
+    git.remote.clone(appUrl, filepath).then(function (params) {
+      console.log(util.format('App %s has clone to %s!!', params.name, params.path));
+      console.log(util.format('Git url: %s', params.url));
+    }, printErr)
+  })
 
 // configs:set xyz=1
 prog
