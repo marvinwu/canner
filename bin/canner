@@ -317,6 +317,22 @@ prog
         }, printErr)
   })
 
+prog
+  .command('configs:get [app_url]')
+  .description('get configs of an app on canner.io')
+  .action(function (appUrl) {
+    // get url
+    apps.getUrl(appUrl)
+        .then(function (url) {
+            return apps.Configs.get(url)
+        }, printErr)
+
+        .then(function (configs) {
+            jsome(configs);
+        }, printErr)
+  })
+
+
 // if empty
 if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
   prog.help();
