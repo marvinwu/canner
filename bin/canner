@@ -181,7 +181,7 @@ prog
   .action(function() {
     apps.list()
         .then(function (body) {
-          console.log(body)
+          jsome(body)
         }, printErr)
   });
 
@@ -192,7 +192,7 @@ prog
     apps.getUrl(appUrl)
         .then(apps.info)
         .then(function (body) {
-          console.log(body)
+          jsome(body)
         }, printErr)
   });
 
