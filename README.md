@@ -612,3 +612,5 @@ MIT
 
 ## todo
 - [ ] ssl support
+- [ ] add tests
+- [ ] refactor
