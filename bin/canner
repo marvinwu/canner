@@ -131,7 +131,7 @@ prog
   .action(function() {
     auth.login().then(function (body) {
       console.log(chalk.green('welcome '+body.username+'!'));
-    }, printErr)
+    }).catch(printErr)
   });
 
 // logout
@@ -142,7 +142,7 @@ prog
   .action(function() {
     auth.logout().then(function (body) {
       console.log(chalk.green('successfully logout!'))
-    }, printErr)
+    }).catch(printErr)
   });
 
 
@@ -158,7 +158,7 @@ prog
       console.log(chalk.yellow('create app successfully!'));
       console.log(chalk.green('Name: ')+app.url);
       console.log(chalk.green('Git url: ')+app.gitUrl);
-    }, printErr)
+    }).catch(printErr)
   });
 
 // apps deploy
@@ -168,10 +168,11 @@ prog
   .usage('[options] <app_url>')
   .action(function(appUrl) {
     apps.getUrl(appUrl)
-        .then(apps.deploy, printErr)
+        .then(apps.deploy)
         .then(function () {
           console.log(chalk.green('success!'))
-        }, printErr)
+        })
+        .catch(printErr)
   });
 
 // list apps
@@ -182,7 +183,8 @@ prog
     apps.list()
         .then(function (body) {
           jsome(body)
-        }, printErr)
+        })
+        .catch(printErr)
   });
 
 prog
@@ -193,7 +195,8 @@ prog
         .then(apps.info)
         .then(function (body) {
           jsome(body)
-        }, printErr)
+        })
+        .catch(printErr)
   });
 
 // apps data push
@@ -218,12 +221,14 @@ prog
         // push data to server
         .then(function (url) {
           return data.push(url, datas);
-        }, printErr)
+        })
 
         // done
         .then(function () {
           console.log(chalk.green('success!'))
-        }, printErr)
+        })
+
+        .catch(printErr)
   });
 
 // apps data pull
@@ -235,7 +240,7 @@ prog
   .option('-f, --filepath <filepath>', 'stream data to filepath')
   .action(function(appUrl, options) {
     apps.getUrl(appUrl)
-        .then(data.pull, printErr)
+        .then(data.pull)
         .then(function (body) {
           if(options.print)
             return jsome(body);
@@ -246,7 +251,7 @@ prog
             return FS.write(filepath, JSON.stringify(body, null, 4))
                      .then(function () {
                         console.log(chalk.green(util.format('data saved to %s', filepath)))
-                     }, printErr);
+                     });
           }
 
           // no option, write to canner.json
@@ -263,8 +268,9 @@ prog
                    })
                    .then(function () {
                         console.log(chalk.green(util.format('data saved to %s', filepath)))
-                    }, printErr)
-        }, printErr)
+                    })
+        })
+        .catch(printErr)
   });
 
 // git remote:add
@@ -276,7 +282,8 @@ prog
     //var item= this.name().split(':')[1];
     git.remote.add(appUrl).then(function (url) {
       console.log(chalk.green('Git url: ')+url);
-    }, printErr)
+    })
+    .catch(printErr)
   })
 
 // git remote clone
@@ -288,7 +295,8 @@ prog
     git.remote.clone(appUrl, filepath).then(function (params) {
       console.log(util.format('App %s has clone to %s!!', params.name, params.path));
       console.log(util.format('Git url: %s', params.url));
-    }, printErr)
+    })
+    .catch(printErr)
   })
 
 // configs:set xyz=1
@@ -307,14 +315,15 @@ prog
         // configs set
         .then(function (url) {
             return apps.Configs.set(url, obj);
-        }, printErr)
+        })
         
         // success
         .then(function () {
           var title= chalk.blue('CONFIG: ');
           var val= arr[0]+'='+arr[1]
             console.log(title+val);
-        }, printErr)
+        })
+        .catch(printErr)
   })
 
 prog
@@ -325,11 +334,13 @@ prog
     apps.getUrl(appUrl)
         .then(function (url) {
             return apps.Configs.get(url)
-        }, printErr)
+        })
 
         .then(function (configs) {
             jsome(configs);
-        }, printErr)
+        })
+
+        .catch(printErr)
   })
 
 
