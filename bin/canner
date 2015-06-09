@@ -131,7 +131,13 @@ prog
   .action(function() {
     auth.login().then(function (body) {
       console.log(chalk.green('welcome '+body.username+'!'));
-    }).catch(printErr)
+    }).catch(function (err) {
+        if(err.name=='StatusCodeError' && err.statusCode==401){
+          console.log(chalk.red('wrong username or password!'));
+        }else{
+          console.log(err.message);
+        }
+    })
   });
 
 // logout
