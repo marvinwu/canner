@@ -27,6 +27,7 @@
     "allin": "^1.1.0",
     "async": "~0.2.10",
     "chalk": "^1.0.0",
+    "cli-table": "^0.3.1",
     "commander": "^2.2.0",
     "dustjs-linkedin": "^2.5.1",
     "file-save": "^0.2.0",

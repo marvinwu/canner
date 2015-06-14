@@ -19,10 +19,12 @@ var apps= require('../lib/apps');
 var auth= require('../lib/auth');
 var data= require('../lib/data');
 var git= require('../lib/git');
+var Helper= require('../lib/helper');
 var jsome= require('jsome');
 
 var printErr= function (err) {
   console.log(chalk.red(err));
+  console.log(err.stack);
 }
 
 
@@ -188,7 +190,12 @@ prog
   .action(function() {
     apps.list()
         .then(function (body) {
-          jsome(body)
+          //<%= repo %>@<%= version %>
+          var table= Helper.table(body, {
+            head: ['url', 'status', 'policy', 'created', 'updated'],
+            column: [ 'display_url', 'status', 'policy', 'create_date', 'update_date' ]
+          })
+          console.log(table);
         })
         .catch(printErr)
   });
