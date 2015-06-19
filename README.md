@@ -496,6 +496,16 @@ Add a field called `helpers` in your configure file. Such as
 }
 ```
 
+##### also support multiple helpers in array
+```js
+{
+  "layout": "index.hbs",
+  "filename": "index.html",
+  "helpers": ["helper.js", "the-other-helper.js"],
+  // ...
+}
+```
+
 `index.hbs`
 
 ```html
