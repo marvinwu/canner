@@ -52,12 +52,8 @@ prog
   .description('Create initial files and folders, under a directory.')
   .usage('[options] <directory>')
   .option('-g, --generator <generator>', 'Inital generate the generator that you are finding.')
-  .action(function(dir) {
-
-    var generator = prog.args[1].generator ? prog.args[1].generator : null;
-    dir = dir || process.cwd();
-
-    init(dir, generator).catch(function (err) {
+  .action(function(dir, options) {
+    init(dir, options.generator).catch(function (err) {
       stage.error(err);
     })
   });
