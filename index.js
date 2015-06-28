@@ -17,9 +17,6 @@ var read= require('./lib/read');
 *	@param {string} generator - Inital generate the generator that you are finding
 */
 exports.create= function (dir, generator) {
-	generator = generator || null;
-    dir = dir || process.cwd();
-
     return init(dir, generator);
 }
 
