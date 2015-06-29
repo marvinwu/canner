@@ -152,7 +152,6 @@ sudo npm install -g canner
     data:push [options] [app_url]          push data to app on canner.io
     data:pull [options] [app_url]          pull data from app on canner.io
     git:remote:add [app_url]               add remote url to local dir
-    git:remote:clone [app_url] [filepath]  add remote url to local dir
     configs:set [params] [app_url]         set configs to app on canner.io
     configs:get [app_url]                  get configs of an app on canner.io
 
@@ -212,12 +211,43 @@ $ canner logout
 ```
 
 ### create-app
+`apps:create` create an app on `canner.io` server, and add git remote on you folder
+
+``` shellscript
+$ mkdir myproject && cd myproject
+$ git init
+> Initialized empty Git repository in /path/to/myproject/.git/
+$ canner apps:create myproject
+> create app successfully!
+> Name: myproject
+> Git url: http://git.canner.io/myproject.git
+```
+
+#### push source to server
+``` shellscript
+$ cd /path/to/myproject
+$ git push canner master
+```
 
 ### deploy-app
+`apps:deploy` deploy your app on `canner.io` server
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner apps:deploy
+```
+
 ### list-apps
+`apps:list` list your apps on `canner.io` server
+
 ### push-data
+`data:push` push your local json data to server app
+
 ### pull-data
+`data:pull` pull data from server app
+
 ### add-git-remote
+`git:remote:add` add app url git remote path for you
 
 ## What is a can
 
