@@ -16,6 +16,14 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
 - [Command](#command)
   - [Building canner](#building-canner)
   - [Watching canner](#watching-canner)
+  - [logging in](#logging-in)
+  - [logging out](#logging-out)
+  - [create app](#create-app)
+  - [deploy app](#deploy-app)
+  - [list apps](#list-apps)
+  - [push data](#push-data)
+  - [pull data](#pull-data)
+  - [add git remote](#add-git-remote)
 - [What is a can](#what-is-a-can)
   - [Getting a can](#getting-a-can)
   - [Create template via can](#create-template-via-can)
@@ -131,11 +139,22 @@ sudo npm install -g canner
   Usage: canner [options] [command]
 
   Commands:
-
-    create [options] [source_dir]  Create initial files and folders, under a directory.
-    build [options] [canner.json]  Build a canner from a canner.json
-    watch [options] [canner.json]  Watching any changes in a canner and recompiled
-    allin [options] [htmlfile]     Make html include files all warp allin
+    create [options] [source_dir]          Create initial files and folders, under a directory.
+    build [options] [canner.json]          Build a canner from a canner.json
+    watch [options] [canner.json]          Watching any changes in a canner and recompiled
+    allin [options] [htmlfile]             Make html include files all warp allin
+    login                                  login to use canner.io api
+    logout                                 logout from canner.io api
+    apps:create [app_url]                  create an app on canner.io
+    apps:deploy [app_url]                  deploy an app on canner.io
+    apps:list                              list my apps
+    apps:info [app_url]                    list my apps
+    data:push [options] [app_url]          push data to app on canner.io
+    data:pull [options] [app_url]          pull data from app on canner.io
+    git:remote:add [app_url]               add remote url to local dir
+    git:remote:clone [app_url] [filepath]  add remote url to local dir
+    configs:set [params] [app_url]         set configs to app on canner.io
+    configs:get [app_url]                  get configs of an app on canner.io
 
   Options:
 
@@ -174,6 +193,22 @@ More options:
 ```
 $ canner watch doc/canner.json -o output -s 3333
 ```
+
+### logging-in
+
+``` shellscript
+$ canner login
+> prompt: username:  wwwy3y3
+> prompt: password: <hidden>
+```
+
+### logging-out
+### create-app
+### deploy-app
+### list-apps
+### push-data
+### pull-data
+### add-git-remote
 
 ## What is a can
 
