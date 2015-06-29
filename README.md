@@ -240,14 +240,40 @@ $ canner apps:deploy
 ### list-apps
 `apps:list` list your apps on `canner.io` server
 
+``` shellscript
+$ canner apps:list
+```
+
 ### push-data
-`data:push` push your local json data to server app
+`data:push` push your local json data to server app, add option `-d` point to your data path, default to `./canner.json` data attribute
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner data:push -d /path/to/data.json
+```
 
 ### pull-data
 `data:pull` pull data from server app
 
+#### print data on terminal
+``` shellscript
+$ cd /path/to/myproject
+$ canner data:pull -p 
+```
+
+#### save data to file
+``` shellscript
+$ cd /path/to/myproject
+$ canner data:pull -f /path/to/data.json
+```
+
 ### add-git-remote
 `git:remote:add` add app url git remote path for you
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner git:remote:add <app-url>
+```
 
 ## What is a can
 
