@@ -196,6 +196,8 @@ $ canner watch doc/canner.json -o output -s 3333
 
 ### logging-in
 
+`login` command save the credentials for you, in order to interact with `canner.io` API
+
 ``` shellscript
 $ canner login
 > prompt: username:  wwwy3y3
@@ -203,7 +205,14 @@ $ canner login
 ```
 
 ### logging-out
+`logout` command delete the credentials on your computer
+
+``` shellscript
+$ canner logout
+```
+
 ### create-app
+
 ### deploy-app
 ### list-apps
 ### push-data
