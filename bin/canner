@@ -208,6 +208,22 @@ prog
         .catch(printErr)
   });
 
+// apps destory
+prog
+  .command('apps:destroy [app_url]')
+  .description('destory an app on canner.io')
+  .usage('[options] <app_url>')
+  .action(function(appUrl) {
+    apps.destory(appUrl).then(function (app) {
+      // print success
+      // show git url
+      console.log(chalk.yellow('destory app successfully!'));
+      console.log(chalk.green('Name: ')+app.url);
+    }).catch(printErr)
+  });
+
+
+
 // apps data push
 prog
   .command('data:push [app_url]')
