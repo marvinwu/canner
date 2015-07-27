@@ -52,7 +52,8 @@
     "request-promise": "^0.4.2",
     "swig": "^1.4.2",
     "watch": "^0.13.0",
-    "yamljs": "^0.2.1"
+    "yamljs": "^0.2.1",
+    "colors": "1.0.3"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
