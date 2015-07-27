@@ -199,8 +199,8 @@ $ canner watch doc/canner.json -o output -s 3333
 
 ``` shellscript
 $ canner login
-> prompt: username:  wwwy3y3
-> prompt: password: <hidden>
+> username  wwwy3y3
+> password <hidden>
 ```
 
 ### logging-out
@@ -214,9 +214,6 @@ $ canner logout
 `apps:create` create an app on `canner.io` server, and add git remote on you folder
 
 ``` shellscript
-$ mkdir myproject && cd myproject
-$ git init
-> Initialized empty Git repository in /path/to/myproject/.git/
 $ canner apps:create myproject
 > create app successfully!
 > Name: myproject
