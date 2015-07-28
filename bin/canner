@@ -165,6 +165,21 @@ prog
     }).catch(printErr)
   });
 
+// apps destroy
+prog
+  .command('apps:destroy [app_url]')
+  .description('destroy an app on canner.io')
+  .usage('[options] <app_url>')
+  .action(function(appUrl) {
+    apps.destory(appUrl).then(function (app) {
+      // print success
+      // show git url
+      console.log(chalk.yellow('destory app successfully!'));
+      console.log(chalk.green('Name: ')+app.url);
+    }).catch(printErr)
+  });
+
+
 // apps deploy
 prog
   .command('apps:deploy [app_url]')
@@ -208,21 +223,7 @@ prog
         .catch(printErr)
   });
 
-// apps destory
-prog
-  .command('apps:destroy [app_url]')
-  .description('destory an app on canner.io')
-  .usage('[options] <app_url>')
-  .action(function(appUrl) {
-    apps.destory(appUrl).then(function (app) {
-      // print success
-      // show git url
-      console.log(chalk.yellow('destory app successfully!'));
-      console.log(chalk.green('Name: ')+app.url);
-    }).catch(printErr)
-  });
-
-// apps members
+// get apps members
 prog
   .command('apps:members [app_url]')
   .description('list app members on canner.io')
@@ -244,7 +245,7 @@ prog
 // apps addDomain
 prog
   .command('apps:addDomain [app_url] [domain]')
-  .description('add domain to an app on canner.io')
+  .description('add a custom domain to an app on canner.io')
   .usage('[options] <app_url> <domain>')
   .action(function(appUrl, domain) {
     apps.addDomain(appUrl, domain).then(function (app) {
@@ -255,7 +256,6 @@ prog
       console.log(chalk.green('domain: ')+domain);
     }).catch(printErr)
   });
-
 
 
 // apps data push

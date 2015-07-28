@@ -19,8 +19,11 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [logging in](#logging-in)
   - [logging out](#logging-out)
   - [create app](#create-app)
+  - [destroy app](#destroy-app)
   - [deploy app](#deploy-app)
   - [list apps](#list-apps)
+  - [members apps](#members-apps)
+  - [addDomain apps](#addDomain-apps)
   - [push data](#push-data)
   - [pull data](#pull-data)
   - [add git remote](#add-git-remote)
@@ -146,9 +149,12 @@ sudo npm install -g canner
     login                                  login to use canner.io api
     logout                                 logout from canner.io api
     apps:create [app_url]                  create an app on canner.io
+    apps:destroy [app_url]                 destroy an app on canner.io
     apps:deploy [app_url]                  deploy an app on canner.io
     apps:list                              list my apps
     apps:info [app_url]                    list my apps
+    apps:members [app_url]                 list app members on canner.io
+    apps:addDomain [app_url] [domain]      add domain to an app on canner.io
     data:push [options] [app_url]          push data to app on canner.io
     data:pull [options] [app_url]          pull data from app on canner.io
     git:remote:add [app_url]               add remote url to local dir
@@ -239,6 +245,35 @@ $ canner apps:deploy
 
 ``` shellscript
 $ canner apps:list
+
+```
+
+### addDomain-apps
+`apps:addDomain` add a custom domain your apps on `canner.io` server
+
+```
+$ canner apps:addDomain myproject www.domain.com
+```
+
+### members-apps
+`apps:members` show apps members on `canner.io` server
+
+```
+$ canner apps:members myproject
+```
+
+### destroy-app
+`apps:destroy` destroy your apps on `canner.io` server
+
+```
+$ canner apps:destroy myproject
+```
+
+### destroy app
+`apps:destroy` destroy your apps on `canner.io` server
+
+```
+$ canner apps:destroy myproject
 ```
 
 ### push-data
