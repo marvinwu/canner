@@ -11,12 +11,12 @@ var get = require('./lib/get');
 var read= require('./lib/read');
 
 /*
-*	Create
-*	Create initial files and folders, under a directory.
+*	Init
+*	Initialize files and folders, under a directory.
 *	@param {string} dir - directory install canner
 *	@param {string} generator - Inital generate the generator that you are finding
 */
-exports.create= function (dir, generator) {
+exports.init= function (dir, generator) {
     return init(dir, generator);
 }
 
