@@ -34,7 +34,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [Open issue for can support](#open-issue-for-can-support)
 - [Gh-pages](#gh-pages)
 - [API](#api)
-  - [create](#create)
+  - [init](#init)
   - [build](#build)
   - [watch](#watch)
   - [allin](#allin)
@@ -139,7 +139,7 @@ sudo npm install -g canner
   Usage: canner [options] [command]
 
   Commands:
-    create [options] [source_dir]          Create initial files and folders, under a directory.
+    init [options] [source_dir]            Initialize files and folders, under a directory.
     build [options] [canner.json]          Build a canner from a canner.json
     watch [options] [canner.json]          Watching any changes in a canner and recompiled
     allin [options] [htmlfile]             Make html include files all warp allin
@@ -291,7 +291,7 @@ And it is done!
 To immidiately create a template via canner is super easy. If you want to generate a template from `sample-can`, you can just enter command below.
 
 ```
-$ canner create  -g sample-can testfolder
+$ canner init  -g sample-can testfolder
 ```
 
 **NOTE** : `-g` stands for `--generater`
@@ -323,10 +323,10 @@ Install `sample-can` https://github.com/Canner/sample-can
 $ npm install -g sample-can
 ```
 
-Create `sample-can` template in `canner`
+Initialize `sample-can` template in `canner`
 
 ```
-$ canner create -g sample-can sample-folder
+$ canner init -g sample-can sample-folder
 ```
 
 Enter `sample-folder`
@@ -369,13 +369,13 @@ if you want to send request to localhost, run `export CANNER_ENV='dev'`
 var canner= require('canner');
 ```
 
-### Create
+### Init
 Create initial files and folders, under a directory.
 
 return a promise 
 
 ``` javascript
-canner.create(dir, generator)
+canner.init(dir, generator)
       .then(function(){
           // do your stuff
       })

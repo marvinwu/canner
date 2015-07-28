@@ -49,7 +49,7 @@ prog
 // initialize the project
 prog
   .command('init [source_dir]')
-  .description('initialize files and folders, under a directory.')
+  .description('Initialize files and folders, under a directory.')
   .usage('[options] <directory>')
   .option('-g, --generator <generator>', 'Inital generate the generator that you are finding.')
   .action(function(dir, options) {
