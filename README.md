@@ -262,13 +262,6 @@ $ canner apps:addDomain myproject www.domain.com
 $ canner apps:members myproject
 ```
 
-### destroy-app
-`apps:destroy` destroy your apps on `canner.io` server
-
-```
-$ canner apps:destroy myproject
-```
-
 ### destroy app
 `apps:destroy` destroy your apps on `canner.io` server
 
