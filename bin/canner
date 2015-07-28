@@ -49,7 +49,7 @@ prog
 // initialize the project
 prog
   .command('init [source_dir]')
-  .description('Initialize files and folders, under a directory.')
+  .description('initialize files and folders, under a directory.')
   .usage('[options] <directory>')
   .option('-g, --generator <generator>', 'Inital generate the generator that you are finding.')
   .action(function(dir, options) {
@@ -61,7 +61,7 @@ prog
 // building docs from canner
 prog
   .command('build [canner.json]')
-  .description('Build a canner from a canner.json')
+  .description('build a canner from a canner.json')
   .usage('[options] <source to canner.json, default ./canner.json>')
   .option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
   .option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
@@ -77,7 +77,7 @@ prog
 // watching docs from canner
 prog
   .command('watch [canner.json]')
-  .description('Watching any changes in a canner and recompiled')
+  .description('watching any changes in a canner and recompiled')
   .usage('[options] <source to canner.json, default ./canner.json>')
   .option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
   .option('-s, --serve <directory>', 'Path you want to start a local server. Default port 4000 for specific port use option -p')
@@ -93,7 +93,7 @@ prog
 // make html include files all warp allin
 prog
   .command('allin [htmlfile]')
-  .description('Make html include files all warp allin')
+  .description('make html include files all warp allin')
   .usage('[options] <source to your html, default ./index.html>')
   .option('-m, --minifyall', 'Minify css, html, js, images.')
   .option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
@@ -225,7 +225,7 @@ prog
 
 // get apps members
 prog
-  .command('apps:members [app_url]')
+  .command('apps:members:list [app_url]')
   .description('list app members on canner.io')
   .usage('[options] <app_url>')
   .action(function(appUrl) {
@@ -242,9 +242,9 @@ prog
         .catch(printErr)
   });
 
-// apps addDomain
+// apps add domain
 prog
-  .command('apps:addDomain [app_url] [domain]')
+  .command('apps:domain:add [app_url] [domain]')
   .description('add a custom domain to an app on canner.io')
   .usage('[options] <app_url> <domain>')
   .action(function(appUrl, domain) {
@@ -257,6 +257,20 @@ prog
     }).catch(printErr)
   });
 
+// apps remove domain
+prog
+  .command('apps:domain:remove [app_url] [domain]')
+  .description('remove a custom domain to an app on canner.io')
+  .usage('[options] <app_url> <domain>')
+  .action(function(appUrl, domain) {
+    apps.removeDomain(appUrl, domain).then(function (app) {
+      // print success
+      // show domain
+      console.log(chalk.yellow('remove domain successfully!'));
+      console.log(chalk.green('Name: ')+appUrl);
+      console.log(chalk.green('domain: ')+domain);
+    }).catch(printErr)
+  });
 
 // apps data push
 prog

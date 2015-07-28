@@ -22,8 +22,9 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [destroy app](#destroy-app)
   - [deploy app](#deploy-app)
   - [list apps](#list-apps)
-  - [members apps](#members-apps)
-  - [addDomain apps](#addDomain-apps)
+  - [members list apps](#members-list-apps)
+  - [domain add apps](#domain-add-apps)
+  - [domain remove apps](#domain-remove-apps)
   - [push data](#push-data)
   - [pull data](#pull-data)
   - [add git remote](#add-git-remote)
@@ -142,10 +143,10 @@ sudo npm install -g canner
   Usage: canner [options] [command]
 
   Commands:
-    init [options] [source_dir]            Initialize files and folders, under a directory.
-    build [options] [canner.json]          Build a canner from a canner.json
-    watch [options] [canner.json]          Watching any changes in a canner and recompiled
-    allin [options] [htmlfile]             Make html include files all warp allin
+    init [options] [source_dir]            initialize files and folders, under a directory.
+    build [options] [canner.json]          build a canner from a canner.json
+    watch [options] [canner.json]          watching any changes in a canner and recompiled
+    allin [options] [htmlfile]             make html include files all warp allin
     login                                  login to use canner.io api
     logout                                 logout from canner.io api
     apps:create [app_url]                  create an app on canner.io
@@ -153,8 +154,9 @@ sudo npm install -g canner
     apps:deploy [app_url]                  deploy an app on canner.io
     apps:list                              list my apps
     apps:info [app_url]                    list my apps
-    apps:members [app_url]                 list app members on canner.io
-    apps:addDomain [app_url] [domain]      add domain to an app on canner.io
+    apps:members:list [app_url]            list app members on canner.io
+    apps:domain:add [app_url] [domain]     add domain to an app on canner.io
+    apps:domain:remove [app_url] [domain]  remove domain to an app on canner.io
     data:push [options] [app_url]          push data to app on canner.io
     data:pull [options] [app_url]          pull data from app on canner.io
     git:remote:add [app_url]               add remote url to local dir
@@ -248,15 +250,22 @@ $ canner apps:list
 
 ```
 
-### addDomain-apps
-`apps:addDomain` add a custom domain your apps on `canner.io` server
+### domain-add-apps
+`apps:domain:add` add a custom domain your apps on `canner.io` server
 
 ```
-$ canner apps:addDomain myproject www.domain.com
+$ canner apps:domain:add myproject www.domain.com
 ```
 
-### members-apps
-`apps:members` show apps members on `canner.io` server
+### domain-remove-apps
+`apps:domain:remove` remove a custom domain your apps on `canner.io` server
+
+```
+$ canner apps:domain:remove myproject www.domain.com
+```
+
+### members-list-apps
+`apps:members:list` show apps members on `canner.io` server
 
 ```
 $ canner apps:members myproject
