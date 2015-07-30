@@ -23,6 +23,8 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [deploy app](#deploy-app)
   - [list apps](#list-apps)
   - [members list apps](#members-list-apps)
+  - [members add apps](#members-add-apps)
+  - [members remove apps](#members-remove-apps)
   - [domain add apps](#domain-add-apps)
   - [domain remove apps](#domain-remove-apps)
   - [push data](#push-data)
@@ -155,6 +157,8 @@ sudo npm install -g canner
     apps:list                              list my apps
     apps:info [app_url]                    list my apps
     apps:members:list [app_url]            list app members on canner.io
+    apps:members:add [app_url] [user_id] [role]  add members to an app on canner.io
+    apps:members:remove [app_url] [user_id]    remove members from an app on canner.io
     apps:domain:add [app_url] [domain]     add domain to an app on canner.io
     apps:domain:remove [app_url] [domain]  remove domain to an app on canner.io
     data:push [options] [app_url]          push data to app on canner.io
@@ -268,7 +272,19 @@ $ canner apps:domain:remove myproject www.domain.com
 `apps:members:list` show apps members on `canner.io` server
 
 ```
-$ canner apps:members myproject
+$ canner apps:members:list myproject
+```
+### members-add-apps
+`apps:members:add` add members to an app on `canner.io` server
+
+```
+$ canner apps:members:add 55b9cdfe3c2cdd100736cf99 developer
+```
+### members-remove-apps
+`apps:members:remove` remove members from an app on `canner.io` server
+
+```
+$ canner apps:members:remove 55b9cdfe3c2cdd100736cf99
 ```
 
 ### destroy app

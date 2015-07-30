@@ -223,7 +223,7 @@ prog
         .catch(printErr)
   });
 
-// get apps members
+// list apps members
 prog
   .command('apps:members:list [app_url]')
   .description('list app members on canner.io')
@@ -240,6 +240,30 @@ prog
           console.log(table);
         })
         .catch(printErr)
+  });
+
+// add apps members
+prog
+  .command('apps:members:add [app_url] [user_id] [role]')
+  .description('add members to an app on canner.io')
+  .usage('[options] <app_url> <user_id> <role>')
+  .action(function(appUrl, userID, role) {
+    apps.addMember(appUrl, userID, role).then(function (app) {
+      // print success
+      console.log(chalk.yellow('add members successfully!'));
+    }).catch(printErr)
+  });
+
+// remove apps members
+prog
+  .command('apps:members:remove [app_url] [user_id]')
+  .description('remove members from an app on canner.io')
+  .usage('[options] <app_url> <user_id>')
+  .action(function(appUrl, userID) {
+    apps.removeMember(appUrl, userID).then(function (app) {
+      // print success
+      console.log(chalk.yellow('remove members successfully!'));
+    }).catch(printErr)
   });
 
 // apps add domain
