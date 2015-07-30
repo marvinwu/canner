@@ -19,6 +19,7 @@ var apps= require('../lib/apps');
 var auth= require('../lib/auth');
 var data= require('../lib/data');
 var git= require('../lib/git');
+var gh= require('../lib/gh');
 var Helper= require('../lib/helper');
 var jsome= require('jsome');
 
@@ -395,6 +396,20 @@ prog
     })
     .catch(printErr)
   })
+
+// gh deploy
+prog
+  .command('gh:deploy')
+  .description('deploy the output folder to gh-pages')
+  .usage('[options]')
+  .option('-d, --directory <directory>', 'directory of your output folder')
+  .action(function(options) {
+    var dir = '';
+    if(options.directory){
+        dir = options.directory;
+    }
+    gh.deploy(dir);
+  });
 
 // configs:set xyz=1
 prog

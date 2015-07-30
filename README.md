@@ -30,6 +30,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [push data](#push-data)
   - [pull data](#pull-data)
   - [add git remote](#add-git-remote)
+  - [gh deploy](#gh-deploy)
 - [What is a can](#what-is-a-can)
   - [Getting a can](#getting-a-can)
   - [Create template via can](#create-template-via-can)
@@ -164,6 +165,7 @@ sudo npm install -g canner
     data:push [options] [app_url]          push data to app on canner.io
     data:pull [options] [app_url]          pull data from app on canner.io
     git:remote:add [app_url]               add remote url to local dir
+    gh:deploy [options]                    deploy the output folder to gh-pages
     configs:set [params] [app_url]         set configs to app on canner.io
     configs:get [app_url]                  get configs of an app on canner.io
 
@@ -323,6 +325,13 @@ $ canner data:pull -f /path/to/data.json
 ``` shellscript
 $ cd /path/to/myproject
 $ canner git:remote:add <app-url>
+```
+
+### gh-deploy
+`gh-deploy` deploy canner output folder to gh-pages
+
+``` shellscript
+$ canner gh:deploy -d <directory>
 ```
 
 ## What is a can

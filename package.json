@@ -54,7 +54,8 @@
     "watch": "^0.13.0",
     "yamljs": "^0.2.1",
     "colors": "1.0.3",
-    "http-server": "^0.8.0"
+    "http-server": "^0.8.0",
+    "child-process-promise": "^1.1.0"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
