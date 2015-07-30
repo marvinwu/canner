@@ -53,6 +53,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [data.push](#datapush)
   - [data.pull](#datapull)
   - [git.remote.add](#gitremoteadd)
+  - [git.remote.clone](#gitremoteclone)
 - [What's more](#whats-more)
   - [Multipule page](#multipule-page)
   - [Support markdown](#support-markdown)
@@ -165,6 +166,7 @@ sudo npm install -g canner
     data:push [options] [app_url]          push data to app on canner.io
     data:pull [options] [app_url]          pull data from app on canner.io
     git:remote:add [app_url]               add remote url to local dir
+    git:remote:clone [app_url] [filepath]  clone a remote repo to local dir
     gh:deploy [options]                    deploy the output folder to gh-pages
     configs:set [params] [app_url]         set configs to app on canner.io
     configs:get [app_url]                  get configs of an app on canner.io
@@ -325,6 +327,13 @@ $ canner data:pull -f /path/to/data.json
 ``` shellscript
 $ cd /path/to/myproject
 $ canner git:remote:add <app-url>
+```
+### add-git-clone
+`git:remote:clone` clone a remote repo to local
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner git:remote:clone <app-url> <file_path>
 ```
 
 ### gh-deploy

@@ -387,7 +387,7 @@ prog
 // git remote clone
 prog
   .command('git:remote:clone [app_url] [filepath]')
-  .description('add remote url to local dir')
+  .description('clone a remote repo to local dir')
   .usage('[options] <app_url>')
   .action(function (appUrl, filepath, options) {
     git.remote.clone(appUrl, filepath).then(function (params) {
