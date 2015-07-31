@@ -55,7 +55,8 @@
     "yamljs": "^0.2.1",
     "colors": "1.0.3",
     "http-server": "^0.8.0",
-    "child-process-promise": "^1.1.0"
+    "child-process-promise": "^1.1.0",
+    "canner-core": "^0.0.1"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
