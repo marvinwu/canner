@@ -1,29 +1,30 @@
 #!/usr/bin/env node
+
 var _ = require('lodash');
 var prog = require('commander');
 var fileSave = require('file-save');
 var allin_html = require('allin');
 var path = require('path');
-var stage= require('node-stage');
+var stage = require('node-stage');
 var Q = require('q');
 var FS = require("q-io/fs");
-var chalk= require('chalk');
-var util= require('util');
+var chalk = require('chalk');
+var util = require('util');
 
 var pkg = require('../package.json');
 
 var init = require('canner-core').init;
 var build = require('canner-core').build;
 var watch = require('canner-core').watch;
-var apps= require('../lib/apps');
-var auth= require('../lib/auth');
-var data= require('../lib/data');
-var git= require('../lib/git');
-var gh= require('../lib/gh');
-var Helper= require('../lib/helper');
-var jsome= require('jsome');
+var apps = require('../lib/apps');
+var auth = require('../lib/auth');
+var data = require('../lib/data');
+var git = require('../lib/git');
+var gh = require('../lib/gh');
+var Helper = require('../lib/helper');
+var jsome = require('jsome');
 
-var printErr= function (err) {
+var printErr = function(err) {
   console.log(chalk.red(err));
   console.log(err.stack);
 }
@@ -54,7 +55,7 @@ prog
   .usage('[options] <directory>')
   .option('-g, --generator <generator>', 'Inital generate the generator that you are finding.')
   .action(function(dir, options) {
-    init(dir, options.generator).catch(function (err) {
+    init(dir, options.generator).catch(function(err) {
       stage.error(err);
     })
   });
@@ -70,9 +71,9 @@ prog
   .option('-p, --port <port number>', 'Port which your local server start.')
   .action(function(dir) {
     build(dir, prog.args[1], false)
-         .catch(function (err) {
-           stage.error(err);
-         })
+      .catch(function(err) {
+        stage.error(err);
+      })
   });
 
 // watching docs from canner
@@ -86,9 +87,9 @@ prog
   .option('-p, --port <port number>', 'Port which your local server start.')
   .action(function(dir) {
     watch(dir, prog.args[1], true)
-         .catch(function (err) {
-           stage.error(err);
-         })
+      .catch(function(err) {
+        stage.error(err);
+      })
   });
 
 // make html include files all warp allin
@@ -104,7 +105,7 @@ prog
     var opt = {
       "minifyCSS": true,
       "minifyJS": true,
-      "removeComments":true,
+      "removeComments": true,
       "collapseWhitespace": true
     };
 
@@ -112,7 +113,7 @@ prog
     var output = prog.args[1].output ? prog.args[1].output : './';
     var minify = prog.args[1].minifyall ? prog.args[1].minifyall : null;
 
-    if(!minify) {
+    if (!minify) {
       opt = null;
     }
 
@@ -128,14 +129,14 @@ prog
   .description('login to use canner.io api')
   .usage('login')
   .action(function() {
-    auth.login().then(function (body) {
-      console.log(chalk.green('welcome '+body.username+'!'));
-    }).catch(function (err) {
-        if(err.name=='StatusCodeError' && err.statusCode==401){
-          console.log(chalk.red('wrong username or password!'));
-        }else{
-          console.log(err.message);
-        }
+    auth.login().then(function(body) {
+      console.log(chalk.green('welcome ' + body.username + '!'));
+    }).catch(function(err) {
+      if (err.name == 'StatusCodeError' && err.statusCode == 401) {
+        console.log(chalk.red('wrong username or password!'));
+      } else {
+        console.log(err.message);
+      }
     })
   });
 
@@ -145,7 +146,7 @@ prog
   .description('logout from canner.io api')
   .usage('logout')
   .action(function() {
-    auth.logout().then(function (body) {
+    auth.logout().then(function(body) {
       console.log(chalk.green('successfully logout!'))
     }).catch(printErr)
   });
@@ -157,12 +158,12 @@ prog
   .description('create an app on canner.io')
   .usage('[options] <app_url>')
   .action(function(appUrl) {
-    apps.create(appUrl).then(function (app) {
+    apps.create(appUrl).then(function(app) {
       // print success
       // show git url
       console.log(chalk.yellow('create app successfully!'));
-      console.log(chalk.green('Name: ')+app.url);
-      console.log(chalk.green('Git url: ')+app.gitUrl);
+      console.log(chalk.green('Name: ') + app.url);
+      console.log(chalk.green('Git url: ') + app.gitUrl);
     }).catch(printErr)
   });
 
@@ -172,11 +173,11 @@ prog
   .description('destroy an app on canner.io')
   .usage('[options] <app_url>')
   .action(function(appUrl) {
-    apps.destory(appUrl).then(function (app) {
+    apps.destory(appUrl).then(function(app) {
       // print success
       // show git url
       console.log(chalk.yellow('destory app successfully!'));
-      console.log(chalk.green('Name: ')+app.url);
+      console.log(chalk.green('Name: ') + app.url);
     }).catch(printErr)
   });
 
@@ -188,11 +189,11 @@ prog
   .usage('[options] <app_url>')
   .action(function(appUrl) {
     apps.getUrl(appUrl)
-        .then(apps.deploy)
-        .then(function () {
-          console.log(chalk.green('success!'))
-        })
-        .catch(printErr)
+      .then(apps.deploy)
+      .then(function() {
+        console.log(chalk.green('success!'))
+      })
+      .catch(printErr)
   });
 
 // list apps
@@ -201,15 +202,15 @@ prog
   .description('list my apps')
   .action(function() {
     apps.list()
-        .then(function (body) {
-          //<%= repo %>@<%= version %>
-          var table= Helper.table(body, {
-            head: ['url', 'status', 'policy', 'created', 'updated'],
-            column: [ 'display_url', 'status', 'policy', 'create_date', 'update_date' ]
-          })
-          console.log(table);
+      .then(function(body) {
+        //<%= repo %>@<%= version %>
+        var table = Helper.table(body, {
+          head: ['url', 'status', 'policy', 'created', 'updated'],
+          column: ['display_url', 'status', 'policy', 'create_date', 'update_date']
         })
-        .catch(printErr)
+        console.log(table);
+      })
+      .catch(printErr)
   });
 
 prog
@@ -217,11 +218,11 @@ prog
   .description('list my apps')
   .action(function(appUrl) {
     apps.getUrl(appUrl)
-        .then(apps.info)
-        .then(function (body) {
-          jsome(body)
-        })
-        .catch(printErr)
+      .then(apps.info)
+      .then(function(body) {
+        jsome(body)
+      })
+      .catch(printErr)
   });
 
 // list apps members
@@ -232,15 +233,15 @@ prog
   .action(function(appUrl) {
     apps.getUrl(appUrl)
       .then(apps.getMembers)
-      .then(function (body) {
-          //<%= repo %>@<%= version %>
-          var table= Helper.table(body, {
-            head: ['username', 'role'],
-            column: ['username', 'role']
-          })
-          console.log(table);
+      .then(function(body) {
+        //<%= repo %>@<%= version %>
+        var table = Helper.table(body, {
+          head: ['username', 'role'],
+          column: ['username', 'role']
         })
-        .catch(printErr)
+        console.log(table);
+      })
+      .catch(printErr)
   });
 
 // add apps members
@@ -249,7 +250,7 @@ prog
   .description('add members to an app on canner.io')
   .usage('[options] <app_url> <user_id> <role>')
   .action(function(appUrl, userID, role) {
-    apps.addMember(appUrl, userID, role).then(function (app) {
+    apps.addMember(appUrl, userID, role).then(function(app) {
       // print success
       console.log(chalk.yellow('add members successfully!'));
     }).catch(printErr)
@@ -261,7 +262,7 @@ prog
   .description('remove members from an app on canner.io')
   .usage('[options] <app_url> <user_id>')
   .action(function(appUrl, userID) {
-    apps.removeMember(appUrl, userID).then(function (app) {
+    apps.removeMember(appUrl, userID).then(function(app) {
       // print success
       console.log(chalk.yellow('remove members successfully!'));
     }).catch(printErr)
@@ -273,12 +274,12 @@ prog
   .description('add a custom domain to an app on canner.io')
   .usage('[options] <app_url> <domain>')
   .action(function(appUrl, domain) {
-    apps.addDomain(appUrl, domain).then(function (app) {
+    apps.addDomain(appUrl, domain).then(function(app) {
       // print success
       // show domain
       console.log(chalk.yellow('add domain successfully!'));
-      console.log(chalk.green('Name: ')+appUrl);
-      console.log(chalk.green('domain: ')+domain);
+      console.log(chalk.green('Name: ') + appUrl);
+      console.log(chalk.green('domain: ') + domain);
     }).catch(printErr)
   });
 
@@ -288,12 +289,12 @@ prog
   .description('remove a custom domain to an app on canner.io')
   .usage('[options] <app_url> <domain>')
   .action(function(appUrl, domain) {
-    apps.removeDomain(appUrl, domain).then(function (app) {
+    apps.removeDomain(appUrl, domain).then(function(app) {
       // print success
       // show domain
       console.log(chalk.yellow('remove domain successfully!'));
-      console.log(chalk.green('Name: ')+appUrl);
-      console.log(chalk.green('domain: ')+domain);
+      console.log(chalk.green('Name: ') + appUrl);
+      console.log(chalk.green('domain: ') + domain);
     }).catch(printErr)
   });
 
@@ -305,28 +306,28 @@ prog
   .option('-d, --data_path <data_path>', 'file source of your data ')
   .action(function(appUrl, options) {
     // get data
-    if(options.data_path){
-      var datas= require(path.resolve(process.cwd(), options.data_path));
-    }else{
+    if (options.data_path) {
+      var datas = require(path.resolve(process.cwd(), options.data_path));
+    } else {
       // default read cannerjson data
-      var datas= require(path.resolve(process.cwd(), './canner.json')).data;
+      var datas = require(path.resolve(process.cwd(), './canner.json')).data;
     }
 
     // push
     // get url
     apps.getUrl(appUrl)
 
-        // push data to server
-        .then(function (url) {
-          return data.push(url, datas);
-        })
+    // push data to server
+    .then(function(url) {
+      return data.push(url, datas);
+    })
 
-        // done
-        .then(function () {
-          console.log(chalk.green('success!'))
-        })
+    // done
+    .then(function() {
+      console.log(chalk.green('success!'))
+    })
 
-        .catch(printErr)
+    .catch(printErr)
   });
 
 // apps data pull
@@ -338,37 +339,37 @@ prog
   .option('-f, --filepath <filepath>', 'stream data to filepath')
   .action(function(appUrl, options) {
     apps.getUrl(appUrl)
-        .then(data.pull)
-        .then(function (body) {
-          if(options.print)
-            return jsome(body);
-          
-          // with filepath
-          if(options.filepath){
-            var filepath= path.resolve(process.cwd(), options.filepath);
-            return FS.write(filepath, JSON.stringify(body, null, 4))
-                     .then(function () {
-                        console.log(chalk.green(util.format('data saved to %s', filepath)))
-                     });
-          }
+      .then(data.pull)
+      .then(function(body) {
+        if (options.print)
+          return jsome(body);
 
-          // no option, write to canner.json
-          var filepath= path.resolve(process.cwd(), './canner.json');
-          return FS.exists(filepath)
-                   .then(function (exist) {
-                      if(!exist)
-                        throw new Error('canner.json not exist');
+        // with filepath
+        if (options.filepath) {
+          var filepath = path.resolve(process.cwd(), options.filepath);
+          return FS.write(filepath, JSON.stringify(body, null, 4))
+            .then(function() {
+              console.log(chalk.green(util.format('data saved to %s', filepath)))
+            });
+        }
 
-                      // canner.json exist
-                      var json= require(filepath);
-                      json.data= body;
-                      return FS.write(filepath, JSON.stringify(json, null, 4));
-                   })
-                   .then(function () {
-                        console.log(chalk.green(util.format('data saved to %s', filepath)))
-                    })
-        })
-        .catch(printErr)
+        // no option, write to canner.json
+        var filepath = path.resolve(process.cwd(), './canner.json');
+        return FS.exists(filepath)
+          .then(function(exist) {
+            if (!exist)
+              throw new Error('canner.json not exist');
+
+            // canner.json exist
+            var json = require(filepath);
+            json.data = body;
+            return FS.write(filepath, JSON.stringify(json, null, 4));
+          })
+          .then(function() {
+            console.log(chalk.green(util.format('data saved to %s', filepath)))
+          })
+      })
+      .catch(printErr)
   });
 
 // git remote:add
@@ -376,12 +377,12 @@ prog
   .command('git:remote:add [app_url]')
   .description('add remote url to local dir')
   .usage('[options] <app_url>')
-  .action(function (appUrl, options) {
+  .action(function(appUrl, options) {
     //var item= this.name().split(':')[1];
-    git.remote.add(appUrl).then(function (url) {
-      console.log(chalk.green('Git url: ')+url);
-    })
-    .catch(printErr)
+    git.remote.add(appUrl).then(function(url) {
+        console.log(chalk.green('Git url: ') + url);
+      })
+      .catch(printErr)
   })
 
 // git remote clone
@@ -389,12 +390,12 @@ prog
   .command('git:remote:clone [app_url] [filepath]')
   .description('clone a remote repo to local dir')
   .usage('[options] <app_url>')
-  .action(function (appUrl, filepath, options) {
-    git.remote.clone(appUrl, filepath).then(function (params) {
-      console.log(util.format('App %s has clone to %s!!', params.name, params.path));
-      console.log(util.format('Git url: %s', params.url));
-    })
-    .catch(printErr)
+  .action(function(appUrl, filepath, options) {
+    git.remote.clone(appUrl, filepath).then(function(params) {
+        console.log(util.format('App %s has clone to %s!!', params.name, params.path));
+        console.log(util.format('Git url: %s', params.url));
+      })
+      .catch(printErr)
   })
 
 // gh deploy
@@ -405,8 +406,8 @@ prog
   .option('-d, --directory <directory>', 'directory of your output folder')
   .action(function(options) {
     var dir = '';
-    if(options.directory){
-        dir = options.directory;
+    if (options.directory) {
+      dir = options.directory;
     }
     gh.deploy(dir);
   });
@@ -416,47 +417,47 @@ prog
   .command('configs:set [params] [app_url]')
   .description('set configs to app on canner.io')
   .usage('[options] <params>')
-  .action(function (params, appUrl) {
-    var arr= params.split('=');
-    var obj= {};
-    obj[arr[0]]= arr[1];
+  .action(function(params, appUrl) {
+    var arr = params.split('=');
+    var obj = {};
+    obj[arr[0]] = arr[1];
 
     // get url
     apps.getUrl(appUrl)
 
-        // configs set
-        .then(function (url) {
-            return apps.Configs.set(url, obj);
-        })
-        
-        // success
-        .then(function () {
-          var title= chalk.blue('CONFIG: ');
-          var val= arr[0]+'='+arr[1]
-            console.log(title+val);
-        })
-        .catch(printErr)
+    // configs set
+    .then(function(url) {
+      return apps.Configs.set(url, obj);
+    })
+
+    // success
+    .then(function() {
+        var title = chalk.blue('CONFIG: ');
+        var val = arr[0] + '=' + arr[1]
+        console.log(title + val);
+      })
+      .catch(printErr)
   })
 
 prog
   .command('configs:get [app_url]')
   .description('get configs of an app on canner.io')
-  .action(function (appUrl) {
+  .action(function(appUrl) {
     // get url
     apps.getUrl(appUrl)
-        .then(function (url) {
-            return apps.Configs.get(url)
-        })
+      .then(function(url) {
+        return apps.Configs.get(url)
+      })
 
-        .then(function (configs) {
-            jsome(configs);
-        })
+    .then(function(configs) {
+      jsome(configs);
+    })
 
-        .catch(printErr)
+    .catch(printErr)
   })
 
 
 // if empty
-if(_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
+if (_.isEmpty(prog.parse(process.argv).args) && process.argv.length === 2) {
   prog.help();
 }
