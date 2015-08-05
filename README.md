@@ -16,6 +16,21 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
 - [Command](#command)
   - [Building canner](#building-canner)
   - [Watching canner](#watching-canner)
+  - [logging in](#logging-in)
+  - [logging out](#logging-out)
+  - [create app](#create-app)
+  - [destroy app](#destroy-app)
+  - [deploy app](#deploy-app)
+  - [list apps](#list-apps)
+  - [members list apps](#members-list-apps)
+  - [members add apps](#members-add-apps)
+  - [members remove apps](#members-remove-apps)
+  - [domain add apps](#domain-add-apps)
+  - [domain remove apps](#domain-remove-apps)
+  - [push data](#push-data)
+  - [pull data](#pull-data)
+  - [add git remote](#add-git-remote)
+  - [gh deploy](#gh-deploy)
 - [What is a can](#what-is-a-can)
   - [Getting a can](#getting-a-can)
   - [Create template via can](#create-template-via-can)
@@ -25,10 +40,19 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
 - [Build Your own can](#build-your-own-can)
   - [Open issue for can support](#open-issue-for-can-support)
 - [API](#api)
-  - [create](#create)
+  - [init](#init)
   - [build](#build)
   - [watch](#watch)
   - [allin](#allin)
+  - [login](#login)
+  - [logout](#logout)
+  - [apps.create](#appscreate)
+  - [apps.deploy](#appsdeploy)
+  - [apps.list](#appslist)
+  - [data.push](#datapush)
+  - [data.pull](#datapull)
+  - [git.remote.add](#gitremoteadd)
+  - [git.remote.clone](#gitremoteclone)
 - [What's more](#whats-more)
   - [Multipule page](#multipule-page)
   - [Support markdown](#support-markdown)
@@ -122,11 +146,29 @@ sudo npm install -g canner
   Usage: canner [options] [command]
 
   Commands:
-
-    create [options] [source_dir]  Create initial files and folders, under a directory.
-    build [options] [canner.json]  Build a canner from a canner.json
-    watch [options] [canner.json]  Watching any changes in a canner and recompiled
-    allin [options] [htmlfile]     Make html include files all warp allin
+    init [options] [source_dir]            initialize files and folders, under a directory.
+    build [options] [canner.json]          build a canner from a canner.json
+    watch [options] [canner.json]          watching any changes in a canner and recompiled
+    allin [options] [htmlfile]             make html include files all warp allin
+    login                                  login to use canner.io api
+    logout                                 logout from canner.io api
+    apps:create [app_url]                  create an app on canner.io
+    apps:destroy [app_url]                 destroy an app on canner.io
+    apps:deploy [app_url]                  deploy an app on canner.io
+    apps:list                              list my apps
+    apps:info [app_url]                    list my apps
+    apps:members:list [app_url]            list app members on canner.io
+    apps:members:add [app_url] [user_id] [role]  add members to an app on canner.io
+    apps:members:remove [app_url] [user_id]    remove members from an app on canner.io
+    apps:domain:add [app_url] [domain]     add domain to an app on canner.io
+    apps:domain:remove [app_url] [domain]  remove domain to an app on canner.io
+    data:push [options] [app_url]          push data to app on canner.io
+    data:pull [options] [app_url]          pull data from app on canner.io
+    git:remote:add [app_url]               add remote url to local dir
+    git:remote:clone [app_url] [filepath]  clone a remote repo to local dir
+    gh:deploy [options]                    deploy the output folder to gh-pages
+    configs:set [params] [app_url]         set configs to app on canner.io
+    configs:get [app_url]                  get configs of an app on canner.io
 
   Options:
 
@@ -139,7 +181,7 @@ sudo npm install -g canner
 To build `canner` to a folder use the following command. 
 
 ```
-$ canner build doc/canner.json -o output -s 3333
+$ canner build doc/canner.json -o output -s ./ -p 3333
 ```
 
 The command above means canner will build the configuration in `doc/canner.json` to directory `output` and serve a local server at port 3333, so you can look at your site http://localhost:3333
@@ -166,6 +208,140 @@ More options:
 $ canner watch doc/canner.json -o output -s 3333
 ```
 
+### logging-in
+
+`login` command save the credentials for you, in order to interact with `canner.io` API
+
+``` shellscript
+$ canner login
+> username  wwwy3y3
+> password <hidden>
+```
+
+### logging-out
+`logout` command delete the credentials on your computer
+
+``` shellscript
+$ canner logout
+```
+
+### create-app
+`apps:create` create an app on `canner.io` server, and add git remote on you folder
+
+``` shellscript
+$ canner apps:create myproject
+> create app successfully!
+> Name: myproject
+> Git url: http://git.canner.io/myproject.git
+```
+
+#### push source to server
+``` shellscript
+$ cd /path/to/myproject
+$ git push canner master
+```
+
+### deploy-app
+`apps:deploy` deploy your app on `canner.io` server
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner apps:deploy
+```
+
+### list-apps
+`apps:list` list your apps on `canner.io` server
+
+``` shellscript
+$ canner apps:list
+
+```
+
+### domain-add-apps
+`apps:domain:add` add a custom domain your apps on `canner.io` server
+
+```
+$ canner apps:domain:add myproject www.domain.com
+```
+
+### domain-remove-apps
+`apps:domain:remove` remove a custom domain your apps on `canner.io` server
+
+```
+$ canner apps:domain:remove myproject www.domain.com
+```
+
+### members-list-apps
+`apps:members:list` show apps members on `canner.io` server
+
+```
+$ canner apps:members:list myproject
+```
+### members-add-apps
+`apps:members:add` add members to an app on `canner.io` server
+
+```
+$ canner apps:members:add 55b9cdfe3c2cdd100736cf99 developer
+```
+### members-remove-apps
+`apps:members:remove` remove members from an app on `canner.io` server
+
+```
+$ canner apps:members:remove 55b9cdfe3c2cdd100736cf99
+```
+
+### destroy app
+`apps:destroy` destroy your apps on `canner.io` server
+
+```
+$ canner apps:destroy myproject
+```
+
+### push-data
+`data:push` push your local json data to server app, add option `-d` point to your data path, default to `./canner.json` data attribute
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner data:push -d /path/to/data.json
+```
+
+### pull-data
+`data:pull` pull data from server app
+
+#### print data on terminal
+``` shellscript
+$ cd /path/to/myproject
+$ canner data:pull -p 
+```
+
+#### save data to file
+``` shellscript
+$ cd /path/to/myproject
+$ canner data:pull -f /path/to/data.json
+```
+
+### add-git-remote
+`git:remote:add` add app url git remote path for you
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner git:remote:add <app-url>
+```
+### add-git-clone
+`git:remote:clone` clone a remote repo to local
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner git:remote:clone <app-url> <file_path>
+```
+
+### gh-deploy
+`gh-deploy` deploy canner output folder to gh-pages
+
+``` shellscript
+$ canner gh:deploy -d <directory>
+```
+
 ## What is a can
 
 `Can` are use in generating templates in `canner`, which allow you immidiately generate some popular templates.
@@ -185,7 +361,7 @@ And it is done!
 To immidiately create a template via canner is super easy. If you want to generate a template from `sample-can`, you can just enter command below.
 
 ```
-$ canner create  -g sample testfolder
+$ canner init  -g sample-can testfolder
 ```
 
 **NOTE** : `-g` stands for `--generater`
@@ -217,10 +393,10 @@ Install `sample-can` https://github.com/Canner/sample-can
 $ npm install -g sample-can
 ```
 
-Create `sample-can` template in `canner`
+Initialize `sample-can` template in `canner`
 
 ```
-$ canner create -g sample sample-folder
+$ canner init -g sample-can sample-folder
 ```
 
 Enter `sample-folder`
@@ -255,18 +431,21 @@ A can should be registered in npm, the module name should be something like `*-c
 Please go to https://github.com/Canner/canner/issues/new , and open an issue with a `can support`.
 
 ## API
+### Env
+if you want to send request to localhost, run `export CANNER_ENV='dev'`
+
 ### require
 ``` javascript
 var canner= require('canner');
 ```
 
-### Create
+### Init
 Create initial files and folders, under a directory.
 
 return a promise 
 
 ``` javascript
-canner.create(dir, generator)
+canner.init(dir, generator)
       .then(function(){
           // do your stuff
       })
@@ -298,6 +477,7 @@ canner.build(dir, options)
 * {object} options
   * output- output dir
   * engine- Your template engine
+  * data- if you want to put your own object intead of data in canner.json, and return html back, instead of write to file
 
 
 ### watch
@@ -329,6 +509,84 @@ canner.allin(htmlfile, options);
   * output {String} Path to output directory, defaults to current directory
   * minifyall {Boolean}- minify css, html, js, images or not
 
+### login
+login to canner server, save username and token in .netrc
+
+``` javascript
+auth.login().then(function (body) {
+      console.log('welcome '+body.username+'!');
+    })
+```
+
+### logout
+logout from canner server, delete host from netrc
+
+``` javascript
+auth.logout().then(function (body) {
+      console.log('successfully logout!');
+    })
+```
+
+### apps.create
+create app in canner website
+
+``` javascript
+apps.create(appUrl).then(function (app) {
+      // print success
+      // show git url
+      console.log('create app successfully!');
+      console.log('Name: '+app.url);
+      console.log('Git url: '+app.gitUrl);
+    })
+```
+
+### apps.deploy
+deploy app on canner server
+
+``` javascript
+apps.deploy(appUrl).then(function(){
+  // success
+})
+```
+
+### apps.list
+list my apps on canner server
+
+``` javascript
+apps.list()
+    .then(function (body) {
+      console.log(body)
+    })
+```
+
+### data.push
+push datas to canner app
+
+``` javascript
+var datas= { title: 'title', name: 'joe' };
+data.push(appUrl, datas).then(function(){
+  // success
+})
+```
+
+### data.pull
+pull data from app on canner website
+
+``` javascript
+data.pull(appUrl).then(function(datas){
+  // print datas
+  console.log(datas);
+})
+```
+
+### git.remote.add
+add canner git remote url to local dir
+
+``` javascript
+git.remote.add(appUrl).then(function(){
+  // success
+})
+```
 
 ### What's more
 
@@ -405,6 +663,16 @@ Add a field called `helpers` in your configure file. Such as
 }
 ```
 
+##### also support multiple helpers in array
+```js
+{
+  "layout": "index.hbs",
+  "filename": "index.html",
+  "helpers": ["helper.js", "the-other-helper.js"],
+  // ...
+}
+```
+
 `index.hbs`
 
 ```html
@@ -426,18 +694,20 @@ Add a field called `helpers` in your configure file. Such as
 `helper.js`
 
 ```js
-var hbs = require('handlebars');
+module.exports= function(hbs){
 
-hbs.registerHelper('agree_button', function() {
-  var emotion = hbs.escapeExpression(this.emotion),
-      name = hbs.escapeExpression(this.name);
+  // your helpers
+  hbs.registerHelper('agree_button', function() {
+    var emotion = hbs.escapeExpression(this.emotion),
+        name = hbs.escapeExpression(this.name);
 
-  return new hbs.SafeString(
-    "<button>I agree. I " + emotion + " " + name + "</button>"
-  );
-});
+    return new hbs.SafeString(
+      "<button>I agree. I " + emotion + " " + name + "</button>"
+    );
+  });
 
-module.exports = hbs;
+}
+
 ```
 
 **Result**:
@@ -518,3 +788,9 @@ see more docs: https://github.com/Canner/allin
 ## License
 
 MIT
+
+## todo
+- [ ] ssl support
+- [ ] add tests
+- [ ] refactor
+- [ ] git problem

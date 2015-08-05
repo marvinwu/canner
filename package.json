@@ -1,6 +1,6 @@
 {
   "name": "canner",
-  "version": "0.8.0",
+  "version": "0.9.8",
   "description": "A static webpage generator based on template engines, which aimed to deal with the maintenance difficulty between data and webpages.",
   "main": "index.js",
   "bin": {
@@ -25,27 +25,21 @@
   "homepage": "https://github.com/canner/canner",
   "dependencies": {
     "allin": "^1.1.0",
-    "async": "~0.2.10",
+    "chalk": "^1.0.0",
+    "cli-table": "^0.3.1",
     "commander": "^2.2.0",
-    "dustjs-linkedin": "^2.5.1",
-    "file-save": "^0.2.0",
-    "fs-extra": "^0.12.0",
-    "handlebars": "^2.0.0-alpha.2",
-    "jade": "^1.9.1",
-    "js-beautify": "^1.5.4",
-    "localdir": "^0.1.1",
-    "lodash": "^2.4.1",
-    "marked": "^0.3.2",
-    "md-attr": "^0.3.3",
-    "mustache": "^1.0.0",
+    "jsome": "^1.3.2",
+    "lodash": "^2.4.2",
+    "netrc2": "0.1.0",
     "node-stage": "^0.1.2",
+    "nodegit": "^0.4.0",
     "npm": "^2.1.8",
-    "nunjucks": "^1.1.0",
+    "prompt": "^0.2.14",
     "q": "^1.0.1",
-    "q-io": "^1.11.6",
-    "swig": "^1.4.2",
-    "watch": "^0.13.0",
-    "yamljs": "^0.2.1"
+    "q-io": "^1.12.0",
+    "request-promise": "^0.4.2",
+    "colors": "1.0.3",
+    "canner-core": "^0.0.4"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
