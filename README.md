@@ -641,7 +641,7 @@ Compile the section in md:
 
 See more in here: https://github.com/Canner/md-attr#usage
 
-#### Support hbs helpers
+#### Hbs helpers
 
 Add a field called `helpers` in your configure file. Such as
 
@@ -725,6 +725,78 @@ module.exports= function(hbs){
       <li><button>I agree. I want to learn Ember</button></li>
     </ul>
   </body>
+</html>
+```
+
+#### Hbs helpers
+
+Add a field called `helpers` in your configure file. Such as
+
+`canner.json`
+
+```js
+{
+  "layout": "index.hbs",
+  "filename": "index.html",
+  "helpers": "helper.js",
+  "data": {
+    "title": "test"
+  }
+}
+```
+
+##### also support multiple partials in array
+```js
+{
+  "layout": "index.hbs",
+  "filename": "index.html",
+  "partials": ["partial.js", "the-other-partial.js"],
+  // ...
+}
+```
+
+`index.hbs`
+
+```html
+<html>
+	<head>
+
+	</head>
+	<body>
+		{{title}}
+
+	  {{> person}}
+	</body>
+</html>
+
+```
+
+`partial.js`
+
+```js
+
+module.exports= function (hbs) {
+	// register a partial
+	hbs.registerPartial('person', '<div> this is a person </div>');
+
+}
+
+
+```
+
+**Result**:
+
+```html
+<html>
+	<head>
+
+	</head>
+	<body>
+		test
+
+		<div> this is a person </div>
+
+	</body>
 </html>
 ```
 
