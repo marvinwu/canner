@@ -57,6 +57,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [Multipule page](#multipule-page)
   - [Support markdown](#support-markdown)
   - [Support hbs helpers](#support-hbs-helpers)
+  - [Support hbs partials](#support-hbs-partials)
   - [Setting in YAML, js](#setting-in-yaml-js)
   - [Install themes](#install-themes)
   - [Building all js, css and images into html in canner](#building-all-js-css-and-images-into-html-in-canner)
@@ -728,9 +729,9 @@ module.exports= function(hbs){
 </html>
 ```
 
-#### Hbs helpers
+#### Hbs partials
 
-Add a field called `helpers` in your configure file. Such as
+Add a field called `partials` in your configure file. Such as
 
 `canner.json`
 
@@ -738,7 +739,7 @@ Add a field called `helpers` in your configure file. Such as
 {
   "layout": "index.hbs",
   "filename": "index.html",
-  "helpers": "helper.js",
+  "partials": "partial.js",
   "data": {
     "title": "test"
   }
