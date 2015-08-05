@@ -24,7 +24,6 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
 - [Can List](#can-list)
 - [Build Your own can](#build-your-own-can)
   - [Open issue for can support](#open-issue-for-can-support)
-- [Gh-pages](#gh-pages)
 - [API](#api)
   - [create](#create)
   - [build](#build)
