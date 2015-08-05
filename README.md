@@ -642,7 +642,7 @@ Compile the section in md:
 
 See more in here: https://github.com/Canner/md-attr#usage
 
-#### Hbs helpers
+#### hbs helpers
 
 Add a field called `helpers` in your configure file. Such as
 
@@ -729,7 +729,7 @@ module.exports= function(hbs){
 </html>
 ```
 
-#### Hbs partials
+#### hbs partials
 
 Add a field called `partials` in your configure file. Such as
 
