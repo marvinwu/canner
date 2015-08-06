@@ -39,7 +39,7 @@
     "q-io": "^1.12.0",
     "request-promise": "^0.4.2",
     "colors": "1.0.3",
-    "canner-core": "^0.0.6"
+    "canner-core": "^0.0.7"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
