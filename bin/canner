@@ -24,8 +24,18 @@ var Helper = require('../lib/helper');
 var jsome = require('jsome');
 
 var printErr = function(err) {
-  console.log(chalk.red(err));
-  console.log(err.stack);
+  if (err.statusCode == '401') {
+    console.log(chalk.red('Error: Login Required.'));
+  }
+  else if (err.statusCode == '404') {
+    console.log(chalk.red('Sorry, app not found.'));
+  }
+  else if (err.statusCode == '500') {
+    console.log(chalk.red('Server error.'));
+  }
+  else {
+    console.log(chalk.red(err));
+  }
 }
 
 
