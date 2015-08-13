@@ -25,7 +25,7 @@ var jsome = require('jsome');
 
 var printErr = function(err) {
   if (err.statusCode == '401') {
-    console.log(chalk.red('Error: Login Required.'));
+    console.log(chalk.red('Error: permission denied.'));
   }
   else if (err.statusCode == '404') {
     console.log(chalk.red('Sorry, app not found.'));
