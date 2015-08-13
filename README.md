@@ -159,8 +159,8 @@ sudo npm install -g canner
     apps:list                              list my apps
     apps:info [app_url]                    list my apps
     apps:members:list [app_url]            list app members on canner.io
-    apps:members:add [app_url] [user_id] [role]  add members to an app on canner.io
-    apps:members:remove [app_url] [user_id]    remove members from an app on canner.io
+    apps:members:add [app_url] [username] [role]  add members to an app on canner.io
+    apps:members:remove [app_url] [username]    remove members from an app on canner.io
     apps:domain:add [app_url] [domain]     add domain to an app on canner.io
     apps:domain:remove [app_url] [domain]  remove domain to an app on canner.io
     data:push [options] [app_url]          push data to app on canner.io
@@ -282,13 +282,13 @@ $ canner apps:members:list myproject
 `apps:members:add` add members to an app on `canner.io` server
 
 ```
-$ canner apps:members:add 55b9cdfe3c2cdd100736cf99 developer
+$ canner apps:members:add jay developer
 ```
 ### members-remove-apps
 `apps:members:remove` remove members from an app on `canner.io` server
 
 ```
-$ canner apps:members:remove 55b9cdfe3c2cdd100736cf99
+$ canner apps:members:remove jay
 ```
 
 ### destroy app
