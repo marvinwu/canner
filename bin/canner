@@ -28,10 +28,13 @@ var printErr = function(err) {
     console.log(chalk.red('Error: permission denied.'));
   }
   else if (err.statusCode == '404') {
-    console.log(chalk.red('Sorry, app not found.'));
+    console.log(chalk.red('Connect Error or App not found.'));
+  }
+  else if (err.statusCode == '409') {
+    console.log(chalk.red('Request already exists.'));
   }
   else if (err.statusCode == '500') {
-    console.log(chalk.red('Server error.'));
+    console.log(chalk.red('Server internal error.'));
   }
   else {
     console.log(chalk.red(err));
@@ -259,10 +262,15 @@ prog
   .description('add members to an app on canner.io')
   .usage('[options] <app_url> <username> <role>')
   .action(function(appUrl, username, role) {
-    apps.addMember(appUrl, username, role).then(function(app) {
-      // print success
-      console.log(chalk.yellow('add members successfully!'));
-    }).catch(printErr)
+    if (appUrl && username && role) {
+        apps.addMember(appUrl, username, role).then(function(app) {
+        // print success
+        console.log(chalk.yellow('add members successfully!'));
+        }).catch(printErr)
+    }
+    else {
+        prog.help();
+    }
   });
 
 // remove apps members
@@ -271,11 +279,16 @@ prog
   .description('remove members from an app on canner.io')
   .usage('[options] <app_url> <username>')
   .action(function(appUrl, username) {
-    apps.removeMember(appUrl, username).then(function(app) {
-      // print success
-      console.log(chalk.yellow('remove members successfully!'));
-    }).catch(printErr)
-  });
+    if (appUrl && username) {
+        apps.removeMember(appUrl, username).then(function(app) {
+          // print success
+          console.log(chalk.yellow('remove members successfully!'));
+        }).catch(printErr)
+    }
+    else {
+        prog.help();
+    }
+   });
 
 // apps add domain
 prog
