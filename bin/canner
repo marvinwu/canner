@@ -173,7 +173,7 @@ prog
     apps.create(appUrl).then(function(app) {
       // print success
       // show git url
-      console.log(chalk.yellow('create app successfully!'));
+      console.log(chalk.green('create app successfully!'));
       console.log(chalk.green('Name: ') + app.url);
       console.log(chalk.green('Git url: ') + app.gitUrl);
     }).catch(printErr)
@@ -188,7 +188,7 @@ prog
     apps.destory(appUrl).then(function(app) {
       // print success
       // show git url
-      console.log(chalk.yellow('destory app successfully!'));
+      console.log(chalk.green('destory app successfully!'));
       console.log(chalk.green('Name: ') + appUrl);
     }).catch(printErr)
   });
@@ -265,7 +265,7 @@ prog
     if (appUrl && username && role) {
         apps.addMember(appUrl, username, role).then(function(app) {
         // print success
-        console.log(chalk.yellow('add members successfully!'));
+        console.log(chalk.green('add members successfully!'));
         }).catch(printErr)
     }
     else {
@@ -282,7 +282,7 @@ prog
     if (appUrl && username) {
         apps.removeMember(appUrl, username).then(function(app) {
           // print success
-          console.log(chalk.yellow('remove members successfully!'));
+          console.log(chalk.green('remove members successfully!'));
         }).catch(printErr)
     }
     else {
@@ -299,7 +299,7 @@ prog
     apps.addDomain(appUrl, domain).then(function(app) {
       // print success
       // show domain
-      console.log(chalk.yellow('add domain successfully!'));
+      console.log(chalk.green('add domain successfully!'));
       console.log(chalk.green('Name: ') + appUrl);
       console.log(chalk.green('domain: ') + domain);
     }).catch(printErr)
@@ -314,7 +314,7 @@ prog
     apps.removeDomain(appUrl, domain).then(function(app) {
       // print success
       // show domain
-      console.log(chalk.yellow('remove domain successfully!'));
+      console.log(chalk.green('remove domain successfully!'));
       console.log(chalk.green('Name: ') + appUrl);
       console.log(chalk.green('domain: ') + domain);
     }).catch(printErr)
@@ -411,7 +411,7 @@ prog
 prog
   .command('git:remote:clone [app_url] [filepath]')
   .description('clone a remote repo to local dir')
-  .usage('[options] <app_url>')
+  .usage('[options] <app_url> <filepath>')
   .action(function(appUrl, filepath, options) {
     git.remote.clone(appUrl, filepath).then(function(params) {
         console.log(util.format('App %s has clone to %s!!', params.name, params.path));
@@ -419,6 +419,19 @@ prog
       })
       .catch(printErr)
   })
+
+// git push
+prog
+  .command('git:push [app_url]')
+  .description('push a local repo to remote')
+  .usage('[options] <app_url>')
+  .action(function(appUrl, filepath, options) {
+    git.push(appUrl).then(function() {
+      })
+      .catch(printErr)
+  })
+
+
 
 // gh deploy
 prog
