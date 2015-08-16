@@ -29,7 +29,8 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [domain remove apps](#domain-remove-apps)
   - [push data](#push-data)
   - [pull data](#pull-data)
-  - [add git remote](#add-git-remote)
+  - [git remote add](#git-remote-add)
+  - [git remote clone](#git-remote-clone)
   - [gh deploy](#gh-deploy)
 - [What is a can](#what-is-a-can)
   - [Getting a can](#getting-a-can)
@@ -53,6 +54,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [data.pull](#datapull)
   - [git.remote.add](#gitremoteadd)
   - [git.remote.clone](#gitremoteclone)
+  - [git.push](#gitpush)
 - [What's more](#whats-more)
   - [Multipule page](#multipule-page)
   - [Support markdown](#support-markdown)
@@ -167,6 +169,7 @@ sudo npm install -g canner
     data:pull [options] [app_url]          pull data from app on canner.io
     git:remote:add [app_url]               add remote url to local dir
     git:remote:clone [app_url] [filepath]  clone a remote repo to local dir
+    git:push [options] [app_url]           push a local repo to remote
     gh:deploy [options]                    deploy the output folder to gh-pages
     configs:set [params] [app_url]         set configs to app on canner.io
     configs:get [app_url]                  get configs of an app on canner.io
@@ -239,7 +242,7 @@ $ canner apps:create myproject
 #### push source to server
 ``` shellscript
 $ cd /path/to/myproject
-$ git push canner master
+$ canner git:push -d canner.json
 ```
 
 ### deploy-app
@@ -321,19 +324,26 @@ $ cd /path/to/myproject
 $ canner data:pull -f /path/to/data.json
 ```
 
-### add-git-remote
+### git-remote-add
 `git:remote:add` add app url git remote path for you
 
 ``` shellscript
 $ cd /path/to/myproject
 $ canner git:remote:add <app-url>
 ```
-### add-git-clone
+### git-remote-clone
 `git:remote:clone` clone a remote repo to local
 
 ``` shellscript
 $ cd /path/to/myproject
 $ canner git:remote:clone <app-url> <file_path>
+```
+### git-push
+`git:push` push a local repo to remote, option `-d` push with your data path
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner git:push <options> <app_url>
 ```
 
 ### gh-deploy
