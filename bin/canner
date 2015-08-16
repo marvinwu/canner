@@ -422,13 +422,31 @@ prog
       .catch(printErr)
   })
 
-// git push
+// git push 
 prog
   .command('git:push [app_url]')
   .description('push a local repo to remote')
   .usage('[options] <app_url>')
-  .action(function(appUrl, filepath, options) {
-    git.push(appUrl).then(function() {})
+  .option('-d, --data_path <data_path>', 'push with the file source of your data ')
+  .action(function(appUrl, options) {
+    var datas;
+    git.push(appUrl)
+      .then(function() {
+        // get data
+        if (options.data_path) {
+          datas = require(path.resolve(process.cwd(), options.data_path));
+        } 
+
+        // push
+        // get url
+        return apps.getUrl(appUrl);
+      })
+      // push data to server
+      .then(function(url) {
+        if (datas) {
+          data.push(url, datas);
+        }
+      })
       .catch(printErr)
   })
 
