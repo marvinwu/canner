@@ -26,17 +26,13 @@ var jsome = require('jsome');
 var printErr = function(err) {
   if (err.statusCode == '401') {
     console.log(chalk.red('Error: permission denied.'));
-  }
-  else if (err.statusCode == '404') {
+  } else if (err.statusCode == '404') {
     console.log(chalk.red('Connect Error or App not found.'));
-  }
-  else if (err.statusCode == '409') {
+  } else if (err.statusCode == '409') {
     console.log(chalk.red('Request already exists.'));
-  }
-  else if (err.statusCode == '500') {
+  } else if (err.statusCode == '500') {
     console.log(chalk.red('Server internal error.'));
-  }
-  else {
+  } else {
     console.log(chalk.red(err));
   }
 }
@@ -263,13 +259,12 @@ prog
   .usage('[options] <app_url> <username> <role>')
   .action(function(appUrl, username, role) {
     if (appUrl && username && role) {
-        apps.addMember(appUrl, username, role).then(function(app) {
+      apps.addMember(appUrl, username, role).then(function(app) {
         // print success
         console.log(chalk.green('add members successfully!'));
-        }).catch(printErr)
-    }
-    else {
-        prog.help();
+      }).catch(printErr)
+    } else {
+      prog.help();
     }
   });
 
@@ -280,15 +275,14 @@ prog
   .usage('[options] <app_url> <username>')
   .action(function(appUrl, username) {
     if (appUrl && username) {
-        apps.removeMember(appUrl, username).then(function(app) {
-          // print success
-          console.log(chalk.green('remove members successfully!'));
-        }).catch(printErr)
+      apps.removeMember(appUrl, username).then(function(app) {
+        // print success
+        console.log(chalk.green('remove members successfully!'));
+      }).catch(printErr)
+    } else {
+      prog.help();
     }
-    else {
-        prog.help();
-    }
-   });
+  });
 
 // apps add domain
 prog
@@ -296,13 +290,17 @@ prog
   .description('add a custom domain to an app on canner.io')
   .usage('[options] <app_url> <domain>')
   .action(function(appUrl, domain) {
-    apps.addDomain(appUrl, domain).then(function(app) {
-      // print success
-      // show domain
-      console.log(chalk.green('add domain successfully!'));
-      console.log(chalk.green('Name: ') + appUrl);
-      console.log(chalk.green('domain: ') + domain);
-    }).catch(printErr)
+    if (appUrl && domain)
+      apps.addDomain(appUrl, domain).then(function(app) {
+        // print success
+        // show domain
+        console.log(chalk.green('add domain successfully!'));
+        console.log(chalk.green('Name: ') + appUrl);
+        console.log(chalk.green('domain: ') + domain);
+      }).catch(printErr)
+    else {
+      prog.help();
+    }
   });
 
 // apps remove domain
@@ -311,13 +309,17 @@ prog
   .description('remove a custom domain to an app on canner.io')
   .usage('[options] <app_url> <domain>')
   .action(function(appUrl, domain) {
-    apps.removeDomain(appUrl, domain).then(function(app) {
-      // print success
-      // show domain
-      console.log(chalk.green('remove domain successfully!'));
-      console.log(chalk.green('Name: ') + appUrl);
-      console.log(chalk.green('domain: ') + domain);
-    }).catch(printErr)
+    if (appUrl && domain) {
+      apps.removeDomain(appUrl, domain).then(function(app) {
+        // print success
+        // show domain
+        console.log(chalk.green('remove domain successfully!'));
+        console.log(chalk.green('Name: ') + appUrl);
+        console.log(chalk.green('domain: ') + domain);
+      }).catch(printErr)
+    } else {
+      prog.help();
+    }
   });
 
 // apps data push
@@ -426,8 +428,7 @@ prog
   .description('push a local repo to remote')
   .usage('[options] <app_url>')
   .action(function(appUrl, filepath, options) {
-    git.push(appUrl).then(function() {
-      })
+    git.push(appUrl).then(function() {})
       .catch(printErr)
   })
 
