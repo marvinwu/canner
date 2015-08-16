@@ -157,7 +157,7 @@ sudo npm install -g canner
     apps:destroy [app_url]                 destroy an app on canner.io
     apps:deploy [app_url]                  deploy an app on canner.io
     apps:list                              list my apps
-    apps:info [app_url]                    list my apps
+    apps:info [app_url]                    show the app's information
     apps:members:list [app_url]            list app members on canner.io
     apps:members:add [app_url] [username] [role]  add members to an app on canner.io
     apps:members:remove [app_url] [username]    remove members from an app on canner.io

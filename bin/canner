@@ -185,7 +185,7 @@ prog
   .description('destroy an app on canner.io')
   .usage('[options] <app_url>')
   .action(function(appUrl) {
-    apps.destory(appUrl).then(function(app) {
+    apps.destory(appUrl).then(function(body) {
       // print success
       // show git url
       console.log(chalk.green('destory app successfully!'));
@@ -227,7 +227,7 @@ prog
 
 prog
   .command('apps:info [app_url]')
-  .description('list my apps')
+  .description('show the app\'s information')
   .action(function(appUrl) {
     apps.getUrl(appUrl)
       .then(apps.info)
