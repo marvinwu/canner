@@ -426,10 +426,13 @@ prog
 prog
   .command('git:push [app_url]')
   .description('push a local repo to remote')
-  .usage('[options] <app_url>')
+  .usage('[options] <app_url, default the current folder name>')
   .option('-d, --data_path <data_path>', 'push with the file source of your data ')
   .action(function(appUrl, options) {
     var datas;
+    var arr = process.cwd().split('/');
+    appUrl = appUrl || arr[arr.length-1];
+
     git.push(appUrl)
       .then(function() {
         // get data
