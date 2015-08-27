@@ -434,7 +434,7 @@ prog
     appUrl = appUrl || arr[arr.length-1];
 
     git.push(appUrl)
-      .then(function() {
+      .then(function(result) {
         // get data
         if (options.data_path) {
           datas = require(path.resolve(process.cwd(), options.data_path));
@@ -449,6 +449,7 @@ prog
         if (datas) {
           data.push(url, datas);
         }
+        console.log(chalk.green(util.format('Push %s to canner master successfully!', appUrl)));
       })
       .catch(printErr)
   })
