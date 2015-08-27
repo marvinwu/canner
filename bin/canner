@@ -411,13 +411,13 @@ prog
 
 // git remote clone
 prog
-  .command('git:remote:clone [app_url] [filepath]')
+  .command('git:remote:clone [app_url]')
   .description('clone a remote repo to local dir')
-  .usage('[options] <app_url> <filepath>')
-  .action(function(appUrl, filepath, options) {
-    git.remote.clone(appUrl, filepath).then(function(params) {
+  .usage('[options] <app_url>')
+  .action(function(appUrl, options) {
+    git.remote.clone(appUrl).then(function(params) {
         console.log(util.format('App %s has clone to %s!!', params.name, params.path));
-        console.log(util.format('Git url: %s', params.url));
+        console.log(chalk.green('Git url: ') + params.url);
       })
       .catch(printErr)
   })

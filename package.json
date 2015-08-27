@@ -32,13 +32,13 @@
     "lodash": "^2.4.2",
     "netrc2": "0.1.0",
     "node-stage": "^0.1.2",
-    "nodegit": "^0.4.0",
     "npm": "^2.1.8",
     "prompt": "^0.2.14",
     "q": "^1.0.1",
     "q-io": "^1.12.0",
     "request-promise": "^0.4.2",
     "colors": "1.0.3",
+    "child-process-promise": "^1.1.0",
     "canner-core": "^0.0.7"
   },
   "devDependencies": {
