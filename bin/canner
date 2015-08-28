@@ -233,6 +233,20 @@ prog
       .catch(printErr)
   });
 
+prog
+  .command('apps:open [app_url]')
+  .description('open default browser and navigate to the app')
+  .usage('[options] <app_url, default the current folder name>')
+  .action(function(appUrl) {
+    var arr = process.cwd().split('/');
+    appUrl = appUrl || arr[arr.length-1];
+    if (!appUrl) {
+      return
+    }
+    apps.open(appUrl)
+      .catch(printErr)
+  });
+
 // list apps members
 prog
   .command('apps:members:list [app_url]')
@@ -286,7 +300,7 @@ prog
 
 // apps add domain
 prog
-  .command('apps:domain:add [app_url] [domain]')
+  .command('apps:domains:add [app_url] [domain]')
   .description('add a custom domain to an app on canner.io')
   .usage('[options] <app_url> <domain>')
   .action(function(appUrl, domain) {
@@ -305,7 +319,7 @@ prog
 
 // apps remove domain
 prog
-  .command('apps:domain:remove [app_url] [domain]')
+  .command('apps:domains:remove [app_url] [domain]')
   .description('remove a custom domain to an app on canner.io')
   .usage('[options] <app_url> <domain>')
   .action(function(appUrl, domain) {
