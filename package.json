@@ -39,7 +39,8 @@
     "request-promise": "^0.4.2",
     "colors": "1.0.3",
     "child-process-promise": "^1.1.0",
-    "canner-core": "^0.0.7"
+    "canner-core": "^0.0.7",
+    "open": "^0.0.3"
   },
   "devDependencies": {
     "mocha": "^2.1.0"

@@ -22,11 +22,13 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [destroy app](#destroy-app)
   - [deploy app](#deploy-app)
   - [list apps](#list-apps)
+  - [info apps](#info-apps)
+  - [open apps](#open-apps)
   - [members list apps](#members-list-apps)
   - [members add apps](#members-add-apps)
   - [members remove apps](#members-remove-apps)
-  - [domain add apps](#domain-add-apps)
-  - [domain remove apps](#domain-remove-apps)
+  - [domains add apps](#domain-add-apps)
+  - [domains remove apps](#domain-remove-apps)
   - [push data](#push-data)
   - [pull data](#pull-data)
   - [git remote add](#git-remote-add)
@@ -160,11 +162,12 @@ sudo npm install -g canner
     apps:deploy [app_url]                  deploy an app on canner.io
     apps:list                              list my apps
     apps:info [app_url]                    show the app's information
+    apps:open [app_url]                    open default browser and navigate to the app
     apps:members:list [app_url]            list app members on canner.io
     apps:members:add [app_url] [username] [role]  add members to an app on canner.io
     apps:members:remove [app_url] [username]    remove members from an app on canner.io
-    apps:domain:add [app_url] [domain]     add domain to an app on canner.io
-    apps:domain:remove [app_url] [domain]  remove domain to an app on canner.io
+    apps:domains:add [app_url] [domain]     add domain to an app on canner.io
+    apps:domains:remove [app_url] [domain]  remove domain to an app on canner.io
     data:push [options] [app_url]          push data to app on canner.io
     data:pull [options] [app_url]          pull data from app on canner.io
     git:remote:add [app_url]               add remote url to local dir
@@ -261,18 +264,33 @@ $ canner apps:list
 
 ```
 
-### domain-add-apps
-`apps:domain:add` add a custom domain your apps on `canner.io` server
+### info-apps
+`apps:info` show your app's information.
+
+``` shellscript
+$ canner apps:info myproject
+```
+
+### open-apps
+`apps:open` open default browser and navigate to the app
+
+``` shellscript
+$ cd /path/to/myproject
+$ canner apps:open
+```
+
+### domains-add-apps
+`apps:domains:add` add a custom domain your apps on `canner.io` server
 
 ```
-$ canner apps:domain:add myproject www.domain.com
+$ canner apps:domains:add myproject www.domain.com
 ```
 
-### domain-remove-apps
+### domains-remove-apps
 `apps:domain:remove` remove a custom domain your apps on `canner.io` server
 
 ```
-$ canner apps:domain:remove myproject www.domain.com
+$ canner apps:domains:remove myproject www.domain.com
 ```
 
 ### members-list-apps
