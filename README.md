@@ -22,13 +22,13 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [destroy app](#destroy-app)
   - [deploy app](#deploy-app)
   - [list apps](#list-apps)
-  - [info apps](#info-apps)
-  - [open apps](#open-apps)
-  - [members list apps](#members-list-apps)
-  - [members add apps](#members-add-apps)
-  - [members remove apps](#members-remove-apps)
-  - [domains add apps](#domain-add-apps)
-  - [domains remove apps](#domain-remove-apps)
+  - [info app](#info-app)
+  - [open app](#open-app)
+  - [members list app](#members-list-appp)
+  - [members add app](#members-add-app)
+  - [members remove app](#members-remove-app)
+  - [domains add app](#domain-add-app)
+  - [domains remove app](#domain-remove-app)
   - [push data](#push-data)
   - [pull data](#pull-data)
   - [git remote add](#git-remote-add)
@@ -264,14 +264,14 @@ $ canner apps:list
 
 ```
 
-### info-apps
+### info-app
 `apps:info` show your app's information.
 
 ``` shellscript
 $ canner apps:info myproject
 ```
 
-### open-apps
+### open-app
 `apps:open` open default browser and navigate to the app
 
 ``` shellscript
@@ -279,33 +279,33 @@ $ cd /path/to/myproject
 $ canner apps:open
 ```
 
-### domains-add-apps
+### domains-add-app
 `apps:domains:add` add a custom domain your apps on `canner.io` server
 
 ```
 $ canner apps:domains:add myproject www.domain.com
 ```
 
-### domains-remove-apps
+### domains-remove-app
 `apps:domain:remove` remove a custom domain your apps on `canner.io` server
 
 ```
 $ canner apps:domains:remove myproject www.domain.com
 ```
 
-### members-list-apps
+### members-list-app
 `apps:members:list` show apps members on `canner.io` server
 
 ```
 $ canner apps:members:list myproject
 ```
-### members-add-apps
+### members-add-app
 `apps:members:add` add members to an app on `canner.io` server
 
 ```
 $ canner apps:members:add jay developer
 ```
-### members-remove-apps
+### members-remove-app
 `apps:members:remove` remove members from an app on `canner.io` server
 
 ```
