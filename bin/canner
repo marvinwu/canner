@@ -433,25 +433,33 @@ prog
     var arr = process.cwd().split('/');
     appUrl = appUrl || arr[arr.length-1];
 
+    // repo code push
     git.push(appUrl)
       .then(function(result) {
-        // get data
-        if (options.data_path) {
-          datas = require(path.resolve(process.cwd(), options.data_path));
-        } 
-
-        // push
-        // get url
-        return apps.getUrl(appUrl);
-      })
-      // push data to server
-      .then(function(url) {
-        if (datas) {
-          data.push(url, datas);
-        }
+        if (result.stderr)
+          console.log(result.stderr.slice(0,-1));
         console.log(chalk.green(util.format('Push %s to canner master successfully!', appUrl)));
-      })
-      .catch(printErr)
+
+        if (!options.data_path) 
+          return;
+
+        // get data
+        datas = require(path.resolve(process.cwd(), options.data_path));
+    
+        // get url
+        return apps.getUrl(appUrl)
+          // push data to server
+          .then(function(url) {
+            return data.push(url, datas);
+          })
+          // done
+          .then(function() {
+            console.log(chalk.green(util.format('- Push data %s successfully!', 
+              options.data_path)));
+          })
+          .catch(printErr)
+       })
+        .catch(printErr)
   })
 
 
