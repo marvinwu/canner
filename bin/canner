@@ -345,7 +345,7 @@ prog
   .action(function(appUrl, options) {
     // get data
     if (options.data_path) {
-      var datas = require(path.resolve(process.cwd(), options.data_path));
+      var datas = require(path.resolve(process.cwd(), options.data_path)).data;
     } else {
       // default read cannerjson data
       var datas = require(path.resolve(process.cwd(), './canner.json')).data;
@@ -458,7 +458,7 @@ prog
           return;
 
         // get data
-        datas = require(path.resolve(process.cwd(), options.data_path));
+        datas = require(path.resolve(process.cwd(), options.data_path)).data;
     
         // get url
         return apps.getUrl(appUrl)
