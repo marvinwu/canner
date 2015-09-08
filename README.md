@@ -20,6 +20,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [logging out](#logging-out)
   - [create app](#create-app)
   - [destroy app](#destroy-app)
+  - [push app](#push-app)
   - [deploy app](#deploy-app)
   - [list apps](#list-apps)
   - [info app](#info-app)
@@ -158,6 +159,7 @@ sudo npm install -g canner
     logout                                 logout from canner.io api
     apps:create [app_url]                  create an app on canner.io
     apps:destroy [app_url]                 destroy an app on canner.io
+    apps:push [options] [app_url]          push a local app to remote
     apps:deploy [app_url]                  deploy an app on canner.io
     apps:list                              list my apps
     apps:info [app_url]                    show the app's information
@@ -171,7 +173,6 @@ sudo npm install -g canner
     data:pull [options] [app_url]          pull data from app on canner.io
     git:remote:add [app_url]               add remote url to local dir
     git:clone [app_url] [filepath]  clone a remote repo to local dir
-    git:push [options] [app_url]           push a local repo to remote
     gh:deploy [options]                    deploy the output folder to gh-pages
     configs:set [params] [app_url]         set configs to app on canner.io
     configs:get [app_url]                  get configs of an app on canner.io
@@ -245,7 +246,7 @@ $ git remote add canner http://git.canner.io/myproject.git
 ```
 #### push source to server
 ``` shellscript
-$ canner git:push -d canner.json
+$ canner apps:push
 ```
 
 ### deploy-app
@@ -356,12 +357,13 @@ $ canner git:remote:add <app-url>
 $ cd /path/to/myproject
 $ canner git:clone <app-url> <file_path>
 ```
-### git-push
-`git:push` push a local repo to remote, option `-d` push with your data path
+### apps-push
+`apps:push` push a local repo to remote, option `-d` specify your data path, 
+`default canner.json`
 
 ``` shellscript
 $ cd /path/to/myproject
-$ canner git:push <options> <app_url>
+$ canner apps:push <options>
 ```
 
 ### gh-deploy

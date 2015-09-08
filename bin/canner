@@ -194,6 +194,50 @@ prog
     }).catch(printErr)
   });
 
+// apps push 
+prog
+  .command('apps:push [app_url]')
+  .description('push a local app to remote')
+  .usage('[options] <app_url, default the current folder name>')
+  .option('-d, --data_path <data_path>', 'push with the file source of your data ')
+  .action(function(appUrl, options) {
+    var datas;
+    var dataPath;
+    var arr = process.cwd().split('/');
+    appUrl = appUrl || arr[arr.length-1];
+    options.data_path = options.data_path || './canner.json';
+    dataPath = path.resolve(process.cwd(), options.data_path);
+
+    // repo code push
+    apps.push(appUrl)
+      .then(function(result) {
+        if (result.stderr)
+          console.log(result.stderr.slice(0,-1));
+        console.log(chalk.green(util.format('Push %s to canner master successfully!', appUrl)));
+
+        if (!fs.existsSync(dataPath)) {
+          console.log(chalk.red('Cannot find data ' + dataPath));
+          return;
+        }
+        // get data
+        datas = require(dataPath).data;
+     
+        // get url
+        return apps.getUrl(appUrl)
+          // push data to server
+          .then(function(url) {
+            return data.push(url, datas);
+          })
+          // done
+          .then(function() {
+            console.log(chalk.green(util.format('- Push data %s successfully!', 
+              options.data_path)));
+          })
+          .catch(printErr)
+       })
+        .catch(printErr)
+  })
+
 
 // apps deploy
 prog
@@ -442,48 +486,6 @@ prog
       })
       .catch(printErr)
   })
-
-// git push 
-prog
-  .command('git:push [app_url]')
-  .description('push a local repo to remote')
-  .usage('[options] <app_url, default the current folder name>')
-  .option('-d, --data_path <data_path>', 'push with the file source of your data ')
-  .action(function(appUrl, options) {
-    var datas;
-    var arr = process.cwd().split('/');
-    appUrl = appUrl || arr[arr.length-1];
-
-    // repo code push
-    git.push(appUrl)
-      .then(function(result) {
-        if (result.stderr)
-          console.log(result.stderr.slice(0,-1));
-        console.log(chalk.green(util.format('Push %s to canner master successfully!', appUrl)));
-
-        if (!options.data_path) 
-          return;
-
-        // get data
-        datas = require(path.resolve(process.cwd(), options.data_path)).data;
-    
-        // get url
-        return apps.getUrl(appUrl)
-          // push data to server
-          .then(function(url) {
-            return data.push(url, datas);
-          })
-          // done
-          .then(function() {
-            console.log(chalk.green(util.format('- Push data %s successfully!', 
-              options.data_path)));
-          })
-          .catch(printErr)
-       })
-        .catch(printErr)
-  })
-
-
 
 // gh deploy
 prog
