@@ -498,7 +498,10 @@ prog
     if (options.directory) {
       dir = options.directory;
     }
-    gh.deploy(dir);
+    gh.deploy(dir)
+      .then(function(result) {
+        console.log(chalk.green('successfully deploy!'));
+      });
   });
 
 // configs:set xyz=1
