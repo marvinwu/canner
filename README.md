@@ -24,11 +24,11 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [list apps](#list-apps)
   - [info app](#info-app)
   - [open app](#open-app)
-  - [members list app](#members-list-appp)
+  - [members list app](#members-list-app)
   - [members add app](#members-add-app)
   - [members remove app](#members-remove-app)
-  - [domains add app](#domain-add-app)
-  - [domains remove app](#domain-remove-app)
+  - [domains add app](#domains-add-app)
+  - [domains remove app](#domains-remove-app)
   - [push data](#push-data)
   - [pull data](#pull-data)
   - [git remote add](#git-remote-add)
@@ -56,7 +56,6 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [data.pull](#datapull)
   - [git.remote.add](#gitremoteadd)
   - [git.remote.clone](#gitremoteclone)
-  - [git.push](#gitpush)
 - [What's more](#whats-more)
   - [Multipule page](#multipule-page)
   - [Support markdown](#support-markdown)
@@ -247,6 +246,7 @@ $ git remote add canner http://git.canner.io/myproject.git
 #### push source to server
 ``` shellscript
 $ canner git:push -d canner.json
+```
 
 ### deploy-app
 `apps:deploy` deploy your app on `canner.io` server
@@ -613,6 +613,15 @@ add canner git remote url to local dir
 
 ``` javascript
 git.remote.add(appUrl).then(function(){
+  // success
+})
+```
+
+### git.remote.clone
+clone a git remote app to local dir
+
+``` javascript
+git.remote.clone(app).then(function() {
   // success
 })
 ```
