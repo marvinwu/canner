@@ -7,6 +7,7 @@ var path = require('path');
 var stage = require('node-stage');
 var Q = require('q');
 var FS = require("q-io/fs");
+var fs = require("fs");
 var chalk = require('chalk');
 var util = require('util');
 
@@ -166,6 +167,10 @@ prog
   .description('create an app on canner.io')
   .usage('[options] <app_url>')
   .action(function(appUrl) {
+    if (!appUrl) {
+      prog.help();
+      return; 
+    }
     apps.create(appUrl).then(function(app) {
       // print success
       // show git url
@@ -343,13 +348,15 @@ prog
   .usage('[options] <app_url>')
   .option('-d, --data_path <data_path>', 'file source of your data ')
   .action(function(appUrl, options) {
-    // get data
-    if (options.data_path) {
-      var datas = require(path.resolve(process.cwd(), options.data_path)).data;
-    } else {
-      // default read cannerjson data
-      var datas = require(path.resolve(process.cwd(), './canner.json')).data;
+    options.data_path = options.data_path || './canner.json';
+    var dataPath = path.resolve(process.cwd(), options.data_path);
+   
+    if (!fs.existsSync(dataPath)) {
+      console.log(chalk.red('Cannot find data ' + dataPath));
+      return;
     }
+    // get data
+    var datas = require(dataPath).data;
 
     // push
     // get url
