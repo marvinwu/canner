@@ -32,7 +32,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [push data](#push-data)
   - [pull data](#pull-data)
   - [git remote add](#git-remote-add)
-  - [git remote clone](#git-remote-clone)
+  - [git clone](#git-clone)
   - [gh deploy](#gh-deploy)
 - [What is a can](#what-is-a-can)
   - [Getting a can](#getting-a-can)
@@ -55,7 +55,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
   - [data.push](#datapush)
   - [data.pull](#datapull)
   - [git.remote.add](#gitremoteadd)
-  - [git.remote.clone](#gitremoteclone)
+  - [git.clone](#gitclone)
 - [What's more](#whats-more)
   - [Multipule page](#multipule-page)
   - [Support markdown](#support-markdown)
@@ -170,7 +170,7 @@ sudo npm install -g canner
     data:push [options] [app_url]          push data to app on canner.io
     data:pull [options] [app_url]          pull data from app on canner.io
     git:remote:add [app_url]               add remote url to local dir
-    git:remote:clone [app_url] [filepath]  clone a remote repo to local dir
+    git:clone [app_url] [filepath]  clone a remote repo to local dir
     git:push [options] [app_url]           push a local repo to remote
     gh:deploy [options]                    deploy the output folder to gh-pages
     configs:set [params] [app_url]         set configs to app on canner.io
@@ -349,12 +349,12 @@ $ canner data:pull -f /path/to/data.json
 $ cd /path/to/myproject
 $ canner git:remote:add <app-url>
 ```
-### git-remote-clone
-`git:remote:clone` clone a remote repo to local
+### git-clone
+`git:clone` clone a remote repo to local
 
 ``` shellscript
 $ cd /path/to/myproject
-$ canner git:remote:clone <app-url> <file_path>
+$ canner git:clone <app-url> <file_path>
 ```
 ### git-push
 `git:push` push a local repo to remote, option `-d` push with your data path
@@ -617,11 +617,11 @@ git.remote.add(appUrl).then(function(){
 })
 ```
 
-### git.remote.clone
+### git.clone
 clone a git remote app to local dir
 
 ``` javascript
-git.remote.clone(app).then(function() {
+git.clone(app).then(function() {
   // success
 })
 ```
