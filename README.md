@@ -244,8 +244,10 @@ $ canner apps:create myproject
 > Git url: http://git.canner.io/myproject.git
 $ git remote add canner http://git.canner.io/myproject.git
 ```
-#### push source to server
+### push-app
+`apps:push` push a local repo to remote, option `-d` specify your data path, default `canner.json`
 ``` shellscript
+$ cd /path/to/myproject
 $ canner apps:push
 ```
 
@@ -356,14 +358,6 @@ $ canner git:remote:add <app-url>
 ``` shellscript
 $ cd /path/to/myproject
 $ canner git:clone <app-url> <file_path>
-```
-### apps-push
-`apps:push` push a local repo to remote, option `-d` specify your data path, 
-`default canner.json`
-
-``` shellscript
-$ cd /path/to/myproject
-$ canner apps:push <options>
 ```
 
 ### gh-deploy
