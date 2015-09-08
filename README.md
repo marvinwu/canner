@@ -236,17 +236,17 @@ $ canner logout
 `apps:create` create an app on `canner.io` server, and add git remote on you folder
 
 ``` shellscript
+$ mkdir myproject && cd myproject
+$ git init
 $ canner apps:create myproject
 > create app successfully!
 > Name: myproject
 > Git url: http://git.canner.io/myproject.git
+$ git remote add canner http://git.canner.io/myproject.git
 ```
-
 #### push source to server
 ``` shellscript
-$ cd /path/to/myproject
 $ canner git:push -d canner.json
-```
 
 ### deploy-app
 `apps:deploy` deploy your app on `canner.io` server
