@@ -12,7 +12,7 @@ Canner seperate data from html, like handlebars, nunjucks. But we provide templa
 
 - [How do canner works](#how-do-canner-works)
 - [How to install](#how-to-install)
-- [See more](#see-more)
+- [Learn More](#learn-more)
 - [License](#license)
 
 ## How do canner works
@@ -75,47 +75,14 @@ First of all, there are three main settings `layout`, `filename`, `data`, here i
 sudo npm install -g canner
 ```
 
-## Command
+## Learn more
 
-
-```
-  Usage: canner [options] [command]
-
-  Commands:
-    init [options] [source_dir]            initialize files and folders, under a directory.
-    build [options] [canner.json]          build a canner from a canner.json
-    watch [options] [canner.json]          watching any changes in a canner and recompiled
-    allin [options] [htmlfile]             make html include files all warp allin
-    login                                  login to use canner.io api
-    logout                                 logout from canner.io api
-    apps:create [app_url]                  create an app on canner.io
-    apps:destroy [app_url]                 destroy an app on canner.io
-    apps:push [options] [app_url]          push a local app to remote
-    apps:deploy [app_url]                  deploy an app on canner.io
-    apps:list                              list my apps
-    apps:info [app_url]                    show the app's information
-    apps:open [app_url]                    open default browser and navigate to the app
-    apps:members:list [app_url]            list app members on canner.io
-    apps:members:add [app_url] [username] [role]  add members to an app on canner.io
-    apps:members:remove [app_url] [username]    remove members from an app on canner.io
-    apps:domains:add [app_url] [domain]     add domain to an app on canner.io
-    apps:domains:remove [app_url] [domain]  remove domain to an app on canner.io
-    data:push [options] [app_url]          push data to app on canner.io
-    data:pull [options] [app_url]          pull data from app on canner.io
-    git:remote:add [app_url]               add remote url to local dir
-    git:clone [app_url] [filepath]  clone a remote repo to local dir
-    gh:deploy [options]                    deploy the output folder to gh-pages
-    configs:set [params] [app_url]         set configs to app on canner.io
-    configs:get [app_url]                  get configs of an app on canner.io
-
-  Options:
-
-    -h, --help     output usage information
-    -V, --version  output the version number
-```
-
-## See more
-[Canner Wiki](https://github.com/Canner/canner/wiki)
+- [Canner API](https://github.com/Canner/canner/wiki/Canner-API)
+- [Command Reference](https://github.com/Canner/canner/wiki/Command-Reference)
+- [Projects built by canner](https://github.com/Canner/canner/wiki/Projects-built-by-canner)
+- [Template engines](https://github.com/Canner/canner/wiki/Template-engines)
+- [What is a can](https://github.com/Canner/canner/wiki/What-is-a-can)
+- [What's more](https://github.com/Canner/canner/wiki/What's-more)
 
 ## License
 
