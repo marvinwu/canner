@@ -23,6 +23,8 @@ var git = require('../lib/git');
 var gh = require('../lib/gh');
 var Helper = require('../lib/helper');
 var jsome = require('jsome');
+var canner_extract = require('canner-extract');
+var extract = Q.nfbind(canner_extract);
 
 var printErr = function(err) {
   if (err.statusCode == '401') {
@@ -463,13 +465,16 @@ prog
   });
 
 // data extract
-/*prog
-  .command('data:extract [html]')
+prog
+  .command('data:extract [html_file]')
   .description('extract data from html')
-  .usage('[options] <html>')
+  .usage('[options] <html_file, default value: "index.html">')
   .action(function(html, options) {
- 
-  });*/
+    var html_file = prog.args[0] ? prog.args[0] : './index.html';
+    
+    return extract(html_file, 'index', 'index')
+      .catch(printErr);
+  });
 
 // git remote:add
 prog

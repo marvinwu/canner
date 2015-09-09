@@ -40,7 +40,8 @@
     "colors": "1.0.3",
     "child-process-promise": "^1.1.0",
     "canner-core": "^0.0.7",
-    "open": "^0.0.3"
+    "open": "^0.0.3",
+    "canner-extract": ""
   },
   "devDependencies": {
     "mocha": "^2.1.0"
