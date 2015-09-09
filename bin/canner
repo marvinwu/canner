@@ -36,6 +36,7 @@ var printErr = function(err) {
   } else {
     console.log(chalk.red(err));
   }
+  console.log('If the error is unexpected, please go to https://github.com/Canner/canner/issues/new, and open an issue.')
 }
 
 
@@ -460,6 +461,15 @@ prog
       })
       .catch(printErr)
   });
+
+// data extract
+/*prog
+  .command('data:extract [html]')
+  .description('extract data from html')
+  .usage('[options] <html>')
+  .action(function(html, options) {
+ 
+  });*/
 
 // git remote:add
 prog
