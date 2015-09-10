@@ -22,8 +22,7 @@ var git = require('../lib/git');
 var gh = require('../lib/gh');
 var Helper = require('../lib/helper');
 var jsome = require('jsome');
-var canner_extract = Q.nfbind(require('canner-extract'));
-var extract_html = require('extract-html');
+var canner_extract = require('canner-extract');
 
 var printErr = function(err) {
   if (err.statusCode == '401') {
@@ -476,27 +475,15 @@ prog
     var htmlPath = path.join(process.cwd(), htmlFile);
     
     if (options.manually) {
-      return canner_extract(htmlFile, 'index', 'index')
-        .then(function() {
-          console.log(chalk.green('successfully output `./index.hbs` and `./canner.json.`')); 
-        })
-        .catch(printErr);
+      return canner_extract.manually(htmlFile, './index', './index')
+        .catch(function(err) {
+          console.error(err);
+      });
     }
-    
-    extract_html(htmlPath, {}, function(err, hbs, json) {
-      if (err) {
-        printErr(err);
-      }
-      var output = {layout: "./index.hbs", data: json};
-      
-      FS.write('./index.hbs', hbs)
-        .then(function() {
-          return FS.write('./canner.json', output);
-        })
-        .then(function() {
-          console.log(chalk.green('successfully output `./index.hbs` and `./canner.json.`')); 
-        });
-    });
+    return canner_extract.auto(htmlFile, './index', './index')
+      .catch(function(err) {
+        console.error(err);
+      });
   });
 
 // git remote:add
