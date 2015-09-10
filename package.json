@@ -41,7 +41,8 @@
     "child-process-promise": "^1.1.0",
     "canner-core": "^0.0.7",
     "open": "^0.0.3",
-    "canner-extract": ""
+    "canner-extract": "",
+    "extract-html": "^0.1.2"
   },
   "devDependencies": {
     "mocha": "^2.1.0"

@@ -7,7 +7,6 @@ var path = require('path');
 var stage = require('node-stage');
 var Q = require('q');
 var FS = require("q-io/fs");
-var fs = require("fs");
 var chalk = require('chalk');
 var util = require('util');
 
@@ -23,8 +22,8 @@ var git = require('../lib/git');
 var gh = require('../lib/gh');
 var Helper = require('../lib/helper');
 var jsome = require('jsome');
-var canner_extract = require('canner-extract');
-var extract = Q.nfbind(canner_extract);
+var canner_extract = Q.nfbind(require('canner-extract'));
+var extract_html = require('extract-html');
 
 var printErr = function(err) {
   if (err.statusCode == '401') {
@@ -38,15 +37,15 @@ var printErr = function(err) {
   } else {
     console.log(chalk.red(err));
   }
-  console.log('If the error is unexpected, please go to https://github.com/Canner/canner/issues/new, and open an issue.')
-}
+  console.log('If the error is unexpected, please go to https://github.com/Canner/canner/issues/new, and open an issue.');
+};
 
 
 var arg = process.argv;
 
 // General options
 prog
-  .version(pkg.version)
+  .version(pkg.version);
 
 // get a generator
 // prog
@@ -69,7 +68,7 @@ prog
   .action(function(dir, options) {
     init(dir, options.generator).catch(function(err) {
       stage.error(err);
-    })
+    });
   });
 
 // building docs from canner
@@ -85,7 +84,7 @@ prog
     build(dir, prog.args[1], false)
       .catch(function(err) {
         stage.error(err);
-      })
+      });
   });
 
 // watching docs from canner
@@ -101,7 +100,7 @@ prog
     watch(dir, prog.args[1], true)
       .catch(function(err) {
         stage.error(err);
-      })
+      });
   });
 
 // make html include files all warp allin
@@ -149,7 +148,7 @@ prog
       } else {
         console.log(err.message);
       }
-    })
+    });
   });
 
 // logout
@@ -159,8 +158,8 @@ prog
   .usage('logout')
   .action(function() {
     auth.logout().then(function(body) {
-      console.log(chalk.green('successfully logout!'))
-    }).catch(printErr)
+      console.log(chalk.green('successfully logout!'));
+    }).catch(printErr);
   });
 
 
@@ -180,7 +179,7 @@ prog
       console.log(chalk.green('create app successfully!'));
       console.log(chalk.green('Name: ') + app.url);
       console.log(chalk.green('Git url: ') + app.gitUrl);
-    }).catch(printErr)
+    }).catch(printErr);
   });
 
 // apps destroy
@@ -194,7 +193,7 @@ prog
       // show git url
       console.log(chalk.green('destory app successfully!'));
       console.log(chalk.green('Name: ') + appUrl);
-    }).catch(printErr)
+    }).catch(printErr);
   });
 
 // apps push 
@@ -216,30 +215,31 @@ prog
       .then(function(result) {
         if (result.stderr)
           console.log(result.stderr.slice(0,-1));
-        console.log(chalk.green(util.format('Push %s to canner master successfully!', appUrl)));
 
-        if (!fs.existsSync(dataPath)) {
-          console.log(chalk.red('Cannot find data ' + dataPath));
-          return;
-        }
-        // get data
+        console.log(chalk.green(util.format('Push %s to canner master successfully!', appUrl)));
+       
+        // check data exit then push
+        return FS.exists(dataPath);
+      })
+      .then(function(exist) {
+        if (!exist)
+          throw new Error(dataPath+' not exist');
         datas = require(dataPath).data;
-     
+      
         // get url
-        return apps.getUrl(appUrl)
-          // push data to server
-          .then(function(url) {
-            return data.push(url, datas);
-          })
-          // done
-          .then(function() {
-            console.log(chalk.green(util.format('- Push data %s successfully!', 
-              options.data_path)));
-          })
-          .catch(printErr)
-       })
-        .catch(printErr)
-  })
+        return apps.getUrl(appUrl);
+      })
+      // push data to server
+      .then(function(url) {
+        return data.push(url, datas);
+      })
+      // done
+      .then(function() {
+        console.log(chalk.green(util.format('- Push data %s successfully!', 
+          options.data_path)));
+      })
+      .catch(printErr);
+  });
 
 
 // apps deploy
@@ -251,9 +251,9 @@ prog
     apps.getUrl(appUrl)
       .then(apps.deploy)
       .then(function() {
-        console.log(chalk.green('success!'))
+        console.log(chalk.green('success!'));
       })
-      .catch(printErr)
+      .catch(printErr);
   });
 
 // list apps
@@ -267,10 +267,10 @@ prog
         var table = Helper.table(body, {
           head: ['url', 'status', 'policy', 'created', 'updated'],
           column: ['display_url', 'status', 'policy', 'create_date', 'update_date']
-        })
+        });
         console.log(table);
       })
-      .catch(printErr)
+      .catch(printErr);
   });
 
 prog
@@ -280,9 +280,9 @@ prog
     apps.getUrl(appUrl)
       .then(apps.info)
       .then(function(body) {
-        jsome(body)
+        jsome(body);
       })
-      .catch(printErr)
+      .catch(printErr);
   });
 
 prog
@@ -293,10 +293,10 @@ prog
     var arr = process.cwd().split('/');
     appUrl = appUrl || arr[arr.length-1];
     if (!appUrl) {
-      return
+      return;
     }
     apps.open(appUrl)
-      .catch(printErr)
+      .catch(printErr);
   });
 
 // list apps members
@@ -312,10 +312,10 @@ prog
         var table = Helper.table(body, {
           head: ['username', 'role'],
           column: ['username', 'role']
-        })
+        });
         console.log(table);
       })
-      .catch(printErr)
+      .catch(printErr);
   });
 
 // add apps members
@@ -328,7 +328,7 @@ prog
       apps.addMember(appUrl, username, role).then(function(app) {
         // print success
         console.log(chalk.green('add members successfully!'));
-      }).catch(printErr)
+      }).catch(printErr);
     } else {
       prog.help();
     }
@@ -344,7 +344,7 @@ prog
       apps.removeMember(appUrl, username).then(function(app) {
         // print success
         console.log(chalk.green('remove members successfully!'));
-      }).catch(printErr)
+      }).catch(printErr);
     } else {
       prog.help();
     }
@@ -363,7 +363,7 @@ prog
         console.log(chalk.green('add domain successfully!'));
         console.log(chalk.green('Name: ') + appUrl);
         console.log(chalk.green('domain: ') + domain);
-      }).catch(printErr)
+      }).catch(printErr);
     else {
       prog.help();
     }
@@ -382,7 +382,7 @@ prog
         console.log(chalk.green('remove domain successfully!'));
         console.log(chalk.green('Name: ') + appUrl);
         console.log(chalk.green('domain: ') + domain);
-      }).catch(printErr)
+      }).catch(printErr);
     } else {
       prog.help();
     }
@@ -397,30 +397,30 @@ prog
   .action(function(appUrl, options) {
     options.data_path = options.data_path || './canner.json';
     var dataPath = path.resolve(process.cwd(), options.data_path);
+    var datas;
    
-    if (!fs.existsSync(dataPath)) {
-      console.log(chalk.red('Cannot find data ' + dataPath));
-      return;
-    }
-    // get data
-    var datas = require(dataPath).data;
+    FS.exists(dataPath)
+      .then(function(exist) {
+        if (!exist)
+          throw new Error(dataPath+' not exist');
 
-    // push
-    // get url
-    apps.getUrl(appUrl)
+        // get data
+        datas = require(dataPath).data;
 
-    // push data to server
-    .then(function(url) {
-      return data.push(url, datas);
-    })
+        // push, get url
+        return apps.getUrl(appUrl);
+      })
+      // push data to server
+      .then(function(url) {
+        return data.push(url, datas);
+      })
 
-    // done
-    .then(function() {
-      console.log(chalk.green('success!'))
-    })
-
-    .catch(printErr)
-  });
+      // done
+      .then(function() {
+        console.log(chalk.green('success!'));
+      })
+      .catch(printErr);
+    });
 
 // apps data pull
 prog
@@ -433,20 +433,21 @@ prog
     apps.getUrl(appUrl)
       .then(data.pull)
       .then(function(body) {
+        var filepath;
         if (options.print)
           return jsome(body);
-
+  
         // with filepath
         if (options.filepath) {
-          var filepath = path.resolve(process.cwd(), options.filepath);
+          filepath = path.resolve(process.cwd(), options.filepath);
           return FS.write(filepath, JSON.stringify(body, null, 4))
             .then(function() {
-              console.log(chalk.green(util.format('data saved to %s', filepath)))
+              console.log(chalk.green(util.format('data saved to %s', filepath)));
             });
         }
 
         // no option, write to canner.json
-        var filepath = path.resolve(process.cwd(), './canner.json');
+        filepath = path.resolve(process.cwd(), './canner.json');
         return FS.exists(filepath)
           .then(function(exist) {
             if (!exist)
@@ -458,22 +459,44 @@ prog
             return FS.write(filepath, JSON.stringify(json, null, 4));
           })
           .then(function() {
-            console.log(chalk.green(util.format('data saved to %s', filepath)))
-          })
+            console.log(chalk.green(util.format('data saved to %s', filepath)));
+          });
       })
-      .catch(printErr)
+      .catch(printErr);
   });
 
 // data extract
 prog
   .command('data:extract [html_file]')
-  .description('extract data from html')
+  .description('extract data from html_file')
   .usage('[options] <html_file, default value: "index.html">')
+  .option('-m, --manually', 'manually naming text node.')
   .action(function(html, options) {
-    var html_file = prog.args[0] ? prog.args[0] : './index.html';
+    var htmlFile = prog.args[0] ? prog.args[0] : './index.html';
+    var htmlPath = path.join(process.cwd(), htmlFile);
     
-    return extract(html_file, 'index', 'index')
-      .catch(printErr);
+    if (options.manually) {
+      return canner_extract(htmlFile, 'index', 'index')
+        .then(function() {
+          console.log(chalk.green('successfully output `./index.hbs` and `./canner.json.`')); 
+        })
+        .catch(printErr);
+    }
+    
+    extract_html(htmlPath, {}, function(err, hbs, json) {
+      if (err) {
+        printErr(err);
+      }
+      var output = {layout: "./index.hbs", data: json};
+      
+      FS.write('./index.hbs', hbs)
+        .then(function() {
+          return FS.write('./canner.json', output);
+        })
+        .then(function() {
+          console.log(chalk.green('successfully output `./index.hbs` and `./canner.json.`')); 
+        });
+    });
   });
 
 // git remote:add
@@ -486,8 +509,8 @@ prog
     git.remote.add(appUrl).then(function(url) {
         console.log(chalk.green('Git url: ') + url);
       })
-      .catch(printErr)
-  })
+      .catch(printErr);
+  });
 
 // git clone
 prog
@@ -499,8 +522,8 @@ prog
         console.log(util.format('App %s has clone to %s!!', params.name, params.path));
         console.log(chalk.green('Git url: ') + params.url);
       })
-      .catch(printErr)
-  })
+      .catch(printErr);
+  });
 
 // gh deploy
 prog
@@ -540,11 +563,11 @@ prog
     // success
     .then(function() {
         var title = chalk.blue('CONFIG: ');
-        var val = arr[0] + '=' + arr[1]
+        var val = arr[0] + '=' + arr[1];
         console.log(title + val);
       })
-      .catch(printErr)
-  })
+      .catch(printErr);
+  });
 
 prog
   .command('configs:get [app_url]')
@@ -553,15 +576,14 @@ prog
     // get url
     apps.getUrl(appUrl)
       .then(function(url) {
-        return apps.Configs.get(url)
+        return apps.Configs.get(url);
       })
 
     .then(function(configs) {
       jsome(configs);
     })
-
-    .catch(printErr)
-  })
+    .catch(printErr);
+  });
 
 
 // if empty
