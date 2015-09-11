@@ -23,6 +23,7 @@ var gh = require('../lib/gh');
 var Helper = require('../lib/helper');
 var jsome = require('jsome');
 var canner_extract = require('canner-extract');
+var hbs_extract = require('hbs-extract');
 
 var printErr = function(err) {
   if (err.statusCode == '401') {
@@ -462,6 +463,33 @@ prog
           });
       })
       .catch(printErr);
+  });
+
+prog
+  .command('data:new [hbs_template]')
+  .description('new canner.json from hbs template')
+  .usage('<hbs_template, default value: "index.hbs">')
+  .option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
+  .action(function(hbs, options) {
+    var hbsFile = prog.args[0] ? prog.args[0] : './index.hbs';
+    var hbsPath = path.resolve(process.cwd(), hbsFile);
+    var dir = options.output ? path.resolve(process.cwd(), options.output) : './';
+    var outputPath = path.join(dir, './canner.json');
+    var data = {
+      layout: './index.hbs',
+    };
+
+    hbs_extract.fromFile(hbsPath)
+      .then(function(result) {
+        data.data = result;
+        return FS.write(outputPath, JSON.stringify(data, null, 4));
+      })
+      .then(function() {
+        console.log('successfully output canner.json!');
+      })
+      .catch(function(err) {
+          console.error(err);
+      });
   });
 
 // data extract
