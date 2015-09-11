@@ -467,7 +467,7 @@ prog
 
 prog
   .command('data:new [hbs_template]')
-  .description('new canner.json from hbs template')
+  .description('initialize a canner.json from hbs template')
   .usage('<hbs_template, default value: "index.hbs">')
   .option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
   .action(function(hbs, options) {
