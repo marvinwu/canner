@@ -77,8 +77,8 @@ sudo npm install -g canner
 
 ## Learn more
 
-- [Canner API](https://github.com/Canner/canner/wiki/Canner-API)
-- [Command Reference](https://github.com/Canner/canner/wiki/Command-Reference)
+- [API Reference](https://github.com/Canner/canner/wiki/API-Reference)
+- [Usage](https://github.com/Canner/canner/wiki/Usage)
 - [Projects built by canner](https://github.com/Canner/canner/wiki/Projects-built-by-canner)
 - [Template engines](https://github.com/Canner/canner/wiki/Template-engines)
 - [What is a can](https://github.com/Canner/canner/wiki/What-is-a-can)
