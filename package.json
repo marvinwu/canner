@@ -42,7 +42,7 @@
     "canner-core": "^0.0.7",
     "open": "^0.0.3",
     "canner-extract": "^0.2.2",
-    "hbs-extract": "^0.0.3"
+    "hbs-extract": "^0.0.5"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
