@@ -1,6 +1,6 @@
 {
   "name": "canner",
-  "version": "0.10.8",
+  "version": "0.10.9",
   "description": "A static webpage generator based on template engines, which aimed to deal with the maintenance difficulty between data and webpages.",
   "main": "index.js",
   "bin": {
@@ -39,7 +39,7 @@
     "request-promise": "^0.4.2",
     "colors": "1.0.3",
     "child-process-promise": "^1.1.0",
-    "canner-core": "^0.1.2",
+    "canner-core": "^0.1.4",
     "open": "^0.0.3",
     "canner-extract": "^0.2.2",
     "hbs-extract": "^0.0.7"
