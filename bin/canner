@@ -129,8 +129,9 @@ prog
     }
 
     allin_html(path.resolve(process.cwd(), htmlfile), opt, function(all) {
-      fileSave(path.resolve(path.join(process.cwd(), output, filename)))
-        .write(all);
+      var filepath = path.resolve(path.join(process.cwd(), output, filename));
+      FS.write(filepath, all);
+      console.log(chalk.green(util.format('result saved to %s', filepath)));
     });
   });
 

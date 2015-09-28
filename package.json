@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/canner/canner",
   "dependencies": {
-    "allin": "^1.1.0",
+    "allin": "^1.1.1",
     "chalk": "^1.0.0",
     "cli-table": "^0.3.1",
     "commander": "^2.2.0",
