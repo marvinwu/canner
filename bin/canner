@@ -15,6 +15,7 @@ var pkg = require('../package.json');
 var init = require('canner-core').init;
 var build = require('canner-core').build;
 var watch = require('canner-core').watch;
+var create = require('canner-core').create;
 var apps = require('../lib/apps');
 var auth = require('../lib/auth');
 var data = require('../lib/data');
@@ -23,7 +24,6 @@ var gh = require('../lib/gh');
 var Helper = require('../lib/helper');
 var jsome = require('jsome');
 var canner_extract = require('canner-extract');
-var hbs_extract = require('hbs-extract');
 
 var printErr = function(err) {
   if (err.statusCode == '401') {
@@ -467,7 +467,7 @@ prog
   });
 
 prog
-  .command('data:new [hbs_template]')
+  .command('data:create [hbs_template]')
   .description('initialize a canner.json from hbs template')
   .usage('<hbs_template, default value: "index.hbs">')
   .option('-o, --output <directory>', 'Path to output directory, defaults to current directory')
@@ -476,26 +476,9 @@ prog
     var hbsFile = hbs ? hbs : './index.hbs';
     var hbsPath = path.resolve(process.cwd(), hbsFile);
     var dir = options.output ? path.resolve(process.cwd(), options.output) : './';
-    var outputPath = path.join(dir, './canner.json');
-    var data = {
-      layout: './index.hbs',
-    };
+    options.outputPath = path.join(dir, './canner.json');
 
-    hbs_extract.fromFile(hbsPath)
-      .then(function(result) {
-        data.data = result;
-        if (options.print) {
-          return console.log(JSON.stringify(data, null, 4));
-        }
-        
-        return FS.write(outputPath, JSON.stringify(data, null, 4))
-          .then(function() {
-            console.log('successfully output canner.json!');
-          });
-      })
-      .catch(function(err) {
-          console.error(err);
-      });
+    create(hbsPath, options);
   });
 
 // data extract
